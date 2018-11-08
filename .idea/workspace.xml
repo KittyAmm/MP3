@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a04f715b-75d5-41e3-b585-a677beb957b9" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/Artiste.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/Musique.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/Personne.java" afterPath="$PROJECT_DIR$/src/model/Personne.java" />
-    </list>
+    <list default="true" id="a04f715b-75d5-41e3-b585-a677beb957b9" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -413,7 +408,7 @@
       <workItem from="1541435990527" duration="2716000" />
       <workItem from="1541681351763" duration="2043000" />
       <workItem from="1541693957309" duration="254000" />
-      <workItem from="1541694321709" duration="3450000" />
+      <workItem from="1541694321709" duration="3707000" />
     </task>
     <task id="LOCAL-00001" summary="1mp3">
       <created>1541695405138</created>
@@ -422,11 +417,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541695405138</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="essaigit">
+      <created>1541698381529</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541698381529</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69636000" />
+    <option name="totallyTimeSpent" value="69893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
@@ -495,7 +497,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1mp3" />
-    <option name="LAST_COMMIT_MESSAGE" value="1mp3" />
+    <MESSAGE value="essaigit" />
+    <option name="LAST_COMMIT_MESSAGE" value="essaigit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
