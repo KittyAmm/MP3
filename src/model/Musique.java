@@ -25,4 +25,7 @@ public class Musique extends BaseModele{
     public void setIdartiste(String idartiste) {
         this.idartiste = idartiste;
     }
+    public void getIdgenre(){
+        return idgenre;
+    }
 }
