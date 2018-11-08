@@ -26,7 +26,7 @@ public class GenericDao implements InterfaceDao {
     }
 
     @Override
-    public String queryUpdate(BaseModele bm) throws Exception {
+    public String queryUpdate(BaseModele bm) {
         Field[]       fields = bm.getClass().getDeclaredFields();
         String        update = "update %s set %s where id='%s'";
         StringBuilder values = new StringBuilder();
@@ -39,12 +39,12 @@ public class GenericDao implements InterfaceDao {
     }
 
     @Override
-    public String queryDelete(BaseModele bm) throws Exception {
+    public String queryDelete(BaseModele bm) {
         return String.format("delete %s where id= '%s'", bm.getNomTable(), bm.getId());
     }
 
     @Override
-    public String queryFindAll(BaseModele bm) throws Exception {
+    public String queryFindAll(BaseModele bm) {
         Field[]       fields = bm.getClass().getDeclaredFields();
         String        findAll   = "select * from %s";
         StringBuilder values = new StringBuilder();
@@ -181,7 +181,7 @@ public class GenericDao implements InterfaceDao {
     @Override
     public ArrayList<BaseModele> findAll(BaseModele bm) throws Exception {
         Connection conn =null;
-        ArrayList<BaseModele> ab = new ArrayList<>();
+        ArrayList<BaseModele> ab;
         try {
             conn=Connexion.getConnexion();
            ab =findAll(bm,conn);

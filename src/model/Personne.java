@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.istack.internal.NotNull;
 import dao.BaseModele;
 
 public class Personne extends BaseModele {
@@ -9,6 +8,7 @@ public class Personne extends BaseModele {
 
     public Personne() {
     }
+
     public Personne(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
