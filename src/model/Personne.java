@@ -22,4 +22,8 @@ public class Personne extends BaseModele {
                 ", prenom='" + prenom + '\'' +
                 '}';
     }
+
+    public String getPrenom() {
+        return prenom;
+    }
 }
