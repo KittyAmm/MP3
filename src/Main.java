@@ -6,8 +6,8 @@ import model.Produit;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] arg) throws Exception {
-        GenericDao gdao= new GenericDao();
+    public static void main(String[] arg) {
+      /*  GenericDao gdao= new GenericDao();
         Personne p = new Personne("minou", "malala");
         Produit p1 = new Produit("kapa","23/07/1998",1000);
         //p.setId("2");
@@ -18,6 +18,6 @@ public class Main {
         for(int i = 0; i < ba.size(); i++){
             Personne pers = (Personne)ba.get(i);
             System.out.println(String.valueOf(pers));
-        }
+        }*/
     }
 }
