@@ -5,7 +5,7 @@ import dao.BaseModele;
 public class Produit extends BaseModele{
     private String nom;
     private String daty;
-    private double prix;
+    private Double prix;
 
     public Produit(String nom, String daty, double prix) {
         this.nom = nom;

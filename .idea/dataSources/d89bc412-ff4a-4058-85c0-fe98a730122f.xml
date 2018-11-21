@@ -4,9 +4,9 @@
     <root id="1"/>
     <schema id="2" parent="1" name="GENERAL">
       <ObjectId>97</ObjectId>
-      <IntrospectionTimestamp>2018-08-30.12:38:19</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-11-11.01:12:25</IntrospectionTimestamp>
       <CreatedTimestamp>2018-08-24.15:51:04</CreatedTimestamp>
-      <ModifiedTimestamp>2018-08-30.12:38:19</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-11-11.01:12:24</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -106,58 +106,70 @@
     <schema id="34" parent="1" name="UTILISATEUR">
       <ObjectId>98</ObjectId>
     </schema>
-    <sequence id="35" parent="2" name="SEC_PERSONNE">
+    <schema id="35" parent="1" name="GESTIONETUDIANT">
+      <ObjectId>106</ObjectId>
+    </schema>
+    <schema id="36" parent="1" name="IMAGE">
+      <ObjectId>107</ObjectId>
+    </schema>
+    <schema id="37" parent="1" name="MEMBRE">
+      <ObjectId>108</ObjectId>
+    </schema>
+    <schema id="38" parent="1" name="MP3">
+      <ObjectId>109</ObjectId>
+    </schema>
+    <sequence id="39" parent="2" name="SEC_PERSONNE">
       <ObjectId>29455</ObjectId>
       <CreatedTimestamp>2018-08-24.15:51:04</CreatedTimestamp>
       <ModifiedTimestamp>2018-08-24.15:51:04</ModifiedTimestamp>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <sequence id="36" parent="2" name="SEC_PRODUIT">
+    <sequence id="40" parent="2" name="SEC_PRODUIT">
       <ObjectId>29458</ObjectId>
       <CreatedTimestamp>2018-08-24.16:05:30</CreatedTimestamp>
       <ModifiedTimestamp>2018-08-24.16:05:30</ModifiedTimestamp>
       <SequenceIdentity>1</SequenceIdentity>
     </sequence>
-    <table id="37" parent="2" name="PERSONNE">
+    <table id="41" parent="2" name="PERSONNE">
       <ObjectId>29659</ObjectId>
       <CreatedTimestamp>2018-08-30.12:33:42</CreatedTimestamp>
       <ModifiedTimestamp>2018-08-30.12:34:59</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="38" parent="2" name="PRODUIT">
+    <table id="42" parent="2" name="PRODUIT">
       <ObjectId>29661</ObjectId>
       <CreatedTimestamp>2018-08-30.12:38:19</CreatedTimestamp>
-      <ModifiedTimestamp>2018-08-30.12:38:19</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-11-11.01:12:24</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <column id="39" parent="37" name="ID">
+    <column id="43" parent="41" name="ID">
       <Position>1</Position>
       <DataType>VARCHAR2(5)|0</DataType>
       <DefaultExpression>NULL</DefaultExpression>
     </column>
-    <column id="40" parent="37" name="NOM">
+    <column id="44" parent="41" name="NOM">
       <Position>2</Position>
       <DataType>VARCHAR2(20)|0</DataType>
     </column>
-    <column id="41" parent="37" name="PRENOM">
+    <column id="45" parent="41" name="PRENOM">
       <Position>3</Position>
       <DataType>VARCHAR2(10)|0</DataType>
     </column>
-    <column id="42" parent="38" name="ID">
+    <column id="46" parent="42" name="ID">
       <Position>1</Position>
       <DataType>VARCHAR2(5)|0</DataType>
     </column>
-    <column id="43" parent="38" name="NOM">
+    <column id="47" parent="42" name="NOM">
       <Position>2</Position>
       <DataType>VARCHAR2(20)|0</DataType>
     </column>
-    <column id="44" parent="38" name="DATY">
+    <column id="48" parent="42" name="DATY">
       <Position>3</Position>
       <DataType>VARCHAR2(50)|0</DataType>
     </column>
-    <column id="45" parent="38" name="PRIX">
+    <column id="49" parent="42" name="PRIX">
       <Position>4</Position>
-      <DataType>FLOAT(*)|0</DataType>
+      <DataType>NUMBER(19,4)|0</DataType>
     </column>
   </database-model>
 </dataSource>

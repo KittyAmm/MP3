@@ -4,11 +4,11 @@ import dao.BaseModele;
 
 import java.sql.Time;
 
-public class Musique extends BaseModele{
+public class Musique extends BaseModele {
     private String titre;
     private String idartiste;
     private String idgenre;
-    private Time duree;
+    private Time   duree;
 
     public String getTitre() {
         return titre;
@@ -25,7 +25,8 @@ public class Musique extends BaseModele{
     public void setIdartiste(String idartiste) {
         this.idartiste = idartiste;
     }
-    public String getIdgenre(){
+
+    public String getIdgenre() {
         return idgenre;
     }
 }
