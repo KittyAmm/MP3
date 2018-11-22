@@ -1,28 +1,27 @@
 import dao.BaseModele;
 import dao.GenericDao;
-import model.Personne;
+import model.Personn;
 import model.Produit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
-       GenericDao gdao= new GenericDao();
-        Personne p = new Personne("mimi", "kitty");
-        Produit p1 = new Produit("kapa","23/07/1998",1000);
-        Produit p2 = new Produit("kapa","23/07/1998",1000);
-        Produit p3 = new Produit("kapa","23/07/1998",1000);
-        Produit p4 = new Produit("kapa","23/07/1998",1000);
-        Produit p5 = new Produit("kapa","23/07/1998",1000);
-        Produit p6 = new Produit("kapa","23/07/1998",1000);
-        Produit p7 = new Produit("kapa","23/07/1998",1000);
-        Produit p8 = new Produit("kapa","23/07/1998",1000);
+       GenericDao gdao = new GenericDao();
+        Personn   p    = new Personn("malala", "minou");
+        Produit   p1   = new Produit("kapa","23/07/1998",1000);
+        Produit   p2   = new Produit("kapa","23/07/1998",1000);
+        Produit   p3   = new Produit("kapa","23/07/1998",1000);
+        Produit   p4   = new Produit("kapa","23/07/1998",1000);
+        Produit   p5   = new Produit("kapa","23/07/1998",1000);
+        Produit   p6   = new Produit("kapa","23/07/1998",1000);
+        Produit   p7   = new Produit("kapa","23/07/1998",1000);
+        Produit   p8   = new Produit("kapa","23/07/1998",1000);
         Produit p9 = new Produit("kapa","23/07/1998",1000);
         Produit p10 = new Produit("kapa","23/07/1998",1000);
         p.setId("6");
-       /* gdao.save(p1);
-        gdao.save(p2);
+        gdao.update(p);
+        /*gdao.save(p2);
         gdao.save(p3);
         gdao.save(p4);
         gdao.save(p5);
