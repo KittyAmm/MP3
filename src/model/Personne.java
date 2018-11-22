@@ -2,14 +2,14 @@ package model;
 
 import dao.BaseModele;
 
-public class Personn extends BaseModele {
+public class Personne extends BaseModele {
     private String nom;
     private String prenom;
 
-    public Personn() {
+    public Personne() {
     }
 
-    public Personn(String nom, String prenom) {
+    public Personne(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
 
@@ -17,7 +17,7 @@ public class Personn extends BaseModele {
 
     @Override
     public String toString() {
-        return "Personn{" +
+        return "Personne{" +
                 "nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 '}';

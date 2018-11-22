@@ -1,6 +1,6 @@
 import dao.BaseModele;
 import dao.GenericDao;
-import model.Personn;
+import model.Personne;
 import model.Produit;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] arg) throws Exception {
        GenericDao gdao = new GenericDao();
-        Personn   p    = new Personn("malala", "minou");
+        Personne  p    = new Personne("malala", "minou");
         Produit   p1   = new Produit("kapa","23/07/1998",1000);
         Produit   p2   = new Produit("kapa","23/07/1998",1000);
         Produit   p3   = new Produit("kapa","23/07/1998",1000);
