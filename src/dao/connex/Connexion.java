@@ -1,17 +1,18 @@
 
 package dao.connex;
 
+import dao.util.ConfigDB;
+
 import java.sql.*;
 
-public class Connexion implements Database {
-    public static Connection getConnexion() {
-        Connection conn = null;
+public class Connexion {
+    public Connection getConnexion() throws Exception {
+        Connection conn;
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn = DriverManager.getConnection(url, username, password);
-            System.out.println("connexion etablie");
+            Class.forName(ConfigDB.DRIVER_PSQL);
+            conn = DriverManager.getConnection(ConfigDB.URL, ConfigDB.USER, ConfigDB.PASS);
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e);
+            throw new Exception(e);
         }
         return conn;
     }
@@ -23,7 +24,3 @@ public class Connexion implements Database {
 
     }
 }
-/*
-    Class.forName("org.postgresql.Driver");
-     Class.forName("com.mysql.jdbc.Driver");
- */

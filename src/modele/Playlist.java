@@ -5,11 +5,13 @@
  */
 package modele;
 
+import dao.BaseModele;
+
 /**
  *
  * @author Haja Faniry
  */
-public class Playlist extends BaseModele  {
+public class Playlist extends BaseModele {
     
     String idp;
     String idsong;

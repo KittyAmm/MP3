@@ -5,6 +5,8 @@
  */
 package modele;
 
+import dao.BaseModele;
+
 /**
  *
  * @author Haja Faniry

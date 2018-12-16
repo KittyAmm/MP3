@@ -1,23 +1,19 @@
 package dao;
 
+import dao.annotation.Column;
+import dao.annotation.NotColumn;
 import dao.connex.Connexion;
-import dao.util.ParametresDB;
+import dao.util.ConfigDB;
+import dao.util.DB;
 import dao.util.Query;
-import dao.util.TypesDB;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GenericDao implements InterfaceDao {
-   /* private String paginationORCL(int min, int offset) {
-        String sql1 = "SELECT  * from %s WHERE rownum <= " + offset;
-        return "SELECT * FROM(" + sql1 + ") WHERE rownum >= " + min + " ORDER BY rownum ";
-    }*/
-
     private String paginationORCL(int min, int max) {
         return String.format("SELECT * FROM (SELECT %%s.*, ROWNUM ROW_NUM from %%s) WHERE ROW_NUM BETWEEN %d AND %d", min, max);
     }
@@ -26,75 +22,108 @@ public class GenericDao implements InterfaceDao {
         return "offset" + offset + "fetch next" + nombre + "rows only";
     }
 
+    private String getNameColumn(Field field) {
+        Column column = field.getAnnotation(Column.class);
+        if (column != null) {
+            return column.name();
+        }
+        return field.getName();
+    }
+
+    private Field[] getColumnTable(BaseModele bm) {
+        ArrayList<Field> list   = new ArrayList<>();
+        Field[]          fields = bm.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            NotColumn notColumn = field.getAnnotation(NotColumn.class);
+            if (notColumn == null) {
+                list.add(field);
+            }
+        }
+        return list.toArray(new Field[list.size()]);
+    }
+
     public String queryPagination(BaseModele bm, int index, int nombre, int offset) throws Exception {
         int min = offset * index - offset + 1;
         int max = offset * index;
 
-        if (ParametresDB.DB_TYPE == TypesDB.ORCL) {
+        if (ConfigDB.DB_TYPE == DB.ORCL) {
             String req      = paginationORCL(min, max);
-            String nomTable = bm.table();
+            String nomTable = bm.getNomTable();
             return String.format(req, nomTable, nomTable);
-        } else if (ParametresDB.DB_TYPE == TypesDB.PGSQL) {
+        } else if (ConfigDB.DB_TYPE == DB.PGSQL) {
             String page = paginationPGSQL(nombre, offset);
-            return Query.select("*", bm.table(), page);
+            return Query.select("*", bm.getNomTable(), page);
         } else {
             throw new Exception("Votre base des données n'est pas configuré");
         }
     }
 
+    public String queryFindAll(BaseModele bm, String where) {
+        String query;
+        if (where.equals("")) {
+            query = String.format("select * from %s", bm.getNomTable());
+        } else {
+            String select = "select * from %s where %s";
+            query = String.format(select, bm.getNomTable(), where);
+        }
+        System.out.println(query);
+        return query;
+    }
+
+
+    public String queryFindById(BaseModele bm, String id) {
+        String findAll = "select * from %s where id= '%s'";
+        findAll = String.format(findAll, bm.getNomTable(), id);
+        System.out.println(findAll);
+        return findAll;
+    }
+
+    @Override
     public String queryInsert(BaseModele baseModele) {
-        Field[]       fields  = baseModele.getClass().getDeclaredFields();
+        Field[]       fields  = getColumnTable(baseModele);
         String        insert  = "insert into %s (%s) values(%s)";
         StringBuilder colonne = new StringBuilder("id, ");
         StringBuilder values  = new StringBuilder("?, ");
         for (Field field : fields) {
             field.setAccessible(true);
-            colonne.append(field.getName()).append(", ");
+            colonne.append(getNameColumn(field)).append(", ");
             values.append("?, ");
         }
         colonne.delete(colonne.length() - 2, colonne.length());
         values.delete(values.length() - 2, values.length());
-        return String.format(insert, baseModele.table(), colonne.toString(), values.toString());
+        insert = String.format(insert, baseModele.getNomTable(), colonne.toString(), values.toString());
+        System.out.println(insert);
+        return insert;
     }
 
+    @Override
     public String queryUpdate(BaseModele bm) {
-        Field[]       fields = bm.getClass().getDeclaredFields();
-        String        update = "update %s setData %s where id='%s'";
+        Field[]       fields = getColumnTable(bm);
+        String        update = "update %s set %s where id='%s'";
         StringBuilder values = new StringBuilder();
         for (Field field : fields) {
             field.setAccessible(true);
-            values.append(field.getName()).append(" = ?, ");
+            values.append(getNameColumn(field)).append(" = ?, ");
         }
         values.deleteCharAt(values.length() - 2);
-        return String.format(update, bm.table(), values, bm.getId());
+        update = String.format(update, bm.getNomTable(), values, bm.getId());
+        System.out.println(update);
+        return update;
     }
 
+    @Override
     public String queryDelete(BaseModele bm) {
-        return String.format("delete %s where id= '%s'", bm.table(), bm.getId());
+        String del = String.format("delete %s where id= '%s'", bm.getNomTable(), bm.getId());
+        System.out.println(del);
+        return del;
     }
 
-    public String queryFindById(BaseModele bm, String id) {
-        Field[]       fields  = bm.getClass().getDeclaredFields();
-        String        findAll = "select * from %s where id= '%s'";
-        StringBuilder values  = new StringBuilder();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            values.append(field.getName().concat("?"));
-        }
-        values.deleteCharAt(values.length() - 2);
-        return String.format(findAll, bm.table(), values);
-    }
-
+    @Override
     public String queryFindAll(BaseModele bm) {
-        Field[]       fields  = bm.getClass().getDeclaredFields();
-        String        findAll = "select * from %s";
-        StringBuilder values  = new StringBuilder();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            values.append(field.getName().concat("?"));
-        }
-        values.deleteCharAt(values.length() - 2);
-        return String.format(findAll, bm.table(), values);
+        String findAll = "select * from %s";
+        findAll = String.format(findAll, bm.getNomTable());
+        System.out.println(findAll);
+        return findAll;
     }
 
     public void save(BaseModele bm, Connection conn) throws Exception {
@@ -102,7 +131,7 @@ public class GenericDao implements InterfaceDao {
         try {
             ps = conn.prepareStatement(queryInsert(bm));
             ps.setObject(1, bm.getId(conn, bm.getNomSequence()));
-            Field[] fields = bm.getClass().getDeclaredFields();
+            Field[] fields = getColumnTable(bm);
             for (int i = 0; i < fields.length; i++) {
                 fields[i].setAccessible(true);
                 ps.setObject(i + 2, fields[i].get(bm));
@@ -118,8 +147,9 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void save(BaseModele bm) throws Exception {
         Connection conn = null;
+        Connexion  c    = new Connexion();
         try {
-            conn = Connexion.getConnexion();
+            conn = c.getConnexion();
             conn.setAutoCommit(false);
             save(bm, conn);
             conn.commit();
@@ -136,7 +166,7 @@ public class GenericDao implements InterfaceDao {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement(queryUpdate(bm));
-            Field[] fields = bm.getClass().getDeclaredFields();
+            Field[] fields = getColumnTable(bm);
             for (int i = 0; i < fields.length; i++) {
                 fields[i].setAccessible(true);
                 ps.setObject(i + 1, fields[i].get(bm));
@@ -152,8 +182,9 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void update(BaseModele bm) throws Exception {
         Connection conn = null;
+        Connexion  c    = new Connexion();
         try {
-            conn = Connexion.getConnexion();
+            conn = c.getConnexion();
             conn.setAutoCommit(false);
             update(bm, conn);
             conn.commit();
@@ -171,8 +202,6 @@ public class GenericDao implements InterfaceDao {
         try {
             ps = conn.prepareStatement(queryDelete(bm));
             ps.execute();
-        } catch (Exception e) {
-            throw e;
         } finally {
             if (ps != null) ps.close();
         }
@@ -181,8 +210,9 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void delete(BaseModele bm) throws Exception {
         Connection conn = null;
+        Connexion  c    = new Connexion();
         try {
-            conn = Connexion.getConnexion();
+            conn = c.getConnexion();
             conn.setAutoCommit(false);
             delete(bm, conn);
             conn.commit();
@@ -194,112 +224,134 @@ public class GenericDao implements InterfaceDao {
             Connexion.fermerRessource(conn, null, null);
         }
     }
-    public ArrayList<BaseModele> findAll(BaseModele bm, Connection conn) throws Exception {
-        PreparedStatement     ps  = null;
-        ResultSet             res = null;
-        ArrayList<BaseModele> val = new ArrayList<>();
-        try {
-            ps = conn.prepareStatement(queryFindAll(bm));
-            res = ps.executeQuery();
-            Field[] fields = bm.getClass().getDeclaredFields();
-            setData(bm, res, val, fields);
-        } finally {
-            if (ps != null)
-                ps.close();
-            if (res != null)
-                res.close();
-        }
-        return val;
-    }
 
-    @Override
-    public void findById(BaseModele bm, String id) throws Exception {
-        Connection            conn = null;
-        try {
-            conn = Connexion.getConnexion();
-             findById(bm,id,conn);
-            conn.commit();
-
-        } catch (Exception e) {
-            if (conn != null)
-                conn.rollback();
-            throw e;
-        } finally {
-            Connexion.fermerRessource(conn, null, null);
-        }
-    }
-
-    public void findById(BaseModele bm, String id,Connection conn) throws Exception {
-        PreparedStatement     ps  = null;
-        ResultSet             res = null;
-        ArrayList<BaseModele> val = new ArrayList<>();
-        try {
-            ps = conn.prepareStatement(queryFindById(bm,id));
-            res = ps.executeQuery();
-            Field[] fields = bm.getClass().getDeclaredFields();
-            setData(bm, res, val, fields);
-        }  catch (Exception e) {
-            if (conn != null)
-                conn.rollback();
-            throw e;
-        } finally {
-            Connexion.fermerRessource(conn, null, null);
-        }
-    }
-
-    private void setData(BaseModele bm, ResultSet res, ArrayList<BaseModele> modeles, Field[] fields) throws Exception {
+    private void setData(BaseModele bm, ResultSet res, ArrayList<BaseModele> modeles) throws Exception {
+        Field[] fields = getColumnTable(bm);
         while (res.next()) {
             BaseModele modele = bm.getClass().newInstance();
             modele.setId(res.getString("id"));
             for (Field field : fields) {
                 field.setAccessible(true);
-                field.set(modele, res.getObject(field.getName()));
+                field.set(modele, res.getObject(getNameColumn(field)));
             }
             modeles.add(modele);
         }
     }
 
-    @Override
-    public ArrayList<BaseModele> findAll(BaseModele bm) throws Exception {
-        Connection            conn = null;
-        ArrayList<BaseModele> ab;
+    public ArrayList<BaseModele> findAll(BaseModele bm, String where, Connection conn) throws Exception {
+        PreparedStatement     ps     = null;
+        ResultSet             res    = null;
+        ArrayList<BaseModele> models = new ArrayList<>();
         try {
-            conn = Connexion.getConnexion();
-            ab = findAll(bm, conn);
-            conn.commit();
-
-        } catch (Exception e) {
-            if (conn != null)
-                conn.rollback();
-            throw e;
+            ps = conn.prepareStatement(queryFindAll(bm, where));
+            res = ps.executeQuery();
+            setData(bm, res, models);
         } finally {
-            Connexion.fermerRessource(conn, null, null);
+            Connexion.fermerRessource(null, ps, res);
         }
-        return ab;
+        return models;
+    }
+
+    public ArrayList<BaseModele> findAll(BaseModele bm, Connection conn) throws Exception {
+        PreparedStatement     ps     = null;
+        ResultSet             res    = null;
+        ArrayList<BaseModele> models = new ArrayList<>();
+        try {
+            ps = conn.prepareStatement(queryFindAll(bm));
+            res = ps.executeQuery();
+            setData(bm, res, models);
+        } finally {
+            Connexion.fermerRessource(null, ps, res);
+        }
+        return models;
     }
 
     @Override
-    public List<BaseModele> findAll(BaseModele bm, int nombre, int index, int offset) throws Exception {
-        Connection            conn    = null;
+    public ArrayList<BaseModele> findAll(BaseModele bm) throws Exception {
+        Connection conn = null;
+        Connexion  c    = new Connexion();
+        try {
+            conn = c.getConnexion();
+            return findAll(bm, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    @Override
+    public ArrayList<BaseModele> findAll(BaseModele bm, String where) throws Exception {
+        Connection conn = null;
+        Connexion  c    = new Connexion();
+        try {
+            conn = c.getConnexion();
+            return findAll(bm, where, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+
+    @Override
+    public void findById(BaseModele bm, String id) throws Exception {
+        Connection conn = null;
+        Connexion  c    = new Connexion();
+        try {
+            conn = c.getConnexion();
+            findById(bm, id, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    public void findById(BaseModele bm, String id, Connection conn) throws Exception {
         PreparedStatement     ps      = null;
         ResultSet             res     = null;
         ArrayList<BaseModele> modeles = new ArrayList<>();
         try {
-            conn = Connexion.getConnexion();
-            ps = conn.prepareStatement(queryPagination(bm, index, nombre, offset));
+            ps = conn.prepareStatement(queryFindById(bm, id));
             res = ps.executeQuery();
-            Field[] fields = bm.getClass().getDeclaredFields();
-            setData(bm, res, modeles, fields);
+            setData(bm, res, modeles);
+        } finally {
+            Connexion.fermerRessource(conn, ps, res);
+        }
+    }
+
+
+    public void saveList(ArrayList<BaseModele> modeles) throws Exception {
+        Connection conn = null;
+        Connexion  c    = new Connexion();
+        try {
+            conn = c.getConnexion();
+            conn.setAutoCommit(false);
+            saveList(modeles, conn);
+            conn.commit();
         } catch (Exception e) {
-            if (conn != null)
+            if (conn != null) {
                 conn.rollback();
+            }
             throw e;
         } finally {
-            if (ps != null)
-                ps.close();
-            if (res != null)
-                res.close();
+            if (conn != null) {
+                conn.close();
+            }
         }
-        return modeles;
+    }
+
+    public void saveList(ArrayList<BaseModele> modeles, Connection conn) throws Exception {
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(queryInsert(modeles.get(0)));
+            for (BaseModele bm : modeles) {
+                pst.setObject(1, bm.getId(conn, bm.getNomSequence()));
+                Field[] fields = getColumnTable(bm);
+                for (int i = 0; i < fields.length; i++) {
+                    fields[i].setAccessible(true);
+                    pst.setObject(i + 2, fields[i].get(bm));
+                }
+                pst.execute();
+            }
+        } finally {
+            if (pst != null) pst.close();
+        }
     }
 }

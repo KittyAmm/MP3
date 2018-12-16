@@ -5,35 +5,44 @@
  */
 package modele;
 
+import dao.BaseModele;
+import dao.annotation.NotColumn;
+import dao.annotation.Table;
+import dao.annotation.Column;
+
 /**
- *
  * @author Haja Faniry
  */
-public class Album extends BaseModele  {
-    
-    String idalbum;
-    String idartiste;
-    String idimage;
-    String nom;
+@Table(name = "Albums")
+public class Album extends BaseModele {
+    @Column(name = "idart")
+    private String idartiste;
 
-    public void setIdalbum(String idalbum) {
-        this.idalbum = idalbum;
+    @Column(name = "image")
+    private String idimage;
+
+    @Column(name = "nomalbum")
+    private String nom;
+
+    public Album() {
     }
 
-    public void setIdartiste(String idartiste) {
-        this.idartiste = idartiste;
+    public void setIdartiste(String id) throws Exception {
+        if (id.equals("")) {
+            throw new Exception("id artiste vide");
+        }
+        idartiste = id;
     }
 
     public void setIdimage(String idimage) {
         this.idimage = idimage;
     }
 
-    public void setNom(String nom) {
+    public void setNom(String nom) throws Exception {
+        if (nom.equals("")) {
+            throw new Exception("nom album vide");
+        }
         this.nom = nom;
-    }
-
-    public String getIdalbum() {
-        return idalbum;
     }
 
     public String getIdartiste() {
@@ -47,6 +56,6 @@ public class Album extends BaseModele  {
     public String getNom() {
         return nom;
     }
-    
-    
+
+
 }

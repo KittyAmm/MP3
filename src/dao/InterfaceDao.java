@@ -1,8 +1,17 @@
 package dao;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface InterfaceDao {
+    String queryInsert(BaseModele baseModele) throws IllegalAccessException;
+
+    String queryUpdate(BaseModele bm) throws Exception;
+
+    String queryDelete(BaseModele bm) throws Exception;
+
+    String queryFindAll(BaseModele bm) throws Exception;
+
+    String queryFindAll(BaseModele bm, String where) throws Exception;
 
     void save(BaseModele bm) throws Exception;
 
@@ -10,10 +19,11 @@ public interface InterfaceDao {
 
     void delete(BaseModele bm) throws Exception;
 
+    ArrayList<BaseModele> findAll(BaseModele bm) throws Exception;
+
+    ArrayList<BaseModele> findAll(BaseModele bm, String where) throws Exception;
+
     void findById(BaseModele modele, String id) throws Exception;
 
-    List<BaseModele> findAll(BaseModele bm) throws Exception;
-
-    List<BaseModele> findAll(BaseModele bm,int nombre,int index,int offset) throws Exception;
 
 }
