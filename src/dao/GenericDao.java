@@ -147,9 +147,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void save(BaseModele bm) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             conn.setAutoCommit(false);
             save(bm, conn);
             conn.commit();
@@ -182,9 +181,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void update(BaseModele bm) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             conn.setAutoCommit(false);
             update(bm, conn);
             conn.commit();
@@ -210,9 +208,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void delete(BaseModele bm) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             conn.setAutoCommit(false);
             delete(bm, conn);
             conn.commit();
@@ -269,9 +266,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public ArrayList<BaseModele> findAll(BaseModele bm) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             return findAll(bm, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
@@ -281,9 +277,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public ArrayList<BaseModele> findAll(BaseModele bm, String where) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             return findAll(bm, where, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
@@ -294,9 +289,8 @@ public class GenericDao implements InterfaceDao {
     @Override
     public void findById(BaseModele bm, String id) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             findById(bm, id, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
@@ -310,7 +304,14 @@ public class GenericDao implements InterfaceDao {
         try {
             ps = conn.prepareStatement(queryFindById(bm, id));
             res = ps.executeQuery();
-            setData(bm, res, modeles);
+            Field[] fields = getColumnTable(bm);
+            if (res.next()) {
+                bm.setId(res.getString("id"));
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    field.set(bm, res.getObject(getNameColumn(field)));
+                }
+            }
         } finally {
             Connexion.fermerRessource(conn, ps, res);
         }
@@ -319,9 +320,8 @@ public class GenericDao implements InterfaceDao {
 
     public void saveList(ArrayList<BaseModele> modeles) throws Exception {
         Connection conn = null;
-        Connexion  c    = new Connexion();
         try {
-            conn = c.getConnexion();
+            conn = Connexion.getConnexion();
             conn.setAutoCommit(false);
             saveList(modeles, conn);
             conn.commit();

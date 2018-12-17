@@ -6,7 +6,7 @@ import dao.util.ConfigDB;
 import java.sql.*;
 
 public class Connexion {
-    public Connection getConnexion() throws Exception {
+    public static Connection getConnexion() throws Exception {
         Connection conn;
         try {
             Class.forName(ConfigDB.DRIVER_PSQL);
@@ -21,6 +21,5 @@ public class Connexion {
         if(rs!= null) rs.close();
         if(state != null) state.close();
         if(conn!= null){ conn.close();}
-
     }
 }
