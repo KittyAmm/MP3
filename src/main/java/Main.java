@@ -1,9 +1,10 @@
 import dao.BaseModele;
+import dao.GenericDao;
 import modele.Album;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
-       GenericDao gdao = new GenericDao();
+        GenericDao gdao = new GenericDao();
 //        Personne  p    = new Personne("malala", "minou");
 //        Produit   p1   = new Produit("kapa","23/07/1998",1000);
 //        Produit   p2   = new Produit("kapa","23/07/1998",1000);
@@ -33,7 +34,7 @@ public class Main {
 //           System.out.println(String.valueOf(prod.getIdimage()));
         Album client = new Album();
 
-        gdao.findById(client,"1");
+        gdao.findById(client, "1");
         System.out.println(client.getIdartiste());
         System.out.println(client.getIdimage());
 //        }
