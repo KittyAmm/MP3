@@ -1,172 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a04f715b-75d5-41e3-b585-a677beb957b9" name="Default" comment="dbb">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/dbd" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/index.jsp" />
+    <list default="true" id="a04f715b-75d5-41e3-b585-a677beb957b9" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/BaseModele.java" afterPath="$PROJECT_DIR$/src/dao/BaseModele.java" />
       <change beforePath="$PROJECT_DIR$/src/dao/GenericDao.java" afterPath="$PROJECT_DIR$/src/dao/GenericDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/HibernateDao.java" afterPath="$PROJECT_DIR$/src/dao/HibernateDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/InterfaceDao.java" afterPath="$PROJECT_DIR$/src/dao/InterfaceDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/annotation/Column.java" afterPath="$PROJECT_DIR$/src/dao/annotation/Column.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/annotation/NotColumn.java" afterPath="$PROJECT_DIR$/src/dao/annotation/NotColumn.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/annotation/Table.java" afterPath="$PROJECT_DIR$/src/dao/annotation/Table.java" />
       <change beforePath="$PROJECT_DIR$/src/dao/connex/Connexion.java" afterPath="$PROJECT_DIR$/src/dao/connex/Connexion.java" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/.idea/codeStyles/Project.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/404.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/blog.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/browse.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/contact.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/audio.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/bootstrap.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/easy-responsive-tabs.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/font-awesome.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/icon-font.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/jplayer.blue.monday.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/popuo-box.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/FontAwesome.otf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/Lato-Regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/MavenPro-Bold.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/MavenPro-Regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/WeatherIcons-Regular.otf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_italic-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_italic-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_italic-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_italic-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_mono-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_mono-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_mono-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_mono-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/weathericons-regular-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/weathericons-regular-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/weathericons-regular-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/fonts/weathericons-regular-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/11.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/22.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/33.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/6.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a10.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a11.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a12.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a6.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a7.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a8.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/a9.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/apps.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/arrow.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/arrow2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/c6.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/dot.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/jplayer.blue.monday.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/jplayer.blue.monday.video.play.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/lock.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/pic_error.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/play.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/play1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/play2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/play4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/play5.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/radio.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/radio1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/search.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/so.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/social.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/tick.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/user.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v10.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v11.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v21.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v22.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v33.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v44.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v55.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v6.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v6.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v66.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v7.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v77.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v8.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v88.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v9.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/images/v99.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/bootstrap.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/classie.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/easyResponsiveTabs.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jplayer.playlist.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jquery-2.1.4.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jquery.flexisel.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jquery.jplayer.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jquery.magnific-popup.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/jquery.nicescroll.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/mediaelement-and-player.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/responsiveslides.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/scripts.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/js/uisearch.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/media/Blue Browne.mp3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/media/Blue Browne.ogg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/media/Georgia.mp3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/media/Georgia.ogg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/radio.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/single.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/typography.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Ellie-Goulding.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Ellie-Goulding.ogv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Ellie-Goulding.webm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Mark-Ronson-Uptown.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Mark-Ronson-Uptown.ogv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Mark-Ronson-Uptown.webm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Maroon-Sugar.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Maroon-Sugar.ogv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Maroon-Sugar.webm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Pharrell-Williams.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Pharrell-Williams.ogv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Pharrell-Williams.webm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Taylor-Swift-Bad Blood.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Taylor-Swift-Bad_Blood.ogv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Taylor-Swift-Bad_Blood.webm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/Taylor-Swift.mp4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play1.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play3.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play4.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play5.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/site/mosaic/video/play6.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/dao/util/ConfigDB.java" afterPath="$PROJECT_DIR$/src/dao/util/ConfigDB.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/util/DB.java" afterPath="$PROJECT_DIR$/src/dao/util/DB.java" />
+      <change beforePath="$PROJECT_DIR$/src/dao/util/Query.java" afterPath="$PROJECT_DIR$/src/dao/util/Query.java" />
+      <change beforePath="$PROJECT_DIR$/src/dbd" afterPath="$PROJECT_DIR$/src/dbd" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Album.java" afterPath="$PROJECT_DIR$/src/modele/Album.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Artiste.java" afterPath="$PROJECT_DIR$/src/modele/Artiste.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Genre.java" afterPath="$PROJECT_DIR$/src/modele/Genre.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Image.java" afterPath="$PROJECT_DIR$/src/modele/Image.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Menu.java" afterPath="$PROJECT_DIR$/src/modele/Menu.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Playlist.java" afterPath="$PROJECT_DIR$/src/modele/Playlist.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Song.java" afterPath="$PROJECT_DIR$/src/modele/Song.java" />
+      <change beforePath="$PROJECT_DIR$/src/modele/Utilisateur.java" afterPath="$PROJECT_DIR$/src/modele/Utilisateur.java" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,12 +47,7 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MP3@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ExternalProjectsManager">
@@ -205,7 +64,18 @@
     <favorites_list name="Generic" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -289,6 +159,7 @@
         <option value="$PROJECT_DIR$/src/dao/InterfaceDao.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/dao/GenericDao.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -357,9 +228,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Production">
           <expand>
@@ -390,6 +258,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -406,44 +276,28 @@
               <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
               <item name="MP3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
               <item name="MP3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
               <item name="MP3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="connex" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MP3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MP3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modele" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MP3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MP3" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -451,9 +305,9 @@
     <property name="android.sdk.path" value="C:/Android/sdk" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/postgresql-9.4.1211.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="external.system.task.project.file.to.start" value="I:/ITUS4/Mini-Projet-Developpement/Projet/E-menu/build.gradle" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -462,17 +316,20 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ITU\MP3\src\dao" />
-      <recent name="D:\ITU\MP3\lib" />
-      <recent name="D:\ITU\MP3\src" />
-      <recent name="D:\ITU\MP3\src\site" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ITU\MP3\src\main" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="dao.annotation" />
       <recent name="dao" />
       <recent name="modele" />
       <recent name="model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITU\MP3\src\dao" />
+      <recent name="D:\ITU\MP3\lib" />
+      <recent name="D:\ITU\MP3\src" />
+      <recent name="D:\ITU\MP3\src\site" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -683,7 +540,11 @@
       <workItem from="1544942047258" duration="25663000" />
       <workItem from="1545028870201" duration="591000" />
       <workItem from="1545033290867" duration="203000" />
-      <workItem from="1545072805278" duration="1659000" />
+      <workItem from="1545072805278" duration="2631000" />
+      <workItem from="1545136011367" duration="73000" />
+      <workItem from="1545144864530" duration="1737000" />
+      <workItem from="1545151487373" duration="331000" />
+      <workItem from="1545152247302" duration="46000" />
     </task>
     <task id="LOCAL-00001" summary="1mp3">
       <created>1541695405138</created>
@@ -776,11 +637,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544984527085</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="full commit">
+      <created>1545074503729</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1545074503729</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182369000" />
+    <option name="totallyTimeSpent" value="185574000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -795,10 +663,35 @@
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2664437" sideWeight="0.50322235" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21535982" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2664437" sideWeight="0.49677765" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998884" sideWeight="0.49785176" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23684211" sideWeight="0.4960981" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19978517" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12943073" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1471536" sideWeight="0.5039019" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2664437" sideWeight="0.50322235" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.025241675" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19978517" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12943073" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -806,27 +699,23 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2664437" sideWeight="0.49677765" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.49785176" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22717509" sideWeight="0.4960981" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24006444" sideWeight="0.4960981" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1471536" sideWeight="0.5039019" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -873,7 +762,8 @@
     <MESSAGE value="template" />
     <MESSAGE value="annotation" />
     <MESSAGE value="lib + dao + modele" />
-    <option name="LAST_COMMIT_MESSAGE" value="lib + dao + modele" />
+    <MESSAGE value="full commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="full commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -882,8 +772,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Artiste.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/Chanson.java" />
     <entry file="file://$PROJECT_DIR$/Artiste.java" />
     <entry file="file://$PROJECT_DIR$/Musique.java" />
     <entry file="file://$PROJECT_DIR$/src/modele/ModeleMP3Master.java" />
@@ -896,48 +784,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Utilisateur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="39" lean-forward="false" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Genre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Menu.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Playlist.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Utilisateur.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Genre.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Image.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Song.java" />
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/w3layouts-License.txt" />
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/js/classie.js" />
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/js/jquery.magnific-popup.js" />
@@ -945,13 +797,7 @@
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/fonts/digital-7_italic-webfont.svg" />
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/fonts/fontawesome-webfont.svg" />
     <entry file="file://$PROJECT_DIR$/src/site/mosaic/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/modele/Artiste.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Artiste.java" />
     <entry file="file://$PROJECT_DIR$/src/dao/Fonction.java" />
     <entry file="file://$PROJECT_DIR$/src/dao/annotation/Entity.java" />
     <entry file="file://$PROJECT_DIR$/test.java">
@@ -977,16 +823,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/annotation/Id.java" />
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="351" column="18" lean-forward="false" selection-start-line="351" selection-start-column="18" selection-end-line="351" selection-end-column="18" />
-          <folding>
-            <element signature="e#3067#3074#1#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/jre/lib/rt.jar!/com/sun/istack/internal/NotNull.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -994,13 +831,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/annotation/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/annotation/Table.java" />
     <entry file="file://$PROJECT_DIR$/src/dao/util/ParametresDB.java" />
     <entry file="file://$PROJECT_DIR$/src/dao/util/TypesDB.java" />
     <entry file="das://table:/79c61738/d89bc412-ff4a-4058-85c0-fe98a730122f/GENERAL.ALBUMS" />
@@ -1008,130 +839,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/79c61738/659dd42e-4bda-4da3-b69c-0ee1c4ba2071/MP3.public.albums">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-          <column-attributes>
-            <column name="ctid" enabled="false" />
-          </column-attributes>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dbd">
+    <entry file="das://table:/79c61738/659dd42e-4bda-4da3-b69c-0ee1c4ba2071/MP3.public.albums" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dbd" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/HibernateDao.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/modele/Album.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/BaseModele.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/util/ConfigDB.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/annotation/Table.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/util/Query.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/annotation/Column.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/annotation/NotColumn.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/util/DB.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/connex/Connexion.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/InterfaceDao.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/GenericDao.java" />
+    <entry file="file://$PROJECT_DIR$/MP3.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/HibernateDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/InterfaceDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modele/Album.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/BaseModele.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/util/ConfigDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/annotation/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/util/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/annotation/Column.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/annotation/NotColumn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/util/DB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/connex/Connexion.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="12" column="57" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/GenericDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6468">
-          <caret line="319" column="0" lean-forward="false" selection-start-line="319" selection-start-column="0" selection-end-line="319" selection-end-column="0" />
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1191,7 +927,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Hibernate|MP3</last-edited>
+          <last-edited>Web|MP3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1203,7 +939,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>postgresql-9.4.1211</last-edited>
+          <last-edited>Hibernate 5.3.7-5.3.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
