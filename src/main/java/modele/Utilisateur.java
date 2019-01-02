@@ -7,20 +7,52 @@ package modele;
 
 import dao.BaseModele;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- *
  * @author Haja Faniry
  */
+@Entity
+@Table(name = "Utilisateur")
 public class Utilisateur extends BaseModele {
- String iduser;
- String nomuser;
- String pswrd;
- String Email;
- String sexe;
- String datenaissance;
+    @Id
+    private String id;
 
-    public void setIduser(String iduser) {
-        this.iduser = iduser;
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+    @Column(name = "username")
+    private String nomuser;
+
+    @Column(name = "password")
+    private String pswrd;
+
+    @Column(name = "email")
+    private String Email;
+
+    @Column(name = "birth")
+    private String birth;
+
+    @Column(name = "sexe")
+    private String sexe;
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
     public void setNomuser(String nomuser) {
@@ -39,14 +71,6 @@ public class Utilisateur extends BaseModele {
         this.sexe = sexe;
     }
 
-    public void setDatenaissance(String datenaissance) {
-        this.datenaissance = datenaissance;
-    }
-
-    public String getIduser() {
-        return iduser;
-    }
-
     public String getNomuser() {
         return nomuser;
     }
@@ -63,10 +87,23 @@ public class Utilisateur extends BaseModele {
         return sexe;
     }
 
-    public String getDatenaissance() {
-        return datenaissance;
+    public Utilisateur(String id, String nomuser, String pswrd, String email, String birth, String sexe) {
+        this.id = id;
+        this.nomuser = nomuser;
+        this.pswrd = pswrd;
+        Email = email;
+        this.birth = birth;
+        this.sexe = sexe;
     }
- 
-    
-     
+
+    public Utilisateur(String nomuser, String pswrd, String email, String birth, String sexe) {
+        this.nomuser = nomuser;
+        this.pswrd = pswrd;
+        Email = email;
+        this.birth = birth;
+        this.sexe = sexe;
+    }
+
+    public Utilisateur() {
+    }
 }

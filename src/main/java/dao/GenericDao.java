@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GenericDao implements InterfaceDao {
     private String paginationORCL(int min, int max) {
@@ -78,7 +79,6 @@ public class GenericDao implements InterfaceDao {
         return findAll;
     }
 
-    @Override
     public String queryInsert(BaseModele baseModele) {
         Field[]       fields  = getColumnTable(baseModele);
         String        insert  = "insert into %s (%s) values(%s)";
@@ -96,7 +96,7 @@ public class GenericDao implements InterfaceDao {
         return insert;
     }
 
-    @Override
+
     public String queryUpdate(BaseModele bm) {
         Field[]       fields = getColumnTable(bm);
         String        update = "update %s set %s where id='%s'";
@@ -111,14 +111,12 @@ public class GenericDao implements InterfaceDao {
         return update;
     }
 
-    @Override
     public String queryDelete(BaseModele bm) {
         String del = String.format("delete %s where id= '%s'", bm.getNomTable(), bm.getId());
         System.out.println(del);
         return del;
     }
 
-    @Override
     public String queryFindAll(BaseModele bm) {
         String findAll = "select * from %s";
         findAll = String.format(findAll, bm.getNomTable());
@@ -353,5 +351,29 @@ public class GenericDao implements InterfaceDao {
         } finally {
             if (pst != null) pst.close();
         }
+    }
+
+    public List<BaseModele> findAll(BaseModele bm, int nombre, int index, int offset) throws Exception {
+        Connection            conn    = null;
+        PreparedStatement     ps      = null;
+        ResultSet             res     = null;
+        ArrayList<BaseModele> modeles = new ArrayList<>();
+        try {
+            conn = Connexion.getConnexion();
+            ps = conn.prepareStatement(queryPagination(bm, index, nombre, offset));
+            res = ps.executeQuery();
+            Field[] fields = getColumnTable(bm);
+            setData(bm, res, modeles);
+        } catch (Exception e) {
+            if (conn != null)
+                conn.rollback();
+            throw e;
+        } finally {
+            if (ps != null)
+                ps.close();
+            if (res != null)
+                res.close();
+        }
+        return modeles;
     }
 }

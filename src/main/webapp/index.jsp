@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -5,10 +6,16 @@
 <head>
     <title>${title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Mosaic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+              Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!-- Bootstrap Core CSS -->
     <!-- Custom CSS -->
     <link href="resources/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -25,7 +32,7 @@
 
 </head>
 <!-- /w3layouts-agile -->
-<body class="sticky-header left-side-collapsed"  onload="initMap()">
+<body class="sticky-header left-side-collapsed" onload="initMap()">
 <section>
     <div class="left-side sticky-left-side">
 
@@ -44,19 +51,13 @@
                         <span>Home</span></a></li>
 
                 <li><a href="">
-                    <i class="lnr lnr-book"></i>
+                    <i class="lnr lnr-music-note"></i>
                     <span>Songs</span></a></li>
 
                 <li><a href=""><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
-                <li><a href=""><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>
+                <li><a href=""><i class="lnr lnr-bookmark"></i> <span>Albums</span></a></li>
                 <li><a href=""><i class="lnr lnr-book"></i><span>Genres</span></a></li>
-
-
-                <li class="menu-list"><a href=""><i class="fa fa-thumb-tack"></i><span>Contact</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="">Location</a> </li>
-                    </ul>
-                </li>
+                <li class="menu-list"><a href=""><i class="lnr lnr-user"></i><span>Profil</span></a></li>
             </ul>
         </div>
     </div>
@@ -66,7 +67,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content modal-info">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body modal-spa">
                     <div class="sign-grids">
@@ -87,7 +89,7 @@
                                                     this.value = 'Password';
                                                 }" required="">
 
-                                    <input type="submit" value="CREATE ACCOUNT" >
+                                    <input type="submit" value="CREATE ACCOUNT">
                                 </form>
                             </div>
                             <div class="clearfix"></div>
@@ -106,7 +108,8 @@
                         <div id="sb-search" class="sb-search">
                             <form action="#" method="post">
 
-                                <input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
+                                <input class="sb-search-input" placeholder="Search" type="search" name="search"
+                                       id="search">
                                 <input class="sb-search-submit" type="submit" value="">
                                 <span class="sb-icon-search"> </span>
                             </form>
@@ -121,11 +124,12 @@
                     <!---->
                     <div class="col-md-4 player">
                         <div class="audio-player">
-                            <audio id="audio-player"  controls="controls">
+                            <audio id="audio-player" controls="controls">
                                 <source src="media/Blue Browne.ogg" type="audio/ogg"></source>
                                 <source src="media/Blue Browne.mp3" type="audio/mpeg"></source>
                                 <source src="media/Georgia.ogg" type="audio/ogg"></source>
-                                <source src="media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                                <source src="media/Georgia.mp3" type="audio/mpeg"></source>
+                            </audio>
                         </div>
                         <!---->
                         <script type="text/javascript">
@@ -142,7 +146,8 @@
                         </script>
                         <!--audio-->
                         <link rel="stylesheet" type="text/css" media="all" href="resources/assets/css/audio.css">
-                        <script type="text/javascript" src="resources/assets/js/mediaelement-and-player.min.js"></script>
+                        <script type="text/javascript"
+                                src="resources/assets/js/mediaelement-and-player.min.js"></script>
                         <!---->
 
 
@@ -154,9 +159,14 @@
                         </ul>
                     </div>
                     <div class="col-md-4 login-pop">
-                        <div id="loginpop"> <a href="#" id="loginButton"><span>Login <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><i class="fa fa-sign-in"></i></a>
+                        <div id="loginpop"><a href="#" id="loginButton"><span>Login <i
+                                class="arrow glyphicon glyphicon-chevron-right"></i></span></a><a class="top-sign"
+                                                                                                  href="#"
+                                                                                                  data-toggle="modal"
+                                                                                                  data-target="#myModal5"><i
+                                class="fa fa-sign-in"></i></a>
                             <div id="loginBox">
-                                <form action="#" method="post" id="loginForm">
+                                <form action="login" method="post" id="loginForm">
                                     <fieldset id="body">
                                         <fieldset>
                                             <label for="email">Email Address</label>
@@ -167,7 +177,8 @@
                                             <input type="password" name="password" id="password">
                                         </fieldset>
                                         <input type="submit" id="login" value="Sign in">
-                                        <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+                                        <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember
+                                            me</i></label>
                                     </fieldset>
                                     <span><a href="#">Forgot your password?</a></span>
                                 </form>
@@ -175,7 +186,7 @@
                         </div>
 
                     </div>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
                 <!-------->
             </div>
@@ -193,192 +204,83 @@
                     <div class="banner-section">
                         <div class="banner">
                             <div class="callbacks_container">
-                                <ul class="rslides callbacks callbacks1" id="slider4">
-                                    <li>
-                                        <div class="banner-img">
-                                            <img src="resources/assets/images/11.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="banner-info">
-                                            <a class="trend" href="single.html">TRENDING</a>
-                                            <h3>Let Your Home</h3>
-                                            <p>Album by <span>Rock star</span></p>
-                                        </div>
+                                <div class="col-md-4 serch-part">
+                                    <div class="row">
+                                        <form action="#" method="post">
 
-                                    </li>
-                                    <li>
-                                        <div class="banner-img">
-                                            <img src="resources/assets/images/22.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="banner-info">
-                                            <a class="trend" href="single.html">TRENDING</a>
-                                            <h3>Charis Brown feet</h3>
-                                            <p>Album by <span>Rock star</span></p>
-                                        </div>
+                                            <input placeholder="Search" type="search" name="search">
+                                            <button type="submit">Upload</button>
 
-
-                                    </li>
-                                    <li>
-                                        <div class="banner-img">
-                                            <img src="resources/assets/images/33.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="banner-info">
-                                            <a class="trend" href="single.html">TRENDING</a>
-                                            <h3>Let Your Home</h3>
-                                            <p>Album by <span>Rock star</span></p>
-                                        </div>
-
-                                        <!-- /w3layouts-agileits -->
-                                    </li>
-                                </ul>
+                                        </form>
+                                        <label>Titre:
+                                            <input value="" type="hidden"></label>
+                                        <br>
+                                        <label>Duree: <input value="" type="hidden"></label><br>
+                                        <label>Artiste: <input value="" type="hidden"></label><br>
+                                        <label>Album: <input value="" type="hidden"></label><br>
+                                        <label>Genre: <input value="" type="hidden"></label><br>
+                                        <label>Annee: <input value="" type="hidden"></label>
+                                    </div>
+                                </div>
                             </div>
-                            <!--banner-->
-                            <script src="resources/assets/js/responsiveslides.min.js"></script>
-                            <script>
-                                // You can also use "$(window).load(function() {"
-                                $(function () {
-                                    // Slideshow 4
-                                    $("#slider4").responsiveSlides({
-                                        auto: true,
-                                        pager: true,
-                                        nav: true,
-                                        speed: 500,
-                                        namespace: "callbacks",
-                                        before: function () {
-                                            $('.events').append("<li>before event fired.</li>");
-                                        },
-                                        after: function () {
-                                            $('.events').append("<li>after event fired.</li>");
-                                        }
-                                    });
 
-                                });
-                            </script>
-                            <div class="clearfix"> </div>
                         </div>
                     </div>
-                    <!--//End-banner-->
-                    <!--albums-->
-                    <!-- pop-up-box -->
-                    <link href="resources/assets/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">
-                    <script src="resources/assets/js/jquery.magnific-popup.js" type="text/javascript"></script>
-                    <script>
-                        $(document).ready(function () {
-                            $('.popup-with-zoom-anim').magnificPopup({
-                                type: 'inline',
-                                fixedContentPos: false,
-                                fixedBgPos: true,
-                                overflowY: 'auto',
-                                closeBtnInside: true,
-                                preloader: false,
-                                midClick: true,
-                                removalDelay: 300,
-                                mainClass: 'my-mfp-zoom-in'
-                            });
-                        });
-                    </script>
-                    <!--//pop-up-box -->
+
                     <div class="albums">
                         <div class="tittle-head">
-                            <h3 class="tittle">New Releases <span class="new">New</span></h3>
+                            <h3 class="tittle">NOUVEAUTE</h3>
                             <a href="index.html"><h4 class="tittle">See all</h4></a>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix"></div>
                         </div>
                         <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v1.jpg" title="allbum-name"></a>
+                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
+                                    src="resources/assets/images/v1.jpg" title="allbum-name"></a>
                             <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
                         </div>
 
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v2.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v3.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="col-md-3 content-grid last-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v4.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v5.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v6.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v7.jpg" title="allbum-name"></a>
-
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="col-md-3 content-grid last-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="resources/assets/images/v8.jpg" title="allbum-name"></a>
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
-                        <div class="clearfix"> </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <!--//End-albums-->
-                    <!--//discover-view-->
 
                     <div class="albums second">
                         <div class="tittle-head">
-                            <h3 class="tittle">Discover <span class="new">View</span></h3>
-                            <a href="index.html"><h4 class="tittle two">See all</h4></a>
-                            <div class="clearfix"> </div>
+                            <h3 class="tittle">TELECHARGEMENT GRATUIT</h3>
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v11.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
+                        <div class="row">
+                            <div class="col-md-3 content-grid">
+                                <select>
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 content-grid">
+                                <button>TOUT ECOUTER</button>
+                            </div>
                         </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v22.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
+                        <div class="row">
+                            <div class="col-md-6 content-grid">
+                                Ellie G. <i class="lnr lnr-film-play"></i>
+                                <i class="lnr lnr-heart"></i>
+                                <i class="lnr lnr-download"></i>
+
+                            </div>
                         </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v33.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="col-md-3 content-grid last-grid">
-                            <a href="single.html"><img src="resources/assets/images/v44.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v55.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v66.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a href="single.html"><img src="resources/assets/images/v11.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="col-md-3 content-grid last-grid">
-                            <a href="single.html"><img src="resources/assets/images/v22.jpg" title="allbum-name"></a>
-                            <div class="inner-info"><a href="single.html"><h5>Pop</h5></a></div>
-                        </div>
-                        <div class="clearfix"> </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <!--//discover-view-->
                 </div>
-                <!--//music-left-->
-                <!--/music-right-->
                 <div class="music-right">
-                    <!--/video-main-->
                     <div class="video-main">
                         <div class="video-record-list">
-                            <div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
+                            <div id="jp_container_1" class="jp-video jp-video-270p" role="application"
+                                 aria-label="media player">
                                 <div class="jp-type-playlist">
-                                    <div id="jquery_jplayer_1" class="jp-jplayer" style="width: 480px; height: 270px;"><img id="jp_poster_0" src="video/play1.png" style="width: 480px; height: 270px; display: inline;"><video id="jp_video_0" preload="metadata" src="http://192.168.30.9/vijayaa/2015/Dec/mosaic/web/video/Ellie-Goulding.webm" title="1. Ellie-Goulding" style="width: 0px; height: 0px;"></video></div>
+                                    <div id="jquery_jplayer_1" class="jp-jplayer" style="width: 480px; height: 270px;">
+                                        <img id="jp_poster_0" src="video/play1.png"
+                                             style="width: 480px; height: 270px; display: inline;">
+                                        <video id="jp_video_0" preload="metadata"
+                                               src="http://192.168.30.9/vijayaa/2015/Dec/mosaic/web/video/Ellie-Goulding.webm"
+                                               title="1. Ellie-Goulding" style="width: 0px; height: 0px;"></video>
+                                    </div>
                                     <div class="jp-gui">
                                         <div class="jp-video-play" style="display: block;">
                                             <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
@@ -393,32 +295,74 @@
                                             <div class="jp-duration" role="timer" aria-label="duration">00:18</div>
                                             <div class="jp-controls-holder">
                                                 <div class="jp-controls">
-                                                    <button class="jp-previous" role="button" tabindex="0">previous</button>
+                                                    <button class="jp-previous" role="button" tabindex="0">previous
+                                                    </button>
                                                     <button class="jp-play" role="button" tabindex="0">play</button>
                                                 </div>
                                                 <div class="jp-volume-controls">
                                                     <button class="jp-mute" role="button" tabindex="0">mute</button>
-                                                    <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                                                    <button class="jp-volume-max" role="button" tabindex="0">max
+                                                        volume
+                                                    </button>
                                                     <div class="jp-volume-bar">
                                                         <div class="jp-volume-bar-value" style="width: 100%;"></div>
                                                     </div>
                                                 </div>
                                                 <div class="jp-toggles">
 
-                                                    <button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+                                                    <button class="jp-full-screen" role="button" tabindex="0">full
+                                                        screen
+                                                    </button>
                                                 </div>
                                             </div>
+                                            <h3>TOP</h3>
                                             <div class="jp-details" style="display: none;">
                                                 <div class="jp-title" aria-label="title">1. Ellie-Goulding</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="jp-playlist">
-                                        <ul style="display: block;"><li class="jp-playlist-current"><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="0">1. Ellie-Goulding <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">2. Mark-Ronson-Uptown <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">3. Ellie-Goulding <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">4. Maroon-Sugar <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">5. Pharrell-Williams <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">6. Ellie-Goulding <span class="jp-artist">by Pixar</span></a></div></li><li><div><a href="javascript:;" class="jp-playlist-item-remove" style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item" tabindex="0">7. Pharrell-Williams <span class="jp-artist">by Pixar</span></a></div></li></ul>
+                                        <ul style="display: block;">
+                                            <li class="jp-playlist-current">
+                                                <div><a href="javascript:;" class="jp-playlist-item-remove"
+                                                        style="display: none;">×</a><a href="javascript:;"
+                                                                                       class="jp-playlist-item jp-playlist-current"
+                                                                                       tabindex="0">1.
+                                                    Ellie-Goulding</a>
+                                                </div>
+                                            </li>
+
+                                        </ul>
                                     </div>
-                                    <div class="jp-no-solution" style="display: none;">
-                                        <span>Update Required</span>
-                                        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+
+                                    <h3>MEILLEURES ALBUMS</h3>
+                                    <div class="jp-playlist">
+                                        <ul style="display: block;">
+                                            <li class="jp-playlist-current">
+                                                <div><a href="javascript:;" class="jp-playlist-item-remove"
+                                                        style="display: none;">×</a><a href="javascript:;"
+                                                                                       class="jp-playlist-item jp-playlist-current"
+                                                                                       tabindex="0">1.
+                                                    Ellie-Goulding</a>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <h3>MEILLEURES ARTISTES</h3>
+                                    <div class="jp-playlist">
+                                        <ul style="display: block;">
+                                            <li class="jp-playlist-current">
+                                                <div><a href="javascript:;" class="jp-playlist-item-remove"
+                                                        style="display: none;">×</a><a href="javascript:;"
+                                                                                       class="jp-playlist-item jp-playlist-current"
+                                                                                       tabindex="0">1.
+                                                    Ellie-Goulding</a>
+                                                </div>
+                                            </li>
+
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -469,30 +413,6 @@
                                     webmv: "video/Maroon-Sugar.webm",
                                     poster: "video/play4.png"
                                 },
-                                {
-                                    title: "5. Pharrell-Williams",
-                                    artist: "",
-                                    mp4: "video/Pharrell-Williams.mp4",
-                                    ogv: "video/Pharrell-Williams.ogv",
-                                    webmv: "video/Pharrell-Williams.webm",
-                                    poster: "video/play5.png"
-                                },
-                                {
-                                    title: "6. Ellie-Goulding",
-                                    artist: "",
-                                    mp4: "video/Ellie-Goulding.mp4",
-                                    ogv: "video/Ellie-Goulding.ogv",
-                                    webmv: "video/Ellie-Goulding.webm",
-                                    poster: "video/play1.png"
-                                },
-                                {
-                                    title: "7. Pharrell-Williams",
-                                    artist: "",
-                                    mp4: "video/Pharrell-Williams.mp4",
-                                    ogv: "video/Pharrell-Williams.ogv",
-                                    webmv: "video/Pharrell-Williams.webm",
-                                    poster: "video/play5.png"
-                                }
                             ], {
                                 swfPath: "../../dist/jplayer",
                                 supplied: "webmv,ogv,mp4",
@@ -544,35 +464,19 @@
         </div>
         <!--body wrapper end-->
         <div class="footer">
-            <div class="footer-grid">
-                <h3>Our Account</h3>
-                <ul class="list1">
-                    <li><a href="#" data-toggle="modal" data-target="#myModal5">Your Account</a></li>
-                    <li><a href="#">Personal information</a></li>
-                    <li><a href="#">Addresses</a></li>
-                    <li><a href="#">Discount</a></li>
-                    <li><a href="#">Orders history</a></li>
-                    <li><a href="#">Addresses</a></li>
-                    <li><a href="#">Search Terms</a></li>
-                </ul>
-            </div>
+
             <div class="footer-grid">
                 <h3>Our Support</h3>
                 <ul class="list1">
-                    <li><a href="contact.html">Site Map</a></li>
-                    <li><a href="#">Search Terms</a></li>
                     <li><a href="#">Advanced Search</a></li>
-                    <li><a href="#">Mobile</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Mobile</a></li>
-                    <li><a href="#">Addresses</a></li>
                 </ul>
             </div>
             <div class="footer-grid footer-grid_last">
                 <h3>About Us</h3>
                 <p class="footer_desc">KBH's Music</p>
-                <p class="f_text">Phone:  &nbsp;&nbsp;&nbsp;00-250-2131</p>
-                <p class="email">Email : &nbsp;<span><a href="mailto:mail@example.com">info(at)mailing.com</a></span></p>
+                <p class="f_text">Phone: &nbsp;&nbsp;&nbsp;00-250-2131</p>
+                <p class="email">Email : &nbsp;<span><a href="mailto:mail@example.com">info(at)mailing.com</a></span>
+                </p>
                 <div class="search_footer">
                     <form>
                         <input type="text" placeholder="Email...." required="">
@@ -580,7 +484,7 @@
                     </form>
                 </div>
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <!--footer section start-->

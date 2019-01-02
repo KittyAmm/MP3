@@ -3,15 +3,6 @@ package dao;
 import java.util.ArrayList;
 
 public interface InterfaceDao {
-    String queryInsert(BaseModele baseModele) throws IllegalAccessException;
-
-    String queryUpdate(BaseModele bm) throws Exception;
-
-    String queryDelete(BaseModele bm) throws Exception;
-
-    String queryFindAll(BaseModele bm) throws Exception;
-
-    String queryFindAll(BaseModele bm, String where) throws Exception;
 
     void save(BaseModele bm) throws Exception;
 

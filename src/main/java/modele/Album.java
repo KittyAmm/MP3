@@ -6,17 +6,14 @@
 package modele;
 
 import dao.BaseModele;
-import dao.annotation.NotColumn;
-import dao.annotation.Table;
 import dao.annotation.Column;
+import dao.annotation.Table;
 
 /**
  * @author Haja Faniry
  */
 @Table(name = "Albums")
 public class Album extends BaseModele {
-    @Column(name = "idart")
-    private String idartiste;
 
     @Column(name = "image")
     private String idimage;
@@ -26,14 +23,6 @@ public class Album extends BaseModele {
 
     public Album() {
     }
-
-    public void setIdartiste(String id) throws Exception {
-        if (id.equals("")) {
-            throw new Exception("id artiste vide");
-        }
-        idartiste = id;
-    }
-
     public void setIdimage(String idimage) {
         this.idimage = idimage;
     }
@@ -43,10 +32,6 @@ public class Album extends BaseModele {
             throw new Exception("nom album vide");
         }
         this.nom = nom;
-    }
-
-    public String getIdartiste() {
-        return idartiste;
     }
 
     public String getIdimage() {

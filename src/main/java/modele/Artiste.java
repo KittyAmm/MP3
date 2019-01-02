@@ -13,10 +13,10 @@ import dao.BaseModele;
  */
 public class Artiste extends BaseModele {
 
-    String idartiste;
-    String idimage;
-    String idsong;
-    String nom;
+    private String idartiste;
+    private String idimage;
+    private String idsong;
+    private String nom;
 
     public void setIdartiste(String idartiste) {
         this.idartiste = idartiste;

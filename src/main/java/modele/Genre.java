@@ -12,10 +12,10 @@ import dao.BaseModele;
  * @author Haja Faniry
  */
 public class Genre extends BaseModele {
-    String idgenre;
-    String idimage;
-    String idsong;
-    String nom;
+    private String idgenre;
+    private String idimage;
+    private String idsong;
+    private String nom;
 
     public String getIdgenre() {
         return idgenre;

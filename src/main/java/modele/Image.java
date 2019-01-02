@@ -12,8 +12,8 @@ import dao.BaseModele;
  * @author Haja Faniry
  */
 public class Image extends BaseModele {
-    String idimage;
-    String nom;
+    private String idimage;
+    private String nom;
 
     public String getIdimage() {
         return idimage;

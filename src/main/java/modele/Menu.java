@@ -12,8 +12,8 @@ import dao.BaseModele;
  * @author Haja Faniry
  */
 public class Menu extends BaseModele {
-    String idmenu ;
-    String nom ;
+    private String idmenu ;
+    private String nom ;
 
     public Menu(String idmenu, String nom) {
         this.idmenu = idmenu;

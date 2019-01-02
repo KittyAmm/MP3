@@ -1,10 +1,12 @@
-import dao.BaseModele;
 import dao.GenericDao;
+import dao.HibernateDao;
 import modele.Album;
+import service.Fonction;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
-        GenericDao gdao = new GenericDao();
+        GenericDao   gdao         = new GenericDao();
+        HibernateDao hibernateDao = new HibernateDao();
 //        Personne  p    = new Personne("malala", "minou");
 //        Produit   p1   = new Produit("kapa","23/07/1998",1000);
 //        Produit   p2   = new Produit("kapa","23/07/1998",1000);
@@ -33,11 +35,21 @@ public class Main {
 //            Album prod = (Album) ba.get(i);
 //           System.out.println(String.valueOf(prod.getIdimage()));
         Album client = new Album();
-
-        gdao.findById(client, "1");
-        System.out.println(client.getIdartiste());
-        System.out.println(client.getIdimage());
+//        client.setId("4");
+//        client.setNomuser("mi");
+//        client.setPswrd("425");
+//        client.setEmail("and");
+//        client.setBirth("20");
+//        client.setSexe("fa");
+//        gdao.findById(client, "1");
+//        String           where = String.format("email='%s' and password='%s'", "and", "425");
+//        List<BaseModele> ba    = hibernateDao.findAll(new Utilisateur(),where);
+//        for(int i = 0; i < ba.size(); i++){
+//            Utilisateur prod = (Utilisateur) ba.get(i);
+//            System.out.println(String.valueOf(prod.getEmail()));
 //        }
+        String titre = new Fonction().readArtist("D:\\ITU\\S5\\Naina\\MP3\\src\\main\\java\\media\\Mandy Moore - Cry (A Walk To Remember).mp3");
+        System.out.println(titre);
     }
 }
 

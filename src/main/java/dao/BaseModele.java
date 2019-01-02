@@ -1,7 +1,8 @@
 package dao;
 
 import dao.annotation.Table;
-import dao.util.Query;
+import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ public abstract class BaseModele {
 
     public String getNomTable() {
         Table table = getClass().getAnnotation(Table.class);
-        if (table != null){
+        if (table != null) {
             return table.name();
         }
         return getClass().getSimpleName();
@@ -36,7 +37,7 @@ public abstract class BaseModele {
         ResultSet         rs = null;
         PreparedStatement ps = null;
         try {
-            ps = c.prepareStatement(Query.getQuerySec(seq));
+            ps = c.prepareStatement(dao.util.Query.getQuerySec(seq));
             rs = ps.executeQuery();
             if (rs.next()) {
                 setId(String.valueOf(rs.getInt(1)));
@@ -47,5 +48,12 @@ public abstract class BaseModele {
             if (rs != null) rs.close();
             if (ps != null) ps.close();
         }
+    }
+
+    public String getId(Session session) throws Exception {
+        String      seq   = getNomSequence();
+        NativeQuery query = session.createSQLQuery(dao.util.Query.getQuerySec(seq));
+        id = query.uniqueResult().toString();
+        return id;
     }
 }
