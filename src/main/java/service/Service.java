@@ -10,4 +10,15 @@ public class Service {
         }
         return fonction.login(user, pass);
     }
+
+    //top
+    //playlist
+    //nouveauté
+    //meilleur album
+//    public ArrayList<BaseModele> getMeilleurAlbum() throws Exception {
+//        return fonction.getMeilleurAlbum();
+//    }
+    //meilleur artiste
+    //songs
+
 }

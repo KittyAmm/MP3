@@ -5,7 +5,7 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import dao.BaseModele;
-import dao.HibernateDao;
+import dao.GenericDao;
 import modele.Song;
 import modele.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ import java.util.ArrayList;
 @Component
 public class Fonction {
     @Autowired
-    private HibernateDao hdao;
+    private GenericDao dao;
 
     public Utilisateur login(String email, String pass) throws Exception {
         try {
             Utilisateur           client  = new Utilisateur();
             String                where   = String.format("email='%s' and password='%s'", email, pass);
-            ArrayList<BaseModele> clients = hdao.findAll(client, where);
+            ArrayList<BaseModele> clients = dao.findAll(client, where);
             System.out.println("taille: " + clients.size());
             if (clients.size() != 0)
                 return (Utilisateur) clients.get(0);
@@ -38,15 +38,14 @@ public class Fonction {
     public void inscrire(String username, String password, String email, String birth,String sexe) throws Exception {
         try {
             Utilisateur client = new Utilisateur(username,password,email,birth,sexe);
-            hdao.save(client);
+            dao.save(client);
         } catch (Exception e) {
             throw new Exception("Erreur: "+ e.getMessage());
         }
     }
 
     public ArrayList<BaseModele> getSongs() throws Exception {
-        Song bq = new Song();
-        return hdao.findAll(bq);
+        return dao.findAll(new Song());
     }
 
     public void extractMP3(String filename) throws InvalidDataException, IOException, UnsupportedTagException {
@@ -75,6 +74,14 @@ public class Fonction {
         ID3v2 id3v2Tag = mp3File.getId3v2Tag();
         return id3v2Tag.getArtist();
     }
+
+//    public ArrayList<BaseModele> getMeilleurAlbum() throws Exception {
+//        return dao.findAll(new Album(), "");
+//    }
+//
+//    public ArrayList<BaseModele> getMeilleurArtistes() throws Exception {
+//        return dao.findAll(new Artiste(), "");
+//    }
 
 
 
