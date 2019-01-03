@@ -1,11 +1,15 @@
 package service;
 
+import dao.BaseModele;
 import modele.Utilisateur;
+
+import java.util.ArrayList;
 
 public class Service {
     private static Fonction fonction = new Fonction();
     public static Utilisateur login(String user, String pass) throws Exception {
-        if (user == null || user.equals("")) {
+        if (user.equals("")) {
+
             throw new Exception("Votre adresse email est vide");
         }
         return fonction.login(user, pass);
@@ -20,5 +24,8 @@ public class Service {
 //    }
     //meilleur artiste
     //songs
+    public ArrayList<BaseModele> getSongs() throws Exception {
+        return fonction.getSongs();
+    }
 
 }

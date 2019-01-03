@@ -6,25 +6,24 @@ import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import dao.BaseModele;
 import dao.GenericDao;
-import modele.Song;
+import modele.Chanson;
 import modele.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class Fonction {
     @Autowired
-    private GenericDao dao;
+    private GenericDao dao = new GenericDao();
 
     public Utilisateur login(String email, String pass) throws Exception {
         try {
-            Utilisateur           client  = new Utilisateur();
-            String                where   = String.format("email='%s' and password='%s'", email, pass);
-            ArrayList<BaseModele> clients = dao.findAll(client, where);
-            System.out.println("taille: " + clients.size());
+            String where = String.format("email='%s' and password='%s'", email, pass);
+            List<BaseModele> clients = dao.findAll(new Utilisateur(), where);
             if (clients.size() != 0)
                 return (Utilisateur) clients.get(0);
             else {
@@ -35,17 +34,17 @@ public class Fonction {
         }
     }
 
-    public void inscrire(String username, String password, String email, String birth,String sexe) throws Exception {
+    public void inscrire(String username, String password, String email, String birth, String sexe) throws Exception {
         try {
-            Utilisateur client = new Utilisateur(username,password,email,birth,sexe);
+            Utilisateur client = new Utilisateur(username, password, email, birth, sexe);
             dao.save(client);
         } catch (Exception e) {
-            throw new Exception("Erreur: "+ e.getMessage());
+            throw new Exception("Erreur: " + e.getMessage());
         }
     }
 
     public ArrayList<BaseModele> getSongs() throws Exception {
-        return dao.findAll(new Song());
+        return dao.findAll(new Chanson());
     }
 
     public void extractMP3(String filename) throws InvalidDataException, IOException, UnsupportedTagException {
@@ -69,9 +68,10 @@ public class Fonction {
             System.out.println("titre: " + titre);
         }
     }
+
     public String readArtist(String path) throws InvalidDataException, IOException, UnsupportedTagException {
-        Mp3File mp3File = new Mp3File(path);
-        ID3v2 id3v2Tag = mp3File.getId3v2Tag();
+        Mp3File mp3File  = new Mp3File(path);
+        ID3v2   id3v2Tag = mp3File.getId3v2Tag();
         return id3v2Tag.getArtist();
     }
 
@@ -82,8 +82,6 @@ public class Fonction {
 //    public ArrayList<BaseModele> getMeilleurArtistes() throws Exception {
 //        return dao.findAll(new Artiste(), "");
 //    }
-
-
 
 
     //Telecharger

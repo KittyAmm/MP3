@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="page/home.jsp"/>
 <div id="page-wrapper">
     <div class="inner-content">
@@ -36,10 +37,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 content-grid">
-                        Ellie G. <i class="lnr lnr-film-play"></i>
-                        <i class="lnr lnr-heart"></i>
-                        <i class="lnr lnr-download"></i>
-
+                            <c:forEach items="${chansons}" var="chanson">
+                                ${chanson.id}<i class="lnr lnr-film-play"></i>
+                                <i class="lnr lnr-heart"></i>
+                                <i class="lnr lnr-download"></i>
+                            </c:forEach>
                     </div>
                 </div>
                 <div class="clearfix"></div>
