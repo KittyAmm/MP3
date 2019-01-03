@@ -11,22 +11,24 @@ create table menu(
 );
 
 create table utilisateur(
-    iduser varchar(20),
-    nomuser varchar(50),
-    pswrd varchar(50),
-    Email varchar(50),
+    idutil varchar(20),
+    nom varchar(50),
+    mdp varchar(50),
+    mail varchar(50),
     sexe varchar(50),
     datenaissance varchar(50),
-    primary key(iduser)
+	datedajout varchar(50),
+    primary key(idutil)
 );
 
-create table song(
-    idsong varchar(50),
+create table chanson(
+    idson varchar(50),
 	idartiste varchar(50),
     titre varchar(20),
     duree varchar(20),
-    datesortie date,
-    primary key(idsong),
+	datedajout varchar(50),
+    datepublier varchar(50),
+    primary key(idson),
     foreign key(idartiste) references artiste(idartiste)
    
 );
@@ -34,11 +36,12 @@ create table song(
 create table artiste(
     idartiste varchar(20),
 	idimage varchar(20),
-	idsong varchar(20),
+	idson varchar(20),
     nom varchar(50),
+	datedajout varchar(50),
     primary key(idartiste),
     foreign key(idimage) references image(idimage),
-    foreign key(idsong) references song(idsong)
+    foreign key(idson) references chanson(idson)
 );
 
 create table album(
@@ -46,6 +49,8 @@ create table album(
 	idartiste varchar(20),
 	idimage varchar(20),
     nom varchar(20),
+	datedajout varchar(50),
+    datepublier varchar(50),
     primary key(idalbum),
 	foreign key(idimage) references image(idimage),
     foreign key(idartiste) references artiste(idartiste)
@@ -55,19 +60,20 @@ create table album(
 create table genre(
     idgenre varchar(20),
     idimage varchar(20),
-    idsong varchar(20),
+    idson varchar(20),
 	nom varchar(50),
+	datedajout varchar(50),
     primary key(idgenre),
 	foreign key(idimage) references image(idimage),
-    foreign key(idsong) references song(idsong)
+    foreign key(idson) references chanson(idson)
 );
 
 create table playlist(
-    idp varchar(20),
+    idplay varchar(20),
     idsong varchar(20),
-	datedajout Date,
-    primary key(idp),
-	foreign key(idsong) references song(idsong)
+	datedajout varchar(50),
+    primary key(idplay),
+	foreign key(idson) references chanson(idson)
 );
 
 create table image(
