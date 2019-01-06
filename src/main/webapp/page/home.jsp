@@ -16,7 +16,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="resources/assets/css/bootstrap.css" rel= 'stylesheet' type='text/css' />
     <!-- Custom CSS -->
     <link href="resources/assets/css/style.css" rel='stylesheet' type='text/css' />
     <!-- Graph CSS -->
@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href=""><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
                     <li><a href=""><i class="lnr lnr-bookmark"></i> <span>Albums</span></a></li>
                     <li><a href=""><i class="lnr lnr-book"></i><span>Genres</span></a></li>
-                    <li><a href="/profil/profil"><i class="lnr lnr-user"></i><span>Profil</span></a></li>
+                    <li><a href="/profil"><i class="lnr lnr-user"></i><span>Profil</span></a></li>
                 </ul>
             </div>
         </div>
@@ -188,3 +188,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="clearfix"></div>
         </div>
+    </div>
+</section>

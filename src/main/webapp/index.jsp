@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-6 content-grid">
                             <c:forEach items="${chansons}" var="chanson">
-                                ${chanson.id}<i class="lnr lnr-film-play"></i>
+                                ${chanson.titre}<i class="lnr lnr-film-play"></i>
                                 <i class="lnr lnr-heart"></i>
                                 <i class="lnr lnr-download"></i>
                             </c:forEach>
@@ -100,36 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="jp-playlist">
-                                <ul style="display: block;">
-                                    <li class="jp-playlist-current">
-                                        <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                                style="display: none;">×</a><a href="javascript:;"
-                                                                               class="jp-playlist-item jp-playlist-current"
-                                                                               tabindex="0">1.
-                                            Ellie-Goulding</a>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            <h3>MEILLEURES ALBUMS</h3>
-                            <div class="jp-playlist">
-                                <ul style="display: block;">
-                                    <li class="jp-playlist-current">
-                                        <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                                style="display: none;">×</a><a href="javascript:;"
-                                                                               class="jp-playlist-item jp-playlist-current"
-                                                                               tabindex="0">1.
-                                            Ellie-Goulding</a>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            <h3>MEILLEURES ARTISTES</h3>
                             <div class="jp-playlist">
                                 <ul style="display: block;">
                                     <li class="jp-playlist-current">

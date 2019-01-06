@@ -1,7 +1,6 @@
 import dao.GenericDao;
 import dao.HibernateDao;
-import modele.Album;
-import service.Fonction;
+import modele.Utilisateur;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
@@ -34,22 +33,17 @@ public class Main {
 //        for(int i = 0; i < ba.size(); i++){
 //            Album prod = (Album) ba.get(i);
 //           System.out.println(String.valueOf(prod.getIdimage()));
-        Album client = new Album();
-//        client.setId("4");
-//        client.setNomuser("mi");
-//        client.setPswrd("425");
-//        client.setEmail("and");
-//        client.setBirth("20");
-//        client.setSexe("fa");
-//        gdao.findById(client, "1");
-//        String           where = String.format("email='%s' and password='%s'", "and", "425");
-//        List<BaseModele> ba    = hibernateDao.findAll(new Utilisateur(),where);
-//        for(int i = 0; i < ba.size(); i++){
-//            Utilisateur prod = (Utilisateur) ba.get(i);
-//            System.out.println(String.valueOf(prod.getEmail()));
-//        }
-        String titre = new Fonction().readArtist("D:\\ITU\\S5\\Naina\\MP3\\src\\main\\java\\media\\Mandy Moore - Cry (A Walk To Remember).mp3");
-        System.out.println(titre);
+        Utilisateur client = new Utilisateur();
+        client.setId("8");
+        client.setNomuser("min");
+        client.setPswrd("min");
+        client.setEmail("min");
+        client.setBirth("28-07-1998");
+        client.setSexe("f");
+       hibernateDao.update(client);
+//        new GenericDao().queryPagination(client, 4, 5);
+
     }
+
 }
 

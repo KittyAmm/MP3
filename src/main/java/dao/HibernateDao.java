@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HibernateDao implements InterfaceDao {
 
@@ -91,36 +92,39 @@ public class HibernateDao implements InterfaceDao {
 
     @SuppressWarnings("unchecked")
     public ArrayList<BaseModele> findAll(BaseModele bm, Session session) {
-        return null;
+        Criteria cr = session.createCriteria(bm.getClass());
+        return (ArrayList<BaseModele>) cr.list();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public ArrayList<BaseModele> findAll(BaseModele bm) {
-        ArrayList   objects = null;
-        Session     session = null;
+        ArrayList objects = null;
+        Session   session = null;
         try {
             session = factory.openSession();
-            Criteria cr      = session.createCriteria(bm.getClass());
+            Criteria cr = session.createCriteria(bm.getClass());
             return (ArrayList<BaseModele>) cr.list();
         } finally {
             if (session != null) session.close();
         }
     }
-
+    @SuppressWarnings("unchecked")
     public ArrayList<BaseModele> findAll(BaseModele bm, Session session, String where) {
-        return null;
+        Criteria cr = session.createCriteria(bm.getClass(), where);
+        return (ArrayList<BaseModele>) cr.list();
+
     }
 
 
     @Override
     @SuppressWarnings("unchecked")
     public ArrayList<BaseModele> findAll(BaseModele bm, String where) {
-        ArrayList   objects = null;
-        Session     session = null;
+        ArrayList objects = null;
+        Session   session = null;
         try {
             session = factory.openSession();
-            Criteria cr      = session.createCriteria(bm.getClass(),where);
+            Criteria cr = session.createCriteria(bm.getClass(), where);
             return (ArrayList<BaseModele>) cr.list();
         } finally {
             if (session != null) session.close();
@@ -139,6 +143,23 @@ public class HibernateDao implements InterfaceDao {
             session = factory.openSession();
             session.load(modele, id);
         } catch (Exception e) {
+            throw e;
+        } finally {
+            if (session != null) session.close();
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<BaseModele> findAll(BaseModele bm, int nombre, int index){
+        Session   session = null;
+        try {
+            session = factory.openSession();
+            Criteria cr = session.createCriteria(bm.getClass());
+            cr.setFirstResult((index - 1) * nombre);
+            cr.setMaxResults(nombre);
+            return (ArrayList<BaseModele>) cr.list();
+        }catch (Exception e) {
             throw e;
         } finally {
             if (session != null) session.close();

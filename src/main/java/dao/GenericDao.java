@@ -19,8 +19,8 @@ public class GenericDao implements InterfaceDao {
         return String.format("SELECT * FROM (SELECT %%s.*, ROWNUM ROW_NUM from %%s) WHERE ROW_NUM BETWEEN %d AND %d", min, max);
     }
 
-    private String paginationPGSQL(int nombre, int offset) {
-        return "offset" + offset + "fetch next" + nombre + "rows only";
+    private String paginationPGSQL(int offset, int nombre) {
+        return "offset " + offset + " fetch next " + nombre + " rows only";
     }
 
     private String getNameColumn(Field field) {
@@ -43,17 +43,21 @@ public class GenericDao implements InterfaceDao {
         return list.toArray(new Field[list.size()]);
     }
 
-    public String queryPagination(BaseModele bm, int index, int nombre, int offset) throws Exception {
-        int min = offset * index - offset + 1;
-        int max = offset * index;
+    public String queryPagination(BaseModele bm, int index, int nombre) throws Exception {
+        int offset = nombre * (index - 1);
+        int max = nombre * index;
 
         if (ConfigDB.DB_TYPE == DB.ORCL) {
-            String req      = paginationORCL(min, max);
+            String req      = paginationORCL(offset, max);
             String nomTable = bm.getNomTable();
-            return String.format(req, nomTable, nomTable);
+            String query    = String.format(req, nomTable, nomTable);
+            System.out.println(query);
+            return query;
         } else if (ConfigDB.DB_TYPE == DB.PGSQL) {
-            String page = paginationPGSQL(nombre, offset);
-            return Query.select("*", bm.getNomTable(), page);
+            String page  = paginationPGSQL(offset, nombre);
+            String query = Query.select("*", bm.getNomTable(), page);
+            System.out.println(query);
+            return query;
         } else {
             throw new Exception("Votre base des données n'est pas configuré");
         }
@@ -353,14 +357,14 @@ public class GenericDao implements InterfaceDao {
         }
     }
 
-    public List<BaseModele> findAll(BaseModele bm, int nombre, int index, int offset) throws Exception {
+    public List<BaseModele> findAll(BaseModele bm, int nombre, int index) throws Exception {
         Connection            conn    = null;
         PreparedStatement     ps      = null;
         ResultSet             res     = null;
         ArrayList<BaseModele> modeles = new ArrayList<>();
         try {
             conn = Connexion.getConnexion();
-            ps = conn.prepareStatement(queryPagination(bm, index, nombre, offset));
+            ps = conn.prepareStatement(queryPagination(bm, index, nombre));
             res = ps.executeQuery();
             Field[] fields = getColumnTable(bm);
             setData(bm, res, modeles);
