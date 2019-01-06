@@ -38,7 +38,7 @@ public class IndexController {
         model.addAttribute("title", "Bienvenue KBH's Music");
 //        ModelAndView       map  = new ModelAndView("page/home");
 //        map.addObject("meilleuralbum",albums);
-        return "index";
+        return "page/index";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/profil")
@@ -72,7 +72,7 @@ public class IndexController {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         String       email    = request.getParameter("email");
         String       password = request.getParameter("password");
-        ModelAndView index    = new ModelAndView("index");
+        ModelAndView index    = new ModelAndView("page/index");
         if (email != null && !email.equals("") && password != null && !password.equals("")) {
             try {
                 Utilisateur  user = Service.login(email, password);

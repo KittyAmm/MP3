@@ -6,16 +6,25 @@
 package modele;
 
 import dao.BaseModele;
+import dao.annotation.Column;
+import dao.annotation.Table;
 
 /**
- *
  * @author Haja Faniry
  */
+@Table(name = "Artiste")
 public class Artiste extends BaseModele {
 
+    @Column(name = "idartiste")
     private String idartiste;
+
+    @Column(name = "idimage")
     private String idimage;
+
+    @Column(name = "idsong")
     private String idsong;
+
+    @Column(name = "nom")
     private String nom;
 
     public void setIdartiste(String idartiste) {
@@ -30,10 +39,12 @@ public class Artiste extends BaseModele {
         this.idsong = idsong;
     }
 
-    public void setNom(String nom) {
+    public void setNom(String nom) throws Exception {
+        if (nom.equals("")) {
+            throw new Exception("nom album vide");
+        }
         this.nom = nom;
     }
-
     public String getIdartiste() {
         return idartiste;
     }
@@ -49,7 +60,17 @@ public class Artiste extends BaseModele {
     public String getNom() {
         return nom;
     }
-    
-    
-    
+
+    public Artiste(String idartiste, String idimage, String idsong, String nom) {
+        this.idartiste = idartiste;
+        this.idimage = idimage;
+        this.idsong = idsong;
+        this.nom = nom;
+    }
+
+    public Artiste(String idimage, String idsong, String nom) {
+        this.idimage = idimage;
+        this.idsong = idsong;
+        this.nom = nom;
+    }
 }

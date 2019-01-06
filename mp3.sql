@@ -1,84 +1,85 @@
-create user mp3 identified by wawa;
-grant dba to mp3;
-connect mp3;
+CREATE USER mp3 identified BY wawa;
+GRANT dba TO mp3;
+CONNECT mp3;
 wawa
 
 
-create table menu(
-    idmenu varchar(20),
-    nom varchar(60),
-    primary key(idmenu)
+CREATE TABLE menu (
+  idmenu VARCHAR(20),
+  nom    VARCHAR(60),
+  PRIMARY KEY (idmenu)
 );
 
-create table utilisateur(
-    idutil varchar(20),
-    nom varchar(50),
-    mdp varchar(50),
-    mail varchar(50),
-    sexe varchar(50),
-    datenaissance varchar(50),
-	datedajout varchar(50),
-    primary key(idutil)
+CREATE TABLE utilisateur (
+  idutil        VARCHAR(20),
+  nom           VARCHAR(50),
+  mdp           VARCHAR(50),
+  mail          VARCHAR(50),
+  sexe          VARCHAR(50),
+  datenaissance VARCHAR(50),
+  datedajout    VARCHAR(50),
+  PRIMARY KEY (idutil)
 );
 
-create table chanson(
-    idson varchar(50),
-	idartiste varchar(50),
-    titre varchar(20),
-    duree varchar(20),
-	datedajout varchar(50),
-    datepublier varchar(50),
-    primary key(idson),
-    foreign key(idartiste) references artiste(idartiste)
-   
+CREATE TABLE chanson (
+  idson       VARCHAR(50),
+  idartiste   VARCHAR(50),
+  titre       VARCHAR(20),
+  duree       VARCHAR(20),
+  datedajout  VARCHAR(50),
+  datepublier VARCHAR(50),
+  PRIMARY KEY (idson),
+  FOREIGN KEY (idartiste) REFERENCES artiste (idartiste)
+
 );
 
-create table artiste(
-    idartiste varchar(20),
-	idimage varchar(20),
-	idson varchar(20),
-    nom varchar(50),
-	datedajout varchar(50),
-    primary key(idartiste),
-    foreign key(idimage) references image(idimage),
-    foreign key(idson) references chanson(idson)
+CREATE TABLE artiste (
+  idartiste  VARCHAR(20),
+  idimage    VARCHAR(20),
+  idson      VARCHAR(20),
+  nom        VARCHAR(50),
+  datedajout VARCHAR(50),
+  PRIMARY KEY (idartiste),
+  FOREIGN KEY (idimage) REFERENCES image (idimage),
+  FOREIGN KEY (idson) REFERENCES chanson (idson)
 );
 
-create table album(
-    idalbum varchar(20),
-	idartiste varchar(20),
-	idimage varchar(20),
-    nom varchar(20),
-	datedajout varchar(50),
-    datepublier varchar(50),
-    primary key(idalbum),
-	foreign key(idimage) references image(idimage),
-    foreign key(idartiste) references artiste(idartiste)
-  
+CREATE TABLE album (
+  idalbum     VARCHAR(20),
+  idartiste   VARCHAR(20),
+  idimage     VARCHAR(20),
+  nom         VARCHAR(20),
+  datedajout  VARCHAR(50),
+  datepublier VARCHAR(50),
+  PRIMARY KEY (idalbum),
+  FOREIGN KEY (idimage) REFERENCES image (idimage),
+  FOREIGN KEY (idartiste) REFERENCES artiste (idartiste)
+
 );
 
-create table genre(
-    idgenre varchar(20),
-    idimage varchar(20),
-    idson varchar(20),
-	nom varchar(50),
-	datedajout varchar(50),
-    primary key(idgenre),
-	foreign key(idimage) references image(idimage),
-    foreign key(idson) references chanson(idson)
+CREATE TABLE genre (
+  idgenre    VARCHAR(20),
+  idimage    VARCHAR(20),
+  idson      VARCHAR(20),
+  nom        VARCHAR(50),
+  datedajout VARCHAR(50),
+  PRIMARY KEY (idgenre),
+  FOREIGN KEY (idimage) REFERENCES image (idimage),
+  FOREIGN KEY (idson) REFERENCES chanson (idson)
 );
 
-create table playlist(
-    idplay varchar(20),
-    idsong varchar(20),
-	datedajout varchar(50),
-    primary key(idplay),
-	foreign key(idson) references chanson(idson)
+CREATE TABLE playlist (
+  idplay     VARCHAR(20),
+  idsong     VARCHAR(20),
+  datedajout VARCHAR(50),
+  PRIMARY KEY (idplay),
+  FOREIGN KEY (idson) REFERENCES chanson (idson)
 );
 
-create table image(
-    idmage varchar(20),
-	nom varchar(50),
-    primary key(idmage)
+CREATE TABLE image (
+  idmage VARCHAR(20),
+  nom    VARCHAR(50),
+  PRIMARY KEY (idmage)
 );
+
 

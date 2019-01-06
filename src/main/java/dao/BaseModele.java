@@ -4,12 +4,16 @@ import dao.annotation.Table;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 //ts azo instanciena
+@MappedSuperclass
 public abstract class BaseModele {
+    @Id
     private String id;
 
     public String getId() {

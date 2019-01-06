@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface InterfaceDao {
 
@@ -15,6 +16,8 @@ public interface InterfaceDao {
     ArrayList<BaseModele> findAll(BaseModele bm, String where) throws Exception;
 
     void findById(BaseModele modele, String id) throws Exception;
+
+    List<BaseModele> findAll(BaseModele bm, int nombre, int index) throws Exception;
 
 
 }

@@ -56,3 +56,5 @@ CREATE TABLE PlayList(
 create TABLE Menu(
   id VARCHAR(10) PRIMARY KEY ,
 )
+
+select * from Utilisateur where email='and' and password='425';

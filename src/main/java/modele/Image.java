@@ -6,13 +6,20 @@
 package modele;
 
 import dao.BaseModele;
+import dao.annotation.Column;
+import dao.annotation.Table;
 
 /**
  *
  * @author Haja Faniry
  */
+@Table(name = "Image")
 public class Image extends BaseModele {
+    
+    @Column(name = "idimage")
     private String idimage;
+    
+    @Column(name = "nom")
     private String nom;
 
     public String getIdimage() {

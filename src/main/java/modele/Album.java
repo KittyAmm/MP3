@@ -12,14 +12,50 @@ import dao.annotation.Table;
 /**
  * @author Haja Faniry
  */
+
 @Table(name = "Albums")
 public class Album extends BaseModele {
 
-    @Column(name = "image")
+    @Column(name = "idartiste")
+    private String artiste;
+
+    @Column(name = "idimage")
     private String idimage;
 
-    @Column(name = "nomalbum")
+    @Column(name = "nom")
     private String nom;
+
+
+    @Column(name = "datedajout")
+    private String dateajout;
+
+
+    @Column(name = "datepublier")
+    private String datepub;
+
+    public String getArtiste() {
+        return artiste;
+    }
+
+    public void setArtiste(String artiste) {
+        this.artiste = artiste;
+    }
+
+    public String getDateajout() {
+        return dateajout;
+    }
+
+    public void setDateajout(String dateajout) {
+        this.dateajout = dateajout;
+    }
+
+    public String getDatepub() {
+        return datepub;
+    }
+
+    public void setDatepub(String datepub) {
+        this.datepub = datepub;
+    }
 
     public Album() {
     }
@@ -42,5 +78,7 @@ public class Album extends BaseModele {
         return nom;
     }
 
-
+    public Album(String nom) {
+        this.nom = nom;
+    }
 }

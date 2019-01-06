@@ -1,11 +1,12 @@
 import dao.GenericDao;
-import dao.HibernateDao;
-import modele.Utilisateur;
+import modele.Chanson;
+import modele.Mp3Info;
+import service.Fonction;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
         GenericDao   gdao         = new GenericDao();
-        HibernateDao hibernateDao = new HibernateDao();
+//        HibernateDao hibernateDao = new HibernateDao();
 //        Personne  p    = new Personne("malala", "minou");
 //        Produit   p1   = new Produit("kapa","23/07/1998",1000);
 //        Produit   p2   = new Produit("kapa","23/07/1998",1000);
@@ -33,14 +34,18 @@ public class Main {
 //        for(int i = 0; i < ba.size(); i++){
 //            Album prod = (Album) ba.get(i);
 //           System.out.println(String.valueOf(prod.getIdimage()));
-        Utilisateur client = new Utilisateur();
-        client.setId("8");
-        client.setNomuser("min");
-        client.setPswrd("min");
-        client.setEmail("min");
-        client.setBirth("28-07-1998");
-        client.setSexe("f");
-       hibernateDao.update(client);
+//        Utilisateur client = new Utilisateur();
+//        client.setId("8");
+//        client.setNomuser("min");
+//        client.setPswrd("min");
+//        client.setEmail("min");
+//        client.setBirth("28-07-1998");
+//        client.setSexe("f");
+//       hibernateDao.update(client);
+        Mp3Info mp3Info = new Mp3Info().extractMP3("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
+        gdao.save(mp3Info);
+        Chanson[] song = new Fonction().getSongs();
+        System.out.println(song[0].getTitle());
 //        new GenericDao().queryPagination(client, 4, 5);
 
     }

@@ -6,15 +6,25 @@
 package modele;
 
 import dao.BaseModele;
-
+import dao.annotation.Column;
+import dao.annotation.Table;
 /**
  *
  * @author Haja Faniry
  */
+@Table(name = "Albums")
 public class Genre extends BaseModele {
+    
+    @Column(name = "idgenre")
     private String idgenre;
+    
+    @Column(name = "idimage")
     private String idimage;
+    
+    @Column(name = "idsong")
     private String idsong;
+    
+    @Column(name = "nom")
     private String nom;
 
     public String getIdgenre() {
@@ -48,6 +58,10 @@ public class Genre extends BaseModele {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    
+
+    public Genre(String idimage, String idsong, String nom) {
+        this.idimage = idimage;
+        this.idsong = idsong;
+        this.nom = nom;
+    }
 }

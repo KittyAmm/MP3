@@ -6,16 +6,23 @@
 package modele;
 
 import dao.BaseModele;
-
+import dao.annotation.Column;
+import dao.annotation.Table;
 /**
  *
  * @author Haja Faniry
  */
+@Table(name = "Playlist")
 public class Playlist extends BaseModele {
     
-    String idp;
-    String idsong;
-    String dateajout;
+    @Column(name = "idp")
+    private String idp;
+    
+    @Column(name = "idsong")
+    private String idsong;
+    
+    @Column(name = "datejout")
+    private String dateajout;
 
     public String getIdp() {
         return idp;

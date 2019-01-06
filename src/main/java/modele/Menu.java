@@ -6,13 +6,19 @@
 package modele;
 
 import dao.BaseModele;
-
+import dao.annotation.Column;
+import dao.annotation.Table;
 /**
  *
  * @author Haja Faniry
  */
+@Table(name = "Menu")
 public class Menu extends BaseModele {
+    
+    @Column(name = "idmenu")
     private String idmenu ;
+    
+     @Column(name = "nom")
     private String nom ;
 
     public Menu(String idmenu, String nom) {

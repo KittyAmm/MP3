@@ -6,11 +6,10 @@
 package modele;
 
 import dao.BaseModele;
+import dao.annotation.Column;
+import dao.annotation.Table;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author Haja Faniry
@@ -18,34 +17,39 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Utilisateur")
 public class Utilisateur extends BaseModele {
-    @Id
-    private String id;
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
-    @Column(name = "username")
+    @Column(name = "nom")
+    @javax.persistence.Column(name = "nom")
     private String nomuser;
 
-    @Column(name = "password")
+    @Column(name = "mdp")
+    @javax.persistence.Column(name = "mdp")
     private String pswrd;
 
-    @Column(name = "email")
-    private String Email;
+    @Column(name = "mail")
+    @javax.persistence.Column(name = "mail")
+    private String email;
 
-    @Column(name = "birth")
+    @Column(name = "datenaissance")
+    @javax.persistence.Column(name = "datenaissance")
     private String birth;
 
     @Column(name = "sexe")
+    @javax.persistence.Column(name = "sexe")
     private String sexe;
+
+    @Column(name = "datedajout")
+    @javax.persistence.Column(name = "datedajout")
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 
     public String getBirth() {
         return birth;
@@ -64,7 +68,7 @@ public class Utilisateur extends BaseModele {
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     public void setSexe(String sexe) {
@@ -80,26 +84,17 @@ public class Utilisateur extends BaseModele {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getSexe() {
         return sexe;
     }
 
-    public Utilisateur(String id, String nomuser, String pswrd, String email, String birth, String sexe) {
-        this.id = id;
-        this.nomuser = nomuser;
-        this.pswrd = pswrd;
-        Email = email;
-        this.birth = birth;
-        this.sexe = sexe;
-    }
-
     public Utilisateur(String nomuser, String pswrd, String email, String birth, String sexe) {
         this.nomuser = nomuser;
         this.pswrd = pswrd;
-        Email = email;
+        this.email = email;
         this.birth = birth;
         this.sexe = sexe;
     }
