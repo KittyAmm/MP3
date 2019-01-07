@@ -1,6 +1,5 @@
 package controller;
 
-import modele.Chanson;
 import modele.FileModel;
 import modele.Mp3Info;
 import modele.Utilisateur;
@@ -10,9 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import service.Service;
@@ -22,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
 @SessionAttributes("utilisateur")
@@ -33,30 +33,41 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String home(ModelMap model) throws Exception {
-        Chanson[] songs = service.getSongs();
+        Mp3Info[] songs = service.getSongs();
         model.addAttribute("chansons", songs);
         model.addAttribute("title", "Bienvenue KBH's Music");
-//        ModelAndView       map  = new ModelAndView("page/home");
-//        map.addObject("meilleuralbum",albums);
         return "page/index";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/profil")
     public String profil(ModelMap model) {
-//        ArrayList<BaseModele> albums = service.getMeilleurAlbum();
-//        model.addAttribute("title", "Profil");
-//        ModelAndView map = new ModelAndView("page/profil");
         model.addAttribute("title", "Profil");
         return "page/profil";
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/admin")
-    public String admin(ModelMap model) {
-//        ArrayList<BaseModele> albums = service.getMeilleurAlbum();
-//        model.addAttribute("title", "Profil");
-//        ModelAndView map = new ModelAndView("page/profil");
-        // map.addObject("meilleuralbum",albums);
+    public String admin(ModelMap model) throws Exception {
+        Mp3Info[] songs = service.getSongs();
+        model.addAttribute("chansons", songs);
         return "page/admin";
+    }
+
+    @RequestMapping(value = "uploadadmin", method = RequestMethod.POST)
+    public String uploadAdmin(ModelMap model, @Validated FileModel file, BindingResult result, HttpSession session, String path) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur == null) {
+            return admin(model);
+        }
+        String    upload = fileUpload(file, result, model,session);
+        Mp3Info[] songs  = service.getSongs();
+        model.addAttribute("chansons", songs);
+        return admin(model);
+    }
+
+    @RequestMapping(value = "/saveInfoadmin", method = RequestMethod.POST)
+    public String saveinfoadmin(String path, HttpSession session, ModelMap model) throws Exception {
+        saveInfoMp3(path, session, model);
+        return admin(model);
     }
 
 
@@ -69,24 +80,23 @@ public class IndexController {
 //    }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        String       email    = request.getParameter("email");
-        String       password = request.getParameter("password");
-        ModelAndView index    = new ModelAndView("page/index");
+    public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model) {
+        String email    = request.getParameter("email");
+        String password = request.getParameter("password");
         if (email != null && !email.equals("") && password != null && !password.equals("")) {
             try {
-                Utilisateur  user = Service.login(email, password);
-                ModelAndView map  = new ModelAndView("page/profil");
+                Utilisateur user = Service.login(email, password);
                 session.setAttribute("utilisateur", user);
-//                map.addObject("utilisateur", user);
-                return map;
+                if (user.getEmail().equals("admin")) {
+                    return admin(model);
+                }
+                return "page/profil";
             } catch (Exception e) {
                 e.printStackTrace();
+                return "page/index";
             }
-        } else {
-            return index;
         }
-        return index;
+        return "page/index";
     }
 
     @RequestMapping(value = "/succes", method = RequestMethod.GET)
@@ -102,7 +112,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/fileUploadPage", method = RequestMethod.POST)
-    public String fileUpload(@Validated FileModel file, BindingResult result, ModelMap model) throws Exception {
+    public String fileUpload(@Validated FileModel file, BindingResult result, ModelMap model,HttpSession session) throws Exception {
         if (result.hasErrors()) {
             return "/fileUploadPage";
         } else {
@@ -111,7 +121,8 @@ public class IndexController {
             File          newfile       = new File(path + file.getFile().getOriginalFilename());
             FileCopyUtils.copy(file.getFile().getBytes(), newfile);
             String  fileName = multipartFile.getOriginalFilename();
-            Mp3Info mp3Info  = new Mp3Info().extractMP3(newfile.getPath());
+            Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+            Mp3Info mp3Info  = new Mp3Info().extractMP3(newfile.getPath(),utilisateur.getId());
             model.addAttribute("fileName", fileName);
             model.addAttribute("infoMp3", mp3Info);
 
@@ -120,29 +131,41 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/saveInfoMp3", method = RequestMethod.POST)
-    public void saveInfoMp3(String path, HttpSession session) throws Exception {
+    public String saveInfoMp3(String path, HttpSession session, ModelMap model) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-        service.saveFileUpload(path, utilisateur);
+        service.saveFileUpload(path, utilisateur.getId());
+        return home(model);
     }
-//        @RequestMapping("/audio/{fileName:.+}")
-//        public void downloadaudio( HttpServletRequest request,
-//                                         HttpServletResponse response,
-//                                         @PathVariable("fileName") String fileName)
-//        {
-//            String dataDirectory = request.getServletContext().getRealPath("/webapp/ressources/media/");
-//            Path   file          = Paths.get(dataDirectory, fileName);
-//            if (Files.exists(file))
-//            {
-//                response.setContentType("application/pdf");
-//                response.addHeader("Content-Disposition", "attachment; filename="+fileName);
-//                try
-//                {
-//                    Files.copy(file, response.getOutputStream());
-//                    response.getOutputStream().flush();
-//                }
-//                catch (IOException ex) {
-//                    ex.printStackTrace();
-//                }
-//            }
-//        }
+
+    @RequestMapping(value = "telecharger/{idmp3}", method = RequestMethod.GET)
+    public void getFile(@PathVariable("idmp3") String idmp3, HttpServletResponse response) throws IOException {
+        InputStream in = null;
+        try {
+            Mp3Info mp3Info = service.getMp3ById(idmp3);
+            File    file    = new File(mp3Info.getPath());
+            in = new FileInputStream(file);
+            response.setContentType("audio/mpeg");
+            response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+            response.setHeader("Content-Length", String.valueOf(file.length()));
+            org.apache.commons.io.IOUtils.copy(in, response.getOutputStream());
+            response.flushBuffer();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            response.getWriter().print("Erreur telechargement");
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+    }
+
+    @RequestMapping(value = "favoris/{id}", method = RequestMethod.GET)
+    public @ResponseBody String saveFavoris(@PathVariable("id") String id, HttpSession session) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur != null) {
+            service.savefavoris(id, utilisateur.getId());
+            return "true";
+        }
+        return "false";
+    }
 }

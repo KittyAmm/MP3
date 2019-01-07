@@ -54,7 +54,7 @@
                     <p>STATISTIQUE<code>.MENSUEL</code></p>
                     <div class="list-group list-group-alternate">
                         <a href="#" class="list-group-item"><span class="badge">201</span> <i
-                                class="ti ti-email"></i> Ecoutes </a>
+                                class="ti ti-email"></i> Upload </a>
                         <a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i
                                 class="ti ti-eye"></i> Telechargements </a>
                         <a href="#" class="list-group-item"><span class="badge">14</span> <i
@@ -83,11 +83,12 @@
                         </c:if>
                         <input type="submit" value="upload"/>
                     </form:form>
-                    <form:form method="post" action="/saveInfoMp3">
-                        <input type="hidden" name="path" value="${infoMp3.path}">
-                        <input type="submit" value="save"/>
-                    </form:form>
-
+                    <c:if test="${not empty infoMp3}">
+                        <form:form method="post" action="/saveInfoMp3">
+                            <input type="hidden" name="path" value="${infoMp3.path}">
+                            <input type="submit" value="save"/>
+                        </form:form>
+                    </c:if>
                 </div>
                 <div class="col-md-6">
                     <p>MES PLAYLISTS</p>

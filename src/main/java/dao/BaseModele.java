@@ -1,10 +1,10 @@
 package dao;
 
+import dao.annotation.Id;
 import dao.annotation.Table;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 //ts azo instanciena
 @MappedSuperclass
 public abstract class BaseModele {
+    @javax.persistence.Id
     @Id
     private String id;
 

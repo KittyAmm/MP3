@@ -19,5 +19,4 @@ public interface InterfaceDao {
 
     List<BaseModele> findAll(BaseModele bm, int nombre, int index) throws Exception;
 
-
 }

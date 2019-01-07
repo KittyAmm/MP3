@@ -2,6 +2,7 @@ package service;
 
 import dao.BaseModele;
 import dao.GenericDao;
+import dao.HibernateDao;
 import dao.connex.Connexion;
 import modele.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,11 @@ import java.util.List;
 @Component
 public class Fonction {
     @Autowired
-    private GenericDao dao = new GenericDao();
+    private GenericDao   dao  = new GenericDao();
+    private HibernateDao hdao = new HibernateDao();
 
-    public void saveFile(String path, Utilisateur user) throws Exception {
-        Mp3Info    info = new Mp3Info().extractMP3(path);
+    public void saveFile(String path, String user) throws Exception {
+        Mp3Info    info = new Mp3Info().extractMP3(path,user);
         Connection conn = null;
         try {
             conn = Connexion.getConnexion();
@@ -41,7 +43,7 @@ public class Fonction {
 
     public Utilisateur login(String email, String pass) throws Exception {
         try {
-            String           where   = String.format("email='%s' and password='%s'", email, pass);
+            String           where   = String.format("mail='%s' and mdp='%s'", email, pass);
             List<BaseModele> clients = dao.findAll(new Utilisateur(), where);
             if (clients.size() != 0)
                 return (Utilisateur) clients.get(0);
@@ -62,12 +64,60 @@ public class Fonction {
         }
     }
 
-    public Chanson[] getSongs() throws Exception {
-        ArrayList<BaseModele> chansons = dao.findAll(new Chanson());
-        return chansons.toArray(new Chanson[chansons.size()]);
+    public Mp3Info[] getSongs() throws Exception {
+        ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info());
+        return chansons.toArray(new Mp3Info[chansons.size()]);
     }
 
     //Telecharger
-    //Extract info
+    public Mp3Info getMp3ById(String id) throws Exception {
+        Mp3Info mp3Info = new Mp3Info();
+        dao.findById(mp3Info, id);
+        return mp3Info;
+    }
+
     //favoris
+    public void ajoutfavoris(String idmp3info, String iduser) throws Exception {
+        try {
+            Favoris favoris = new Favoris();
+            favoris.setIdmp3info(idmp3info);
+            favoris.setIduser(iduser);
+            favoris.setDatefav("20-07-2019");
+            hdao.save(favoris);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    //nbtelechargement
+    public Telechargement[] countTelechargement(BaseModele bm, String user) throws Exception {
+        String req = "select count(id) as nb from %s where iduser ='" + user+"'";
+        System.out.println(req);
+        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
+        return telecharg.toArray(new Telechargement[telecharg.size()]);
+    }
+    //nbfavoris
+
+    public Favoris[] countFavoris(BaseModele bm, String user) throws Exception {
+        String req = "select count(id) as nb from %s where iduser ='" + user+"'";
+        System.out.println(req);
+        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
+        return telecharg.toArray(new Favoris[telecharg.size()]);
+    }
+    //nb playlist
+
+    public Playlist[] countPlayList(BaseModele bm, String user) throws Exception {
+        String req = "select count(id) as nb from %s where iduser ='" + user+"'";
+        System.out.println(req);
+        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
+        return telecharg.toArray(new Playlist[telecharg.size()]);
+    }
+    //nb upload
+
+    public Mp3Info[] countUpload(BaseModele bm, String user) throws Exception {
+        String req = "select count(id) as nb from %s where iduser ='" + user+"'";
+        System.out.println(req);
+        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
+        return telecharg.toArray(new Mp3Info[telecharg.size()]);
+    }
 }

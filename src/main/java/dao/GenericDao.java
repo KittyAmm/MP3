@@ -45,7 +45,7 @@ public class GenericDao implements InterfaceDao {
 
     public String queryPagination(BaseModele bm, int index, int nombre) throws Exception {
         int offset = nombre * (index - 1);
-        int max = nombre * index;
+        int max    = nombre * index;
 
         if (ConfigDB.DB_TYPE == DB.ORCL) {
             String req      = paginationORCL(offset, max);
@@ -75,6 +75,11 @@ public class GenericDao implements InterfaceDao {
         return query;
     }
 
+    public String queryFind(String requette, BaseModele bm) {
+        String findquery = String.format(requette, bm.getNomTable());
+        System.out.println(findquery);
+        return findquery;
+    }
 
     public String queryFindById(BaseModele bm, String id) {
         String findAll = "select * from %s where id= '%s'";
@@ -271,6 +276,57 @@ public class GenericDao implements InterfaceDao {
         try {
             conn = Connexion.getConnexion();
             return findAll(bm, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    public ArrayList<BaseModele> findQuery(String requette, BaseModele modele, Connection con) throws Exception {
+        PreparedStatement     ps     = null;
+        ResultSet             res    = null;
+        ArrayList<BaseModele> models = new ArrayList<>();
+        try {
+            ps = con.prepareStatement(queryFind(requette, modele));
+            res = ps.executeQuery();
+            setData(modele, res, models);
+        } finally {
+            Connexion.fermerRessource(null, ps, res);
+        }
+        return models;
+    }
+
+    public double GetSum(BaseModele modele, String nomColonne, String where, Connection conn) throws Exception {
+        String            req    = "select sum(" + nomColonne + ") as total from " + modele;
+        PreparedStatement reader = null;
+        ResultSet         res    = null;
+        try {
+            reader = conn.prepareStatement(queryFind(req, modele));
+            res=reader.executeQuery();
+            Field[] fields = getColumnTable(modele);
+            if (res.next()) {
+                res.getDouble(1);
+            }
+        } finally {
+            Connexion.fermerRessource(conn, reader, res);
+        }
+        return 0;
+    }
+
+    public double GetSum(BaseModele modele, String nomColonne, String where) throws Exception{
+        Connection conn = null;
+        try {
+            conn = Connexion.getConnexion();
+            return GetSum(modele, nomColonne, where,conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    public ArrayList<BaseModele> findQuery(String req, BaseModele bm) throws Exception {
+        Connection conn = null;
+        try {
+            conn = Connexion.getConnexion();
+            return findQuery(req, bm, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
         }

@@ -1,7 +1,8 @@
 import dao.GenericDao;
-import modele.Chanson;
 import modele.Mp3Info;
 import service.Fonction;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
@@ -36,18 +37,24 @@ public class Main {
 //           System.out.println(String.valueOf(prod.getIdimage()));
 //        Utilisateur client = new Utilisateur();
 //        client.setId("8");
-//        client.setNomuser("min");
-//        client.setPswrd("min");
-//        client.setEmail("min");
+//        client.setNomuser("o");
+//        client.setPswrd("o");
+//        client.setEmail("moin");
 //        client.setBirth("28-07-1998");
 //        client.setSexe("f");
-//       hibernateDao.update(client);
-        Mp3Info mp3Info = new Mp3Info().extractMP3("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
-        gdao.save(mp3Info);
-        Chanson[] song = new Fonction().getSongs();
-        System.out.println(song[0].getTitle());
-//        new GenericDao().queryPagination(client, 4, 5);
-
+//       new HibernateDao().save(client);
+//        Mp3Info mp3Info = new Mp3Info().extractMP3("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
+//        gdao.save(mp3Info);
+//        Mp3Info[] song = new Fonction().getSongs();
+//        System.out.println(song[0].getTitre());
+        Mp3Info favoris = new Mp3Info();
+//        favoris.setIdmp3info("15");
+//        favoris.setIduser("6");
+//        favoris.setDatefav("20-07-2019");
+//        new HibernateDao().save(favoris);
+//        System.out.println(new GenericDao().queryFind("select count(datelecharg) as nb from %s where iduser= '6'",favoris));
+        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
+        new GenericDao().GetSum(favoris,"id","iduser='6'");
     }
 
 }

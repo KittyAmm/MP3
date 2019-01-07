@@ -36,12 +36,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 content-grid">
-                        <c:forEach items="${chansons}" var="chanson">
-                            <p> ${chanson.title}<i class="lnr lnr-film-play"></i>
-                                <i class="lnr lnr-heart"></i>
-                                <i class="lnr lnr-download"></i></p>
-                        </c:forEach>
+                    <div class="col-md-12 content-grid">
+                        <table class="table table-bordered table-responsive">
+                            <tr>
+                                <th>Titre</th>
+                                <th>Lecture</th>
+                                <th>Favoris</th>
+                                <th>Telecharger</th>
+                            </tr>
+                            <c:forEach items="${chansons}" var="chanson">
+                                <tr>
+                                    <td>${chanson.titre}</td>
+                                    <td><a href="#"><i class="lnr lnr-film-play"></i></a></td>
+                                    <td><input type="hidden" id="valeur" value="1"><i onclick="aimer(${chanson.id})" class="lnr lnr-heart"
+                                           id="idson${chanson.id}"></i></td>
+                                    <td><a href="/telecharger/${chanson.id}"><i class="lnr lnr-download"></i></a></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -203,6 +215,36 @@
                         }
                     });
                 });
+                $(document).ready(function () {
+
+                });
+
+                function aimer(id) {
+                    console.log(id);
+                    var val = $("#valeur").val();
+                    console.log(val);
+                    $.ajax({
+                        type: 'GET',
+                        url: '/favoris/' + id,
+                        dataType: 'html',
+                        success: function (result) {
+                            if (val){
+                                console.log(val);
+                                if (result === "true") {
+                                    $("#idson" + id).on('click').css("color", "red");
+                                }
+                            }
+                            else{
+                                $("#idson" + id).on('click').css("color", "black");
+                            }
+
+                            console.log(result);
+                        },
+                        error: function (result) {
+                            console.log(result);
+                        }
+                    });
+                }
             </script>
             <script type="text/javascript" src="../resources/assets/js/jquery.flexisel.js"></script>
         </div>
