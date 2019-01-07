@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GenericDao implements InterfaceDao {
     private String paginationORCL(int min, int max) {
@@ -302,7 +301,6 @@ public class GenericDao implements InterfaceDao {
         try {
             reader = conn.prepareStatement(queryFind(req, modele));
             res=reader.executeQuery();
-            Field[] fields = getColumnTable(modele);
             if (res.next()) {
                 res.getDouble(1);
             }
@@ -413,7 +411,7 @@ public class GenericDao implements InterfaceDao {
         }
     }
 
-    public List<BaseModele> findAll(BaseModele bm, int nombre, int index) throws Exception {
+    public ArrayList<BaseModele> findAll(BaseModele bm, int nombre, int index) throws Exception {
         Connection            conn    = null;
         PreparedStatement     ps      = null;
         ResultSet             res     = null;

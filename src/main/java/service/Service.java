@@ -34,4 +34,8 @@ public class Service {
     public Mp3Info getMp3ById(String id) throws Exception {
         return fonction.getMp3ById(id);
     }
+
+    public Mp3Info[] getPagination() throws Exception {
+        return fonction.getPagination();
+    }
 }

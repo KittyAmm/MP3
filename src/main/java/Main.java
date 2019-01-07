@@ -2,8 +2,6 @@ import dao.GenericDao;
 import modele.Mp3Info;
 import service.Fonction;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] arg) throws Exception {
         GenericDao   gdao         = new GenericDao();
@@ -53,8 +51,9 @@ public class Main {
 //        favoris.setDatefav("20-07-2019");
 //        new HibernateDao().save(favoris);
 //        System.out.println(new GenericDao().queryFind("select count(datelecharg) as nb from %s where iduser= '6'",favoris));
-        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
-        new GenericDao().GetSum(favoris,"id","iduser='6'");
+//        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
+//        new GenericDao().GetSum(favoris,"id","iduser='6'");
+        System.out.println(new Fonction().getPagination().length);
     }
 
 }
