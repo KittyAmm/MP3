@@ -1,6 +1,5 @@
 import dao.GenericDao;
 import modele.Mp3Info;
-import service.Fonction;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
@@ -53,7 +52,6 @@ public class Main {
 //        System.out.println(new GenericDao().queryFind("select count(datelecharg) as nb from %s where iduser= '6'",favoris));
 //        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
 //        new GenericDao().GetSum(favoris,"id","iduser='6'");
-        System.out.println(new Fonction().getPagination().length);
     }
 
 }

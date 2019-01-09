@@ -34,7 +34,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Meters graphs -->
     <script src="resources/assets/js/jquery-2.1.4.js"></script>
 
-
 </head>
 <!-- /w3layouts-agile -->
 <body class="sticky-header left-side-collapsed" onload="initMap()">
@@ -63,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <ul class="nav nav-pills nav-stacked custom-nav">
 
                     <li class="active">
-                        <a href="#">
+                        <a href="/">
                             <i class="lnr lnr-home"></i>
                             <span>Home</span></a></li>
 
@@ -119,17 +118,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-    <!-- //signup -->
-    <!-- /w3l-agile -->
-    <!-- left side end-->
-    <!-- main content start-->
+
     <div class="main-content">
-        <!-- header-starts -->
         <div class="header-section">
-            <!--toggle button start-->
             <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
-            <!--toggle button end-->
-            <!--notification menu start -->
             <div class="menu-right">
                 <div class="profile_details">
                     <div class="col-md-4 serch-part">
@@ -139,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input class="sb-search-input" placeholder="Search" type="search" name="search"
                                        id="search">
                                 <input class="sb-search-submit" type="submit" value="">
-                                <span class="glyphicon-search"> </span>
+                                <span class="fa fa-search"> </span>
                             </form>
                         </div>
                     </div>

@@ -21,6 +21,8 @@ public class HibernateDao implements InterfaceDao {
         configObj.addAnnotatedClass(modele.Utilisateur.class);
         configObj.addAnnotatedClass(modele.Favoris.class);
         configObj.addAnnotatedClass(modele.Telechargement.class);
+        configObj.addAnnotatedClass(modele.Playlist.class);
+        configObj.addAnnotatedClass(modele.Mp3Info.class);
 
         ServiceRegistry service = new StandardServiceRegistryBuilder()
                 .applySettings(configObj.getProperties())

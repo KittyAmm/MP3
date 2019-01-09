@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -77,12 +80,17 @@ public class Fonction {
     }
 
     //favoris
-    public void ajoutfavoris(String idmp3info, String iduser) throws Exception {
+    public void ajoutfavoris(String idmp3info, String iduser, int etat) throws Exception {
+        Date       date       = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+        String     strDate    = dateFormat.format(date);
+        System.out.println("converted Date to String: " + strDate);
         try {
             Favoris favoris = new Favoris();
             favoris.setIdmp3info(idmp3info);
             favoris.setIduser(iduser);
-            favoris.setDatefav("20-07-2019");
+            favoris.setDatefav(strDate);
+            favoris.setEtat(etat);
             hdao.save(favoris);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -128,8 +136,28 @@ public class Fonction {
         return telecharg.toArray(new Mp3Info[telecharg.size()]);
     }
 
-    public Mp3Info[] getPagination() throws Exception {
-        ArrayList<BaseModele> pag = dao.findAll(new Mp3Info(), 5, 1);
+    public Mp3Info[] getPagination(int nb, int index) throws Exception {
+        ArrayList<BaseModele> pag = dao.findAll(new Mp3Info(), nb, index);
         return pag.toArray(new Mp3Info[pag.size()]);
+    }
+
+    public void ajoutPlaylist(String idsong,String user) throws Exception {
+        Playlist c = new Playlist();
+        try {
+            c.setId(idsong);
+            c.setIdclient(user);
+            dao.save(c);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public Playlist[] Playlist() throws Exception {
+        try {
+            ArrayList<BaseModele> playlist = dao.findAll(new Mp3Info());
+            return playlist.toArray(new Playlist[playlist.size()]);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

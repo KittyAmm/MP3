@@ -40,8 +40,10 @@ public class IndexController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/profil")
-    public String profil(ModelMap model) {
+    public String profil(ModelMap model) throws Exception {
         model.addAttribute("title", "Profil");
+//        Playlist[] songs = service.getPlaylist();
+//        model.addAttribute("playlists", songs);
         return "page/profil";
     }
 
@@ -58,7 +60,7 @@ public class IndexController {
         if (utilisateur == null) {
             return admin(model);
         }
-        String    upload = fileUpload(file, result, model,session);
+        String    upload = fileUpload(file, result, model, session);
         Mp3Info[] songs  = service.getSongs();
         model.addAttribute("chansons", songs);
         return admin(model);
@@ -69,15 +71,6 @@ public class IndexController {
         saveInfoMp3(path, session, model);
         return admin(model);
     }
-
-
-//    @RequestMapping(value = "favoris", method = RequestMethod.GET, path = "/index")
-//    public String favoris(ModelMap model) throws Exception {
-//        Album album = new Album();
-//        album.setNom("paz");
-//        model.addAttribute("album", album);
-//        return "index";
-//    }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap model) {
@@ -112,7 +105,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/fileUploadPage", method = RequestMethod.POST)
-    public String fileUpload(@Validated FileModel file, BindingResult result, ModelMap model,HttpSession session) throws Exception {
+    public String fileUpload(@Validated FileModel file, BindingResult result, ModelMap model, HttpSession session) throws Exception {
         if (result.hasErrors()) {
             return "/fileUploadPage";
         } else {
@@ -120,9 +113,9 @@ public class IndexController {
             String        path          = context.getRealPath("resources\\media") + File.separator;
             File          newfile       = new File(path + file.getFile().getOriginalFilename());
             FileCopyUtils.copy(file.getFile().getBytes(), newfile);
-            String  fileName = multipartFile.getOriginalFilename();
+            String      fileName    = multipartFile.getOriginalFilename();
             Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-            Mp3Info mp3Info  = new Mp3Info().extractMP3(newfile.getPath(),utilisateur.getId());
+            Mp3Info     mp3Info     = new Mp3Info().extractMP3(newfile.getPath(), utilisateur.getId());
             model.addAttribute("fileName", fileName);
             model.addAttribute("infoMp3", mp3Info);
 
@@ -160,12 +153,37 @@ public class IndexController {
     }
 
     @RequestMapping(value = "favoris/{id}", method = RequestMethod.GET)
-    public @ResponseBody String saveFavoris(@PathVariable("id") String id, HttpSession session) throws Exception {
+    public @ResponseBody
+    String saveFavoris(@PathVariable("id") String id, HttpSession session) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        int         etat        = 0;
         if (utilisateur != null) {
-            service.savefavoris(id, utilisateur.getId());
+            etat =1;
+            service.savefavoris(id, utilisateur.getId(), etat);
             return "true";
         }
         return "false";
+    }
+
+    @RequestMapping(value = "playlist/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    String ajoutplaylist(@PathVariable("id") String id, HttpSession session) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur != null) {
+            service.savePlaylist(id,utilisateur.getId());
+            return "true";
+        }
+        return "veuillez connecter!!!";
+    }
+
+    @RequestMapping(value = "/pagination/{page}/{nb}", method = RequestMethod.GET)
+    public String pagination(@PathVariable int page, @PathVariable int nb, ModelMap model) throws Exception {
+        if (page == 1) {
+        } else {
+            page = page - 1;
+        }
+        Mp3Info[] paginations = service.getPagination(nb, page);
+        model.addAttribute("paginations", paginations);
+        return home(model);
     }
 }

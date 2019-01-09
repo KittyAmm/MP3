@@ -24,32 +24,6 @@
         <div class="typography">
 
             <div class="grid_3 grid_5">
-                <h3>HISTORIQUES</h3>
-                <div class="col-md-6">
-                    <p>FAVORIS<code>.MENSUEL</code></p>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>FAVORIS</th>
-                            <th>Nombre</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><code>Titres</code></td>
-                            <td><span class="badge badge-primary">1</span></td>
-                        </tr>
-                        <tr>
-                            <td><code>Artistes</code></td>
-                            <td><span class="badge badge-primary">1</span></td>
-                        </tr>
-                        <tr>
-                            <td><code>Albums</code></td>
-                            <td><span class="badge badge-success">22</span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
                 <div class="col-md-6">
                     <p>STATISTIQUE<code>.MENSUEL</code></p>
                     <div class="list-group list-group-alternate">
@@ -65,7 +39,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <form:form method="post" action="/fileUploadPage" modelAttribute="fileUpload"
+                    <form:form method="post" action="/fileUploadPage"
                                enctype="multipart/form-data">
                         Please select a file to upload :
                         <input type="file" name="file"/><br>
@@ -92,10 +66,7 @@
                 </div>
                 <div class="col-md-6">
                     <p>MES PLAYLISTS</p>
-                    <div class="list-group list-group-alternate">
-                        <a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i
-                                class="ti ti-bookmark"></i> Ellie G. </a>
-                    </div>
+
                 </div>
                 <div class="clearfix"></div>
             </div>

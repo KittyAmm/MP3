@@ -1,11 +1,33 @@
 DROP DATABASE mp3;
 CREATE DATABASE mp3;
-CREATE SEQUENCE idutilisateur INCREMENT by 1 START WITH 1;
-CREATE SEQUENCE idchanson INCREMENT by 1 START WITH 1;
-CREATE SEQUENCE idalbum INCREMENT by 1 START WITH 1;
-CREATE SEQUENCE idmp3info INCREMENT by 1 START WITH 1;
-CREATE SEQUENCE idgenre INCREMENT by 1 START WITH 1;
-CREATE SEQUENCE idimage INCREMENT by 1 START WITH 1;
+CREATE SEQUENCE idutilisateur
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idchanson
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idalbum
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idmp3info
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idgenre
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idimage
+  INCREMENT BY 1
+  START WITH 1;
+CREATE SEQUENCE idfavoris
+  INCREMENT BY 1
+  START WITH 1;
+
+CREATE SEQUENCE idplaylist
+  INCREMENT BY 1
+  START WITH 1;
+
+SELECT *
+FROM favoris;
 
 CREATE TABLE menu (
   id    VARCHAR(20),
@@ -84,12 +106,13 @@ CREATE TABLE playlist (
   idson      VARCHAR(20),
   idclient   VARCHAR(50),
   datedajout VARCHAR(50),
+  titre VARCHAR(100),
   PRIMARY KEY (id),
   FOREIGN KEY (idson) REFERENCES chanson (id),
   FOREIGN KEY (idclient) REFERENCES utilisateur (id)
 );
 CREATE TABLE mp3Info (
-  id          VARCHAR(20),
+  id          VARCHAR(20) PRIMARY KEY,
   path        VARCHAR(100),
   track       VARCHAR(50),
   artiste     VARCHAR(50),
@@ -105,13 +128,19 @@ CREATE TABLE mp3Info (
   taille      INT,
   image       VARCHAR(50)
 );
-CREATE TABLE upload (
-  id   VARCHAR(20),
-  path VARCHAR(150)
-);
+
 CREATE TABLE telechargement (
+  id            VARCHAR(20) PRIMARY KEY,
+  iduser        VARCHAR(20) REFERENCES utilisateur (id),
+  datetelecharg VARCHAR(20),
+  idimp3info    VARCHAR(20) REFERENCES mp3Info (id)
 );
 CREATE TABLE favoris (
+  id        VARCHAR(20) PRIMARY KEY,
+  idmp3info VARCHAR(20) REFERENCES mp3Info (id),
+  iduser    VARCHAR(20) REFERENCES utilisateur (id),
+  datefav   VARCHAR(20),
+  etat int
 );
 CREATE TABLE musique (
   id    VARCHAR(20),

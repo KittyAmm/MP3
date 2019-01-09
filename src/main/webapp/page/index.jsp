@@ -43,34 +43,30 @@
                                 <th>Lecture</th>
                                 <th>Favoris</th>
                                 <th>Telecharger</th>
+                                <th>Ajouter Playlist</th>
                             </tr>
                             <c:forEach items="${chansons}" var="chanson">
                                 <tr>
                                     <td>${chanson.titre}</td>
-                                    <td><a href="#"><i class="lnr lnr-film-play"></i></a></td>
-                                    <td><input type="hidden" id="valeur" value="1"><i onclick="aimer(${chanson.id})" class="lnr lnr-heart"
-                                           id="idson${chanson.id}"></i></td>
+                                    <td><audio controls>
+                                        <source src="resources/media/M.mp3" type="audio/mpeg">
+                                    </audio></td>
+                                    <td><input type="hidden" id="valeur" value="1"><i onclick="aimer(${chanson.id})"
+                                                                                      class="lnr lnr-heart"
+                                                                                      id="idson${chanson.id}"></i></td>
                                     <td><a href="/telecharger/${chanson.id}"><i class="lnr lnr-download"></i></a></td>
+                                    <td><a href="/playlist/${chanson.id}"><i class="lnr lnr-music-note"></i></a></td>
                                 </tr>
                             </c:forEach>
                         </table>
-                        <div class="grid_3 grid_5">
-                            <h3>Pagination</h3>
-                            <div class="col-md-6">
-                                <nav>
-                                    <ul class="pagination pagination-lg">
-                                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
+                            <nav>
+                                <ul class="pagination">
+                                        <li><a href="/pagination/1/5">1</a></li>
+                                        <li><a href="/pagination/2">2</a></li>
+                                        <li><a href="/pagination/3">3</a></li>
+                                </ul>
+                            </nav>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -83,46 +79,17 @@
                          aria-label="media player">
                         <div class="jp-type-playlist">
                             <div id="jquery_jplayer_1" class="jp-jplayer" style="width: 480px; height: 270px;">
-                                <img id="jp_poster_0" src="video/play1.png"
-                                     style="width: 480px; height: 270px; display: inline;">
-                                <video id="jp_video_0" preload="metadata"
-                                       src="http://192.168.30.9/vijayaa/2015/Dec/mosaic/web/video/Ellie-Goulding.webm"
-                                       title="1. Ellie-Goulding" style="width: 0px; height: 0px;"></video>
+
+
                             </div>
                             <div class="jp-gui">
-                                <div class="jp-video-play" style="display: block;">
-                                    <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
-                                </div>
                                 <div class="jp-interface">
                                     <div class="jp-progress">
                                         <div class="jp-seek-bar" style="width: 100%;">
                                             <div class="jp-play-bar" style="width: 0%;"></div>
                                         </div>
                                     </div>
-                                    <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
-                                    <div class="jp-duration" role="timer" aria-label="duration">00:18</div>
-                                    <div class="jp-controls-holder">
-                                        <div class="jp-controls">
-                                            <button class="jp-previous" role="button" tabindex="0">previous
-                                            </button>
-                                            <button class="jp-play" role="button" tabindex="0">play</button>
-                                        </div>
-                                        <div class="jp-volume-controls">
-                                            <button class="jp-mute" role="button" tabindex="0">mute</button>
-                                            <button class="jp-volume-max" role="button" tabindex="0">max
-                                                volume
-                                            </button>
-                                            <div class="jp-volume-bar">
-                                                <div class="jp-volume-bar-value" style="width: 100%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="jp-toggles">
 
-                                            <button class="jp-full-screen" role="button" tabindex="0">full
-                                                screen
-                                            </button>
-                                        </div>
-                                    </div>
                                     <h3>TOP</h3>
                                     <div class="jp-details" style="display: none;">
                                         <div class="jp-title" aria-label="title">1. Ellie-Goulding</div>
@@ -146,6 +113,8 @@
                     </div>
                 </div>
             </div>
+
+
             <!-- script for play-list -->
             <link href="../resources/assets/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css">
             <script type="text/javascript" src="../resources/assets/js/jquery.jplayer.min.js"></script>
@@ -245,13 +214,13 @@
                         url: '/favoris/' + id,
                         dataType: 'html',
                         success: function (result) {
-                            if (val){
+                            if (val) {
                                 console.log(val);
                                 if (result === "true") {
                                     $("#idson" + id).on('click').css("color", "red");
                                 }
                             }
-                            else{
+                            else {
                                 $("#idson" + id).on('click').css("color", "black");
                             }
 
@@ -264,6 +233,10 @@
                 }
             </script>
             <script type="text/javascript" src="../resources/assets/js/jquery.flexisel.js"></script>
+            <script src="../resources/assets/js/jquery.nicescroll.js"></script>
+            <script src="../resources/assets/js/scripts.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../resources/assets/js/bootstrap.js"></script>
         </div>
     </div>
     <div class="clearfix"></div>

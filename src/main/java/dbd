@@ -59,5 +59,9 @@ CREATE TABLE PlayList(
 create TABLE Menu(
   id VARCHAR(10) PRIMARY KEY ,
 )
-
+select * from Mp3Info offset 0 fetch next 5 rows only
 select * from Utilisateur where email='and' and password='425';
+
+select * from Mp3Info offset 5 fetch next 5 rows only
+
+select * from Mp3Info offset 4 fetch next 1 rows only
