@@ -1,6 +1,7 @@
 package controller;
 
 import modele.FileModel;
+import modele.Menu;
 import modele.Mp3Info;
 import modele.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +32,34 @@ public class IndexController {
     @Autowired
     ServletContext context;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET, value = "/homei")
+    public String homei(ModelMap model) throws Exception {
+        Menu[] menu = service.getMenu();
+        model.addAttribute("menus", menu);
+        return "page/home";
+    }
+
+    @RequestMapping(value = "/")
+    public String index(ModelMap map) {
+        return "page/login";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/home")
     public String home(ModelMap model) throws Exception {
-        Mp3Info[] songs = service.getSongs();
-        model.addAttribute("chansons", songs);
-        model.addAttribute("title", "Bienvenue KBH's Music");
-        return "page/index";
+        return pagination(1, model);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/profil")
-    public String profil(ModelMap model) throws Exception {
+    public String profil(ModelMap model, HttpSession session) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur == null) {
+            return "page/profil";
+        }
         model.addAttribute("title", "Profil");
+        double favoris = service.getCountFavoris(utilisateur.getId());
 //        Playlist[] songs = service.getPlaylist();
 //        model.addAttribute("playlists", songs);
+        model.addAttribute("favoris", favoris);
         return "page/profil";
     }
 
@@ -83,13 +99,13 @@ public class IndexController {
                 if (user.getEmail().equals("admin")) {
                     return admin(model);
                 }
-                return "page/profil";
+                return home(model);
             } catch (Exception e) {
                 e.printStackTrace();
-                return "page/index";
+                return "page/login";
             }
         }
-        return "page/index";
+        return "page/login";
     }
 
     @RequestMapping(value = "/succes", method = RequestMethod.GET)
@@ -158,7 +174,7 @@ public class IndexController {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         int         etat        = 0;
         if (utilisateur != null) {
-            etat =1;
+            etat = 1;
             service.savefavoris(id, utilisateur.getId(), etat);
             return "true";
         }
@@ -167,23 +183,30 @@ public class IndexController {
 
     @RequestMapping(value = "playlist/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    String ajoutplaylist(@PathVariable("id") String id, HttpSession session) throws Exception {
+    String ajoutplaylist(@PathVariable("id") String id, HttpSession session, ModelMap map) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        Mp3Info[]   songs       = service.getSongsId(id);
+        String      titre       = songs[0].getTitre();
         if (utilisateur != null) {
-            service.savePlaylist(id,utilisateur.getId());
-            return "true";
+            service.savePlaylist(id, utilisateur.getId(), titre);
+            return home(map);
         }
         return "veuillez connecter!!!";
     }
 
-    @RequestMapping(value = "/pagination/{page}/{nb}", method = RequestMethod.GET)
-    public String pagination(@PathVariable int page, @PathVariable int nb, ModelMap model) throws Exception {
-        if (page == 1) {
-        } else {
-            page = page - 1;
+
+    @RequestMapping(value = "pagination/{page}", method = RequestMethod.GET)
+    public String pagination(@PathVariable int page, ModelMap model) throws Exception {
+        int nbaffiche = 3;
+        int nbmp3info = service.getCountMp3();
+        int nbpage    = nbmp3info / nbaffiche;
+        if (nbmp3info % nbaffiche != 0) {
+            nbpage = nbpage + 1;
         }
-        Mp3Info[] paginations = service.getPagination(nb, page);
+        Mp3Info[] paginations = service.getPagination(nbaffiche, page);
+        model.addAttribute("nbpage", nbpage);
         model.addAttribute("paginations", paginations);
-        return home(model);
+        model.addAttribute("title", "Bienvenue KBH's Music");
+        return "page/index";
     }
 }

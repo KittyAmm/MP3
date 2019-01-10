@@ -33,7 +33,7 @@
                                 class="ti ti-eye"></i> Telechargements </a>
                         <a href="#" class="list-group-item"><span class="badge">14</span> <i
                                 class="ti ti-headphone-alt"></i> Playlist </a>
-                        <a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i
+                        <a href="#" class="list-group-item"><span class="badge badge-warning">${favoris}</span> <i
                                 class="ti ti-bookmark"></i> Favoris </a>
                     </div>
                 </div>
@@ -64,11 +64,32 @@
                         </form:form>
                     </c:if>
                 </div>
-                <div class="col-md-6">
-                    <p>MES PLAYLISTS</p>
+                <%--<div class="col-md-6">--%>
+                      <%--<p>MES PLAYLISTS</p>--%>
 
-                </div>
+                    <%--<table class="table table-bordered table-responsive">--%>
+                        <%--<tr>--%>
+                            <%--<th>Titre</th>--%>
+                            <%--<th>Date Ajout</th>--%>
+                            <%--<th>Lecture</th>--%>
+                        <%--</tr>--%>
+                        <%--<c:if test="${not empty favoris}">--%>
+                            <%--<c:forEach items="${favoris}" var="favori">--%>
+                                <%--<tr>--%>
+                                    <%--<td>${favori.titre}</td>--%>
+                                    <%--<td>${favori.datedajout}</td>--%>
+                                    <%--<td>--%>
+                                        <%--<audio controls>--%>
+                                            <%--<source src="resources/media/M.mp3" type="audio/mpeg">--%>
+                                        <%--</audio>--%>
+                                    <%--</td>--%>
+                                <%--</tr>--%>
+                            <%--</c:forEach>--%>
+                        <%--</c:if>--%>
+                    <%--</table>--%>
+                <%--</div>--%>
+
                 <div class="clearfix"></div>
             </div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="page/footer.jsp"/>

@@ -147,4 +147,10 @@ CREATE TABLE musique (
   idson VARCHAR(20) REFERENCES chanson (id)
 );
 
+select count(id) as nb from Favoris;
 
+INSERT INTO menu (id,nom,lien,class) VALUES (1,'Acceuil','/home.jsp', 'lnr lnr-home');
+INSERT INTO menu (id,nom,lien,class) VALUES (2,'Artistes','/artiste.jsp', 'lnr lnr-smile');
+INSERT INTO menu (id,nom,lien,class) VALUES (3,'Album','/album.jsp', 'lnr lnr-book');
+INSERT INTO menu (id,nom,lien,class) VALUES (4,'Genres','/genre.jsp', 'lnr lnr-chart-bars');
+INSERT INTO menu (id,nom,lien,class) VALUES (5,'Profil','/profil.jsp', 'lnr lnr-user');

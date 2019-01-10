@@ -74,7 +74,18 @@ public class GenericDao implements InterfaceDao {
         return query;
     }
 
-    public String queryFind(String requette, BaseModele bm) {
+    public String queryFind(String requette, BaseModele bm, String where) {
+        String findquery = String.format(requette, bm.getNomTable(), where);
+        System.out.println(findquery);
+        return findquery;
+    }
+
+
+    public String queryCount(BaseModele bm, String where) {
+        String requette = "select count(*) as nb from %s";
+        if (!Query.isNullOrEmpty(where)) {
+            requette = requette + " where " + where;
+        }
         String findquery = String.format(requette, bm.getNomTable());
         System.out.println(findquery);
         return findquery;
@@ -280,12 +291,12 @@ public class GenericDao implements InterfaceDao {
         }
     }
 
-    public ArrayList<BaseModele> findQuery(String requette, BaseModele modele, Connection con) throws Exception {
+    public ArrayList<BaseModele> findQuery(String requette, BaseModele modele, String where, Connection con) throws Exception {
         PreparedStatement     ps     = null;
         ResultSet             res    = null;
         ArrayList<BaseModele> models = new ArrayList<>();
         try {
-            ps = con.prepareStatement(queryFind(requette, modele));
+            ps = con.prepareStatement(queryFind(requette, modele, where));
             res = ps.executeQuery();
             setData(modele, res, models);
         } finally {
@@ -295,12 +306,12 @@ public class GenericDao implements InterfaceDao {
     }
 
     public double GetSum(BaseModele modele, String nomColonne, String where, Connection conn) throws Exception {
-        String            req    = "select sum(" + nomColonne + ") as total from " + modele;
+        String            req    = "select sum(" + nomColonne + ") as total from " + modele.getNomTable();
         PreparedStatement reader = null;
         ResultSet         res    = null;
         try {
-            reader = conn.prepareStatement(queryFind(req, modele));
-            res=reader.executeQuery();
+            reader = conn.prepareStatement(queryFind(req, modele, where));
+            res = reader.executeQuery();
             if (res.next()) {
                 res.getDouble(1);
             }
@@ -310,21 +321,46 @@ public class GenericDao implements InterfaceDao {
         return 0;
     }
 
-    public double GetSum(BaseModele modele, String nomColonne, String where) throws Exception{
+    public int GetCount(BaseModele modele, String where) throws Exception {
         Connection conn = null;
         try {
             conn = Connexion.getConnexion();
-            return GetSum(modele, nomColonne, where,conn);
+            return GetCount(modele, where, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
         }
     }
 
-    public ArrayList<BaseModele> findQuery(String req, BaseModele bm) throws Exception {
+    public int GetCount(BaseModele modele, String where, Connection conn) throws Exception {
+        PreparedStatement reader = null;
+        ResultSet         res    = null;
+        try {
+            reader = conn.prepareStatement(queryCount(modele, where));
+            res = reader.executeQuery();
+            if (res.next()) {
+                return res.getInt(1);
+            }
+        } finally {
+            Connexion.fermerRessource(conn, reader, res);
+        }
+        return 0;
+    }
+
+    public double GetSum(BaseModele modele, String nomColonne, String where) throws Exception {
         Connection conn = null;
         try {
             conn = Connexion.getConnexion();
-            return findQuery(req, bm, conn);
+            return GetSum(modele, nomColonne, where, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    public ArrayList<BaseModele> findQuery(String req, String where, BaseModele bm) throws Exception {
+        Connection conn = null;
+        try {
+            conn = Connexion.getConnexion();
+            return findQuery(req, bm, where, conn);
         } finally {
             Connexion.fermerRessource(conn, null, null);
         }

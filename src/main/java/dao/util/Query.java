@@ -1,6 +1,9 @@
 package dao.util;
 
 public class Query {
+    public static boolean isNullOrEmpty(String s) {
+        return s == null || s.equals("");
+    }
 
     public static String select(String colonne, String table) {
         return String.format("select %s from %s", colonne, table);

@@ -1,9 +1,10 @@
 import dao.GenericDao;
-import modele.Mp3Info;
+import modele.Favoris;
+import service.Service;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
-        GenericDao   gdao         = new GenericDao();
+//        GenericDao gdao = new GenericDao();
 //        HibernateDao hibernateDao = new HibernateDao();
 //        Personne  p    = new Personne("malala", "minou");
 //        Produit   p1   = new Produit("kapa","23/07/1998",1000);
@@ -44,14 +45,18 @@ public class Main {
 //        gdao.save(mp3Info);
 //        Mp3Info[] song = new Fonction().getSongs();
 //        System.out.println(song[0].getTitre());
-        Mp3Info favoris = new Mp3Info();
+        Favoris favoris = new Favoris();
 //        favoris.setIdmp3info("15");
 //        favoris.setIduser("6");
 //        favoris.setDatefav("20-07-2019");
 //        new HibernateDao().save(favoris);
 //        System.out.println(new GenericDao().queryFind("select count(datelecharg) as nb from %s where iduser= '6'",favoris));
 //        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
-//        new GenericDao().GetSum(favoris,"id","iduser='6'");
+        int nb  = new GenericDao().GetCount(favoris, "iduser='6'");
+        int nbr = new Service().getCountFavoris("6");
+        System.out.println(nb);
+        System.out.println(nbr);
+//        System.out.println(new GenericDao().queryCount(new Favoris(),""));
     }
 
 }

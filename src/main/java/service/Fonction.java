@@ -67,9 +67,19 @@ public class Fonction {
         }
     }
 
+    public Mp3Info[] getSongsbyId(String id) throws Exception {
+        ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info(), "id =" + id);
+        return chansons.toArray(new Mp3Info[chansons.size()]);
+    }
+
     public Mp3Info[] getSongs() throws Exception {
         ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info());
         return chansons.toArray(new Mp3Info[chansons.size()]);
+    }
+
+    public Menu[] getMenu() throws Exception {
+        ArrayList<BaseModele> menu = dao.findAll(new Menu());
+        return menu.toArray(new Menu[menu.size()]);
     }
 
     //Telecharger
@@ -99,53 +109,42 @@ public class Fonction {
 
     //nbtelechargement
     public Telechargement[] countTelechargement(BaseModele bm, String user) throws Exception {
-        String req = "select count(id) as nb from %s where iduser ='" + user + "'";
+        String req   = "select count(id) as nb from %s";
+        String where = "where iduser ='" + user + "'";
         System.out.println(req);
-        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
+        ArrayList<BaseModele> telecharg = dao.findQuery(req, where, bm);
         return telecharg.toArray(new Telechargement[telecharg.size()]);
     }
     //nbfavoris
 
-    public Favoris[] countFavoris(BaseModele bm, String user) throws Exception {
-        String req = "select count(id) as nb from %s where iduser ='" + user + "'";
-        System.out.println(req);
-        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
-        return telecharg.toArray(new Favoris[telecharg.size()]);
+    public int count(BaseModele bm, String user) throws Exception {
+        return dao.GetCount(bm, "iduser ='" + user + "'");
     }
 
-    public Favoris[] countTitreFavoris(BaseModele bm, String user) throws Exception {
-        String req = "select count(titre) as nb from %s where iduser ='" + user + "'";
-        System.out.println(req);
-        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
-        return telecharg.toArray(new Favoris[telecharg.size()]);
+    public int count(BaseModele bm) throws Exception {
+        return dao.GetCount(bm,"");
+    }
+
+    public int countTitreFavoris(BaseModele bm, String user) throws Exception {
+        String where = "iduser ='" + user + "'";
+        return dao.GetCount(bm, where);
     }
 
     //nb playlist
-    public Playlist[] countPlayList(BaseModele bm, String user) throws Exception {
-        String req = "select count(id) as nb from %s where iduser ='" + user + "'";
-        System.out.println(req);
-        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
-        return telecharg.toArray(new Playlist[telecharg.size()]);
-    }
-    //nb upload
 
-    public Mp3Info[] countUpload(BaseModele bm, String user) throws Exception {
-        String req = "select count(id) as nb from %s where iduser ='" + user + "'";
-        System.out.println(req);
-        ArrayList<BaseModele> telecharg = dao.findQuery(req, bm);
-        return telecharg.toArray(new Mp3Info[telecharg.size()]);
-    }
+    //nb upload
 
     public Mp3Info[] getPagination(int nb, int index) throws Exception {
         ArrayList<BaseModele> pag = dao.findAll(new Mp3Info(), nb, index);
         return pag.toArray(new Mp3Info[pag.size()]);
     }
 
-    public void ajoutPlaylist(String idsong,String user) throws Exception {
-        Playlist c = new Playlist();
+    public void ajoutPlaylist(String idsong, String user, String titre) throws Exception {
+        Date       date       = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+        String     strDate    = dateFormat.format(date);
         try {
-            c.setId(idsong);
-            c.setIdclient(user);
+            Playlist c = new Playlist(idsong, user, strDate, titre);
             dao.save(c);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
