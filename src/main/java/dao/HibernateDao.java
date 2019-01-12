@@ -114,13 +114,13 @@ public class HibernateDao implements InterfaceDao {
             if (session != null) session.close();
         }
     }
+
     @SuppressWarnings("unchecked")
     public ArrayList<BaseModele> findAll(BaseModele bm, Session session, String where) {
         Criteria cr = session.createCriteria(bm.getClass(), where);
         return (ArrayList<BaseModele>) cr.list();
 
     }
-
 
     @Override
     @SuppressWarnings("unchecked")
@@ -156,15 +156,15 @@ public class HibernateDao implements InterfaceDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<BaseModele> findAll(BaseModele bm, int nombre, int index){
-        Session   session = null;
+    public List<BaseModele> findAll(BaseModele bm, int nombre, int index) {
+        Session session = null;
         try {
             session = factory.openSession();
             Criteria cr = session.createCriteria(bm.getClass());
             cr.setFirstResult((index - 1) * nombre);
             cr.setMaxResults(nombre);
             return (ArrayList<BaseModele>) cr.list();
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw e;
         } finally {
             if (session != null) session.close();

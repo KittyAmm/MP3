@@ -37,6 +37,21 @@ public class Service {
         return fonction.getSongsbyId(id);
     }
 
+    public int getCountFavoris() throws Exception {
+        return fonction.count(new Favoris());
+    }
+
+    public double getCountUpload() throws Exception {
+        return fonction.count(new Mp3Info());
+    }
+
+    public double getCountTelechargement() throws Exception {
+        return fonction.count(new Telechargement());
+    }
+
+    public double getCountPlaylist() throws Exception {
+        return fonction.count(new Playlist());
+    }
     public int getCountFavoris(String iduser) throws Exception {
         return fonction.count(new Favoris(), iduser);
     }
@@ -48,8 +63,6 @@ public class Service {
         return fonction.count(new Mp3Info());
     }
 
-
-
     public double getCountTelechargement(String iduser) throws Exception {
         return fonction.count(new Telechargement(), iduser);
     }
@@ -57,6 +70,7 @@ public class Service {
     public double getCountPlaylist(String iduser) throws Exception {
         return fonction.count(new Playlist(), iduser);
     }
+
 
     public void saveFileUpload(String path, String user) throws Exception {
         System.out.println(path);

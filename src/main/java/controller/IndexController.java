@@ -1,9 +1,6 @@
 package controller;
 
-import modele.FileModel;
-import modele.Menu;
-import modele.Mp3Info;
-import modele.Utilisateur;
+import modele.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,9 +31,9 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/homei")
     public String homei(ModelMap model) throws Exception {
-        Menu[] menu = service.getMenu();
-        model.addAttribute("menus", menu);
-        return "page/home";
+//        Menu[] menu = service.getMenu();
+//        model.addAttribute("menus", menu);
+        return "page/profil1";
     }
 
     @RequestMapping(value = "/")
@@ -56,16 +53,31 @@ public class IndexController {
             return "page/profil";
         }
         model.addAttribute("title", "Profil");
-        double favoris = service.getCountFavoris(utilisateur.getId());
+        double    upload    = service.getCountUpload(utilisateur.getId());
+        double    telecharg = service.getCountTelechargement(utilisateur.getId());
+        double    favori    = service.getCountFavoris(utilisateur.getId());
+        double    playlist  = service.getCountPlaylist(utilisateur.getId());
+        Mp3Info[] songs     = service.getSongs();
 //        Playlist[] songs = service.getPlaylist();
 //        model.addAttribute("playlists", songs);
-        model.addAttribute("favoris", favoris);
+        model.addAttribute("favori", favori);
+        model.addAttribute("upload", upload);
+        model.addAttribute("telecharg", telecharg);
+        model.addAttribute("playlist", playlist);
+        model.addAttribute("chansons", songs);
         return "page/profil";
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/admin")
     public String admin(ModelMap model) throws Exception {
-        Mp3Info[] songs = service.getSongs();
+        Mp3Info[] songs     = service.getSongs();
+        double    upload    = service.getCountUpload();
+        double    telecharg = service.getCountTelechargement();
+        double    favori    = service.getCountFavoris();
+        double    playlist  = service.getCountPlaylist();
+        model.addAttribute("upload", upload);
+        model.addAttribute("telecharg", telecharg);
+        model.addAttribute("favori", favori);
         model.addAttribute("chansons", songs);
         return "page/admin";
     }
@@ -99,7 +111,7 @@ public class IndexController {
                 if (user.getEmail().equals("admin")) {
                     return admin(model);
                 }
-                return home(model);
+                return profil(model, session);
             } catch (Exception e) {
                 e.printStackTrace();
                 return "page/login";
@@ -125,16 +137,17 @@ public class IndexController {
         if (result.hasErrors()) {
             return "/fileUploadPage";
         } else {
+            Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
             MultipartFile multipartFile = file.getFile();
             String        path          = context.getRealPath("resources\\media") + File.separator;
             File          newfile       = new File(path + file.getFile().getOriginalFilename());
             FileCopyUtils.copy(file.getFile().getBytes(), newfile);
             String      fileName    = multipartFile.getOriginalFilename();
-            Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
             Mp3Info     mp3Info     = new Mp3Info().extractMP3(newfile.getPath(), utilisateur.getId());
+            Mp3Info[] songs     = service.getSongs();
             model.addAttribute("fileName", fileName);
             model.addAttribute("infoMp3", mp3Info);
-
+            model.addAttribute("chansons", songs);
             return "page/profil";
         }
     }
@@ -147,11 +160,12 @@ public class IndexController {
     }
 
     @RequestMapping(value = "telecharger/{idmp3}", method = RequestMethod.GET)
-    public void getFile(@PathVariable("idmp3") String idmp3, HttpServletResponse response) throws IOException {
+    public void getFile(@PathVariable("idmp3") String idmp3, HttpServletResponse response,HttpSession session) throws IOException {
         InputStream in = null;
         try {
+            Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
             Mp3Info mp3Info = service.getMp3ById(idmp3);
-            File    file    = new File(mp3Info.getPath());
+            File    file    = new File(mp3Info.getPath(),utilisateur.getId());
             in = new FileInputStream(file);
             response.setContentType("audio/mpeg");
             response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
@@ -208,5 +222,10 @@ public class IndexController {
         model.addAttribute("paginations", paginations);
         model.addAttribute("title", "Bienvenue KBH's Music");
         return "page/index";
+    }
+
+    @RequestMapping(value = "/album")
+    public String album(ModelMap map) {
+        return "page/album";
     }
 }

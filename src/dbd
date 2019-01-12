@@ -126,7 +126,9 @@ CREATE TABLE mp3Info (
   description VARCHAR(50),
   version     VARCHAR(50),
   taille      INT,
-  image       VARCHAR(50)
+  image       VARCHAR(50),
+  duree VARCHAR(50),
+      iduser VARCHAR(20)
 );
 
 CREATE TABLE telechargement (
@@ -140,7 +142,8 @@ CREATE TABLE favoris (
   idmp3info VARCHAR(20) REFERENCES mp3Info (id),
   iduser    VARCHAR(20) REFERENCES utilisateur (id),
   datefav   VARCHAR(20),
-  etat int
+  etat int,
+  path VARCHAR(50)
 );
 CREATE TABLE musique (
   id    VARCHAR(20),

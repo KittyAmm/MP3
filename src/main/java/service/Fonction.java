@@ -8,6 +8,7 @@ import modele.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -159,4 +160,29 @@ public class Fonction {
             throw new Exception(e.getMessage());
         }
     }
+
+    public void DeleteRepertoire(String path,Mp3Info m) throws Exception{
+        Mp3Info y=new Mp3Info();
+        try{
+
+            File file = new File(y.url());
+            if(file.delete()){
+                System.out.println(file.getName() + " is deleted!");
+            }else{
+                dao.delete(m);
+                System.out.println("Delete operation is failed.");
+            }
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+    }
+
+    public Mp3Info[] Top5() throws Exception {
+        String requete="select*from Mp3Info LIMIT 5";
+        ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info(),requete);
+        return chansons.toArray(new Mp3Info[chansons.size()]);
+    }
+
 }

@@ -10,18 +10,21 @@ nahit
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="../resources/assets/font-awesome.min.css">
 <jsp:include page="/page/home.jsp"/>
 <div id="page-wrapper">
     <div class="inner-content">
+        <p>Synchroniser</p>
+        <i class="fa fa-refresh fa-spin" style="font-size:24px"></i>
         <section>
             <div class="col-md-6">
                 <p>STATISTIQUE<code>.MENSUEL</code></p>
                 <div class="list-group list-group-alternate">
-                    <a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i
+                    <a href="#" class="list-group-item"><span class="badge badge-primary">${telecharg}</span> <i
                             class="ti ti-eye"></i> Telechargements </a>
-                    <a href="#" class="list-group-item"><span class="badge">14</span> <i
+                    <a href="#" class="list-group-item"><span class="badge">${upload}</span> <i
                             class="ti ti-headphone-alt"></i> Upload </a>
-                    <a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i
+                    <a href="#" class="list-group-item"><span class="badge badge-warning">${favori}</span> <i
                             class="ti ti-bookmark"></i> Favoris </a>
                 </div>
             </div>
@@ -68,7 +71,11 @@ nahit
                         <c:forEach items="${chansons}" var="chanson">
                             <tr>
                                 <td><code>${chanson.titre}</code></td>
-                                <td><a href="#"><i class="lnr lnr-film-play"></i></a></td>
+                                <td>
+                                    <audio controls>
+                                        <source src="${chanson.url()}" type="audio/mpeg">
+                                    </audio>
+                                </td>
                                 <td>
                                     <button>modifier</button>
                                     <button>supprimer</button>
