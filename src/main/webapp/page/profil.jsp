@@ -110,19 +110,19 @@
                                     <th>Date Ajout</th>
                                     <th>Lecture</th>
                                 </tr>
-                                <%--<c:if test="${not empty playlists}">--%>
-                                <%--<c:forEach items="${playlists}" var="playlist">--%>
-                                <%--<tr>--%>
-                                <%--<td>${playlist.titre}</td>--%>
-                                <%--<td>${playlist.datedajout}</td>--%>
-                                <%--<td>--%>
-                                <%--<audio controls>--%>
-                                <%--<source src="${playlist.url()}" type="audio/mpeg">--%>
-                                <%--</audio>--%>
-                                <%--</td>--%>
-                                <%--</tr>--%>
-                                <%--</c:forEach>--%>
-                                <%--</c:if>--%>
+                                <c:if test="${not empty playlists}">
+                                    <c:forEach items="${playlists}" var="playlist">
+                                        <tr>
+                                            <td>${playlist.titre}</td>
+                                            <td>${playlist.dateajout}</td>
+                                            <td>
+                                                <audio controls>
+                                                    <source src="${playlist.url()}" type="audio/mpeg">
+                                                </audio>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:if>
                             </table>
                         </div>
 
@@ -130,13 +130,6 @@
                     </div>
                     <div class="music-left">
                         <div class="albums second">
-                            <div class="row">
-                                <div class="col-md-3 content-grid">
-                                    <%--<select>
-                                        <option></option>
-                                    </select>--%>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="albums second">
@@ -150,9 +143,6 @@
                                                     <option></option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-3 content-grid">
-                                                <button>TOUT ECOUTER</button>
-                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 content-grid">
@@ -162,6 +152,7 @@
                                                         <th>Lecture</th>
                                                         <th>Favoris</th>
                                                         <th>Telecharger</th>
+                                                        <th>Ajout PlayList</th>
                                                     </tr>
                                                     <c:forEach items="${chansons}" var="chanson">
                                                         <tr>
@@ -171,10 +162,13 @@
                                                                     <source src="${chanson.url()}" type="audio/mpeg">
                                                                 </audio>
                                                             </td>
-                                                            <td><i id="idson" onclick="aimer(${chanson.id})"
-                                                                   class="lnr lnr-heart"></i></td>
-                                                            <td><i href="/telecharger/${chanson.id}"
-                                                                   class="lnr lnr-download"></i></td>
+                                                            <td><a id="idson" onclick="aimer(${chanson.id})"
+                                                                   class="lnr lnr-heart"></a></td>
+                                                            <td><a href="/telecharger/${chanson.id}"
+                                                                   class="lnr lnr-download"></a></td>
+                                                            <td><a class="lnr lnr-music-note"
+                                                                   href="/playlist/${chanson.id}/${chanson.titre}"></a>
+                                                            </td>
                                                         </tr>
                                                     </c:forEach>
                                                 </table>

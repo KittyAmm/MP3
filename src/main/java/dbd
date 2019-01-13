@@ -37,7 +37,6 @@ CREATE TABLE Chanson(
  duree int,
  favoris int,
  idutilisateur VARCHAR(10),
-  image VARCHAR(20),
   idartiste VARCHAR(10),
   idalbum VARCHAR(10),
   idgenre VARCHAR(10),
@@ -50,11 +49,12 @@ CREATE TABLE Chanson(
 
 CREATE TABLE PlayList(
     id VARCHAR (10) PRIMARY KEY ,
-    nom VARCHAR (50),
-    description VARCHAR (200),
-    image VARCHAR (200),
-    idchanson VARCHAR(10),
-  FOREIGN KEY (idchanson) REFERENCES Chanson(id)
+    datedajout VARCHAR (50),
+    idson VARCHAR(20),
+  iduser VARCHAR(20),
+  titre VARCHAR(100),
+  FOREIGN KEY (idson) REFERENCES mp3info(id),
+  FOREIGN KEY (iduser) REFERENCES Utilisateur(id)
 );
 create TABLE Menu(
   id VARCHAR(10) PRIMARY KEY ,

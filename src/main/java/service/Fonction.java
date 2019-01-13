@@ -27,16 +27,19 @@ public class Fonction {
         Connection conn = null;
         try {
             conn = Connexion.getConnexion();
-            String duree = info.getDuree();
+            String     duree      = info.getDuree();
+            Date       date       = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+            String     strDate    = dateFormat.format(date);
             dao.save(info, conn);
-//            Chanson chanson = new Chanson(info.getTitre(), Integer.parseInt(duree), info.getPublish(), info.getImage(), user.getId());
-//            dao.save(chanson, conn);
-//            Artiste artistE = new Artiste(info.getImage(), chanson.getId(), info.getArtiste());
-//            dao.save(artistE, conn);
-//            Album albuM = new Album(info.getAlbum());
-//            dao.save(albuM, conn);
-//            Genre genrE = new Genre(info.getImage(), chanson.getId(), info.getGenre());
-//            dao.save(genrE, conn);
+            Genre genrE = new Genre(info.getGenre(), strDate);
+            dao.save(genrE, conn);
+            Artiste artistE = new Artiste(info.getArtiste(), strDate);
+            dao.save(artistE, conn);
+            Album albuM = new Album(artistE.getId(), info.getAlbum(), strDate, info.getPublish());
+            dao.save(albuM, conn);
+            Chanson chanson = new Chanson(artistE.getId(), genrE.getId(), duree, strDate, albuM.getId(), info.getTitre(), info.getPublish());
+            dao.save(chanson, conn);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
@@ -123,7 +126,7 @@ public class Fonction {
     }
 
     public int count(BaseModele bm) throws Exception {
-        return dao.GetCount(bm,"");
+        return dao.GetCount(bm, "");
     }
 
     public int countTitreFavoris(BaseModele bm, String user) throws Exception {
@@ -154,34 +157,32 @@ public class Fonction {
 
     public Playlist[] Playlist() throws Exception {
         try {
-            ArrayList<BaseModele> playlist = dao.findAll(new Mp3Info());
+            ArrayList<BaseModele> playlist = dao.findAll(new Playlist());
             return playlist.toArray(new Playlist[playlist.size()]);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
-    public void DeleteRepertoire(String path,Mp3Info m) throws Exception{
-        Mp3Info y=new Mp3Info();
-        try{
+    public void DeleteRepertoire(String path, Mp3Info m) throws Exception {
+        Mp3Info y = new Mp3Info();
+        try {
 
             File file = new File(y.url());
-            if(file.delete()){
+            if (file.delete()) {
                 System.out.println(file.getName() + " is deleted!");
-            }else{
+            } else {
                 dao.delete(m);
                 System.out.println("Delete operation is failed.");
             }
-        }catch(Exception e){
-
-            e.printStackTrace();
-
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 
     public Mp3Info[] Top5() throws Exception {
-        String requete="select*from Mp3Info LIMIT 5";
-        ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info(),requete);
+        String                requete  = "select*from Mp3Info LIMIT 5";
+        ArrayList<BaseModele> chansons = dao.findAll(new Mp3Info(), requete);
         return chansons.toArray(new Mp3Info[chansons.size()]);
     }
 
