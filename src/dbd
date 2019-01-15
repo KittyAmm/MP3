@@ -6,7 +6,7 @@ CREATE SEQUENCE idutilisateur
 CREATE SEQUENCE idchanson
   INCREMENT BY 1
   START WITH 1;
-CREATE SEQUENCE idalbum
+CREATE SEQUENCE idalbums
   INCREMENT BY 1
   START WITH 1;
 CREATE SEQUENCE idmp3info
@@ -47,6 +47,8 @@ CREATE TABLE utilisateur (
   datedajout    VARCHAR(50),
   PRIMARY KEY (id)
 );
+INSERT into utilisateur VALUES ('idutilisateur001','minou','minou','minou@gmail.com','f','20-07-1998','07-08-2003');
+INSERT into utilisateur VALUES ('idutilisateur002','admin','admin','admin','f','01-01-1975','01-12-2000');
 
 CREATE TABLE image (
   id  VARCHAR(20),
@@ -56,33 +58,30 @@ CREATE TABLE image (
 
 CREATE TABLE artiste (
   id         VARCHAR(20),
-  idimage    VARCHAR(20),
+
   nom        VARCHAR(50),
   datedajout VARCHAR(50),
-  PRIMARY KEY (id),
-  FOREIGN KEY (idimage) REFERENCES image (id)
+  PRIMARY KEY (id)
+  
 );
 
-CREATE TABLE album (
+CREATE TABLE albums (
   id          VARCHAR(20),
   idartiste   VARCHAR(20),
-  idimage     VARCHAR(20),
   nom         VARCHAR(20),
   datedajout  VARCHAR(50),
   datepublier VARCHAR(50),
   PRIMARY KEY (id),
-  FOREIGN KEY (idimage) REFERENCES image (id),
   FOREIGN KEY (idartiste) REFERENCES artiste (id)
-
 );
 
 CREATE TABLE genre (
   id         VARCHAR(20),
-  idimage    VARCHAR(20),
+
   nom        VARCHAR(50),
   datedajout VARCHAR(50),
-  PRIMARY KEY (id),
-  FOREIGN KEY (idimage) REFERENCES image (id)
+  PRIMARY KEY (id)
+
 );
 
 CREATE TABLE chanson (
@@ -96,7 +95,7 @@ CREATE TABLE chanson (
   datepublier VARCHAR(50),
   PRIMARY KEY (id),
   FOREIGN KEY (idartiste) REFERENCES artiste (id),
-  FOREIGN KEY (idalbum) REFERENCES artiste (id),
+
   FOREIGN KEY (idgenre) REFERENCES artiste (id)
 );
 
@@ -135,7 +134,8 @@ CREATE TABLE telechargement (
   id            VARCHAR(20) PRIMARY KEY,
   iduser        VARCHAR(20) REFERENCES utilisateur (id),
   datetelecharg VARCHAR(20),
-  idimp3info    VARCHAR(20) REFERENCES mp3Info (id)
+  idimp3info    VARCHAR(20) REFERENCES mp3Info (id),
+  titre VARCHAR(50)
 );
 CREATE TABLE favoris (
   id        VARCHAR(20) PRIMARY KEY,
@@ -157,3 +157,4 @@ INSERT INTO menu (id,nom,lien,class) VALUES (2,'Artistes','/artiste.jsp', 'lnr l
 INSERT INTO menu (id,nom,lien,class) VALUES (3,'Album','/album.jsp', 'lnr lnr-book');
 INSERT INTO menu (id,nom,lien,class) VALUES (4,'Genres','/genre.jsp', 'lnr lnr-chart-bars');
 INSERT INTO menu (id,nom,lien,class) VALUES (5,'Profil','/profil.jsp', 'lnr lnr-user');
+
