@@ -169,8 +169,8 @@ public class IndexController {
         return home(model);
     }
 
-    @RequestMapping(value = "telecharger/{idmp3}", method = RequestMethod.GET)
-    public void getFile(@PathVariable("idmp3") String idmp3, HttpServletResponse response, HttpSession session) throws IOException {
+    @RequestMapping(value = "telecharger/{idmp3}/{titre}", method = RequestMethod.GET)
+    public void getFile(@PathVariable("idmp3") String idmp3,@PathVariable("titre") String titre, HttpServletResponse response, HttpSession session) throws IOException {
         InputStream in = null;
         try {
             Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
@@ -183,6 +183,7 @@ public class IndexController {
                 response.setHeader("Content-Length", String.valueOf(file.length()));
                 org.apache.commons.io.IOUtils.copy(in, response.getOutputStream());
                 response.flushBuffer();
+                service.saveTelecharger(idmp3,utilisateur.getId(),titre);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -212,7 +213,17 @@ public class IndexController {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur != null) {
             service.savePlaylist(id, utilisateur.getId(), titre);
-            return profil(map, session);
+        }
+        return "page/login";
+    }
+
+    @RequestMapping(value = "supprimer/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    String supprimer(@PathVariable("id") String id, HttpSession session, ModelMap map) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur != null) {
+            service.supprimer(id, utilisateur.getId());
+            return admin(map, session);
         }
         return "page/login";
     }
@@ -234,7 +245,23 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/album")
-    public String album(ModelMap map) {
+    public String album(ModelMap map) throws Exception {
+        Albums[] albums = service.getAlbum();
+        map.addAttribute("albums", albums);
         return "page/album";
+    }
+
+    @RequestMapping(value = "/chanson")
+    public String chanson(ModelMap map) throws Exception {
+     Chanson[] ch = service.getChanson();
+     map.addAttribute("ch", ch);
+        return "page/Chanson";
+    }
+
+    @RequestMapping(value = "/artiste")
+    public String artiste(ModelMap map) throws Exception {
+//        Album[] albums = service.getAlbum();
+//        map.addAttribute("albums", albums);
+        return "page/Artiste";
     }
 }

@@ -14,7 +14,7 @@ public class ConnexHibernate {
 
     public SessionFactory buildSessionFactory() {
         Configuration configObj = new Configuration();
-        configObj.addAnnotatedClass(modele.Album.class);
+        configObj.addAnnotatedClass(modele.Albums.class);
         configObj.configure("hibernate.cfg.xml");
         ServiceRegistry service = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
         factory = configObj.buildSessionFactory(service);

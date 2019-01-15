@@ -27,6 +27,10 @@ public class Service {
         return fonction.getMenu();
     }
 
+    public Albums[] getAlbum() throws Exception {
+        return fonction.getAlbums();
+    }
+
     //nouveauté
     //songs
     public Mp3Info[] getSongs() throws Exception {
@@ -52,6 +56,7 @@ public class Service {
     public double getCountPlaylist() throws Exception {
         return fonction.count(new Playlist());
     }
+
     public int getCountFavoris(String iduser) throws Exception {
         return fonction.count(new Favoris(), iduser);
     }
@@ -59,6 +64,7 @@ public class Service {
     public double getCountUpload(String iduser) throws Exception {
         return fonction.count(new Mp3Info(), iduser);
     }
+
     public int getCountMp3() throws Exception {
         return fonction.count(new Mp3Info());
     }
@@ -81,6 +87,15 @@ public class Service {
         fonction.ajoutfavoris(idmp3info, iduser, etat);
     }
 
+    public void saveTelecharger(String idmp3info, String iduser, String titre) throws Exception {
+        fonction.telechargement(idmp3info, iduser, titre);
+    }
+
+    public void supprimer(String path, String iduser) throws Exception {
+        Mp3Info[] songs = getSongs();
+//        fonction.DeleteRepertoire(path, iduser, );
+    }
+
     public Mp3Info getMp3ById(String id) throws Exception {
         return fonction.getMp3ById(id);
     }
@@ -88,4 +103,10 @@ public class Service {
     public Mp3Info[] getPagination(int nb, int index) throws Exception {
         return fonction.getPagination(nb, index);
     }
+    public Chanson[] getChanson() throws Exception {
+        return fonction.getChanson();
+    }
+
+
+
 }

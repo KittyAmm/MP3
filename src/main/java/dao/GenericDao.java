@@ -131,9 +131,11 @@ public class GenericDao implements InterfaceDao {
     }
 
     public String queryDelete(BaseModele bm) {
-        String del = String.format("delete %s where id= '%s'", bm.getNomTable(), bm.getId());
-        System.out.println(del);
-        return del;
+        return String.format("delete from %s where id= '%s'", bm.getNomTable(), bm.getId());
+    }
+
+    public String queryDelete(BaseModele bm, String where) {
+        return String.format("delete from %s where id= '%s' where '%s'", bm.getNomTable(), bm.getId(), where);
     }
 
     public String queryFindAll(BaseModele bm) {
@@ -238,6 +240,33 @@ public class GenericDao implements InterfaceDao {
             Connexion.fermerRessource(conn, null, null);
         }
     }
+
+    public void delete(BaseModele bm, String where, Connection conn) throws Exception {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(queryDelete(bm, where));
+            ps.execute();
+        } finally {
+            if (ps != null) ps.close();
+        }
+    }
+
+    public void delete(BaseModele bm, String where) throws Exception {
+        Connection conn = null;
+        try {
+            conn = Connexion.getConnexion();
+            conn.setAutoCommit(false);
+            delete(bm, where, conn);
+            conn.commit();
+        } catch (Exception e) {
+            if (conn != null)
+                conn.rollback();
+            throw e;
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
 
     private void setData(BaseModele bm, ResultSet res, ArrayList<BaseModele> modeles) throws Exception {
         Field[] fields = getColumnTable(bm);

@@ -162,10 +162,10 @@
                                                                     <source src="${chanson.url()}" type="audio/mpeg">
                                                                 </audio>
                                                             </td>
-                                                            <td><a id="idson" onclick="aimer(${chanson.id})"
-                                                                   class="lnr lnr-heart"></a></td>
-                                                            <td><a href="/telecharger/${chanson.id}"
-                                                                   class="lnr lnr-download"></a></td>
+                                                            <td><i id="idson${chanson.id}" onclick="aimer(${chanson.id})"
+                                                                   class="lnr lnr-heart"></i></td>
+                                                            <td><a href="/telecharger/${chanson.id}/${chanson.titre}">
+                                                                <i class="lnr lnr-download"></i></a></td>
                                                             <td><a class="lnr lnr-music-note"
                                                                    href="/playlist/${chanson.id}/${chanson.titre}"></a>
                                                             </td>

@@ -27,13 +27,13 @@
                         <i class="lnr lnr-home"></i>
                         <span>Home</span></a></li>
 
-                <li><a href="">
+                <li><a href="/Chanson">
                     <i class="lnr lnr-music-note"></i>
                     <span>Songs</span></a></li>
 
-                <li><a href=""><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
+                <li><a href="/Artiste"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
                 <li><a href="/album"><i class="lnr lnr-bookmark"></i> <span>Albums</span></a></li>
-                <li><a href=""><i class="lnr lnr-book"></i><span>Genres</span></a></li>
+                <li><a href="/album"><i class="lnr lnr-book"></i><span>Genres</span></a></li>
                 <li><a href="/profil"><i class="lnr lnr-user"></i><span>Profil</span></a></li>
             </ul>
         </div>
