@@ -207,6 +207,17 @@ public class IndexController {
         return "false";
     }
 
+    @RequestMapping(value = "synchrone", method = RequestMethod.GET)
+    public @ResponseBody
+    String synchrone( HttpSession session) throws Exception {
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur != null) {
+//            service.synchrone();
+            return "true";
+        }
+        return "false";
+    }
+
     @RequestMapping(value = "playlist/{id}/{titre}", method = RequestMethod.GET)
     public @ResponseBody
     String ajoutplaylist(@PathVariable("id") String id, @PathVariable("titre") String titre, HttpSession session, ModelMap map) throws Exception {
@@ -246,7 +257,7 @@ public class IndexController {
 
     @RequestMapping(value = "/album")
     public String album(ModelMap map) throws Exception {
-        Albums[] albums = service.getAlbum();
+        Album[] albums = service.getAlbum();
         map.addAttribute("albums", albums);
         return "page/album";
     }
