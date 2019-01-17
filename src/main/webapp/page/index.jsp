@@ -24,17 +24,17 @@
         window.scrollTo(0, 1);
     } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom CSS -->
-    <link href="../resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
     <!-- Graph CSS -->
-    <link href="../resources/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="/resources/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
     <!-- lined-icons -->
-    <link rel="stylesheet" href="../resources/assets/css/icon-font.css" type='text/css'/>
+    <link rel="stylesheet" href="/resources/assets/css/icon-font.css" type='text/css'/>
     <!-- //lined-icons -->
     <!-- Meters graphs -->
-    <script src="../resources/assets/js/jquery-2.1.4.js"></script>
+    <script src="/resources/assets/js/jquery-2.1.4.js"></script>
 
 </head>
 <!-- /w3layouts-agile -->
@@ -48,7 +48,6 @@
             <div class="clearfix"></div>
         </div>
         <div id="page-wrapper">
-            <!--/inner-content-->
             <div class="inner-content">
 
                 <div class="music-left">
@@ -68,17 +67,23 @@
                             <div class="col-md-12">
                                 <table class="table table-bordered table-responsive">
                                     <tr>
+                                        <th>Artiste</th>
                                         <th>Titre</th>
+                                        <th>Duree</th>
                                         <th>Lecture</th>
+                                        <th>Taille</th>
                                     </tr>
                                     <c:forEach items="${paginations}" var="chanson">
                                         <tr>
+                                            <td>${chanson.artiste}</td>
                                             <td>${chanson.titre}</td>
+                                            <td>${chanson.duree}</td>
                                             <td>
                                                 <audio controls>
                                                     <source src="${chanson.url()}" type="audio/mpeg">
                                                 </audio>
                                             </td>
+                                            <td>${chanson.taille}</td>
                                         </tr>
                                     </c:forEach>
                                 </table>
@@ -101,25 +106,33 @@
                             <h3 class="tittle">NOUVEAUTE</h3>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
-                                    src="../resources/assets/images/v1.jpg" title="allbum-name"></a>
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
+                        <div id="page-wrapper">
+                            <div class="inner-content">
+                                <c:forEach items="${nouveau}" var="nv">
+                                    <ol>
+                                        <li class="list-group-item1">${nv.titre} : - ${nv.artiste}</li>
+                                        <li>
+                                            <audio controls>
+                                                <source src="${nv.url()}" type="audio/mpeg">
+                                            </audio>
+                                        </li>
+                                    </ol>
+                                </c:forEach>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-
-                        <div class="clearfix"></div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
+            <jsp:include page="footer.jsp"/>
         </div>
-        <jsp:include page="footer.jsp"/>
-    </div>
 </section>
 
-<script src="resources/assets/js/jquery.nicescroll.js"></script>
-<script src="resources/assets/js/scripts.js"></script>
+<script src="/resources/assets/js/jquery.nicescroll.js"></script>
+<script src="/resources/assets/js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="resources/assets/js/bootstrap.js"></script>
+<script src="/resources/assets/js/bootstrap.js"></script>
 </body>
 </html>

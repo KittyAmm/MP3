@@ -2,7 +2,7 @@
     <div class="footer-grid">
         <h3>Our Support</h3>
         <ul class="list1">
-            <li><a href="#">Advanced Search</a></li>
+            <li style="font-size: 20px"><a href="searchadvanced">Advanced Search</a></li>
         </ul>
     </div>
     <div class="footer-grid footer-grid_last">

@@ -1,6 +1,4 @@
-import dao.GenericDao;
-import modele.Favoris;
-import service.Service;
+import service.Fonction;
 
 public class Main {
     public static void main(String[] arg) throws Exception {
@@ -41,23 +39,30 @@ public class Main {
 //        client.setBirth("28-07-1998");
 //        client.setSexe("f");
 //       new HibernateDao().save(client);
-//        Mp3Info mp3Info = new Mp3Info().extractMP3("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
-//        gdao.save(mp3Info);
+        Fonction service = new Fonction();
+//        Mp3Info  mp3Info = new Mp3Info().extractMP3("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
+//        service.saveFile("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3","idutilisateur001");
 //        Mp3Info[] song = new Fonction().getSongs();
 //        System.out.println(song[0].getTitre());
-        Favoris favoris = new Favoris();
-//        favoris.setIdmp3info("15");
-//        favoris.setIduser("6");
-//        favoris.setDatefav("20-07-2019");
-//        new HibernateDao().save(favoris);
+//        Album favoris = new Album();
+//        favoris.setNom("album");
+//        favoris.setArtiste("idartiste001");
+//        favoris.setDatedajout("20-07-2019");
+//        favoris.setDatepub("20-07-2019");
+//        new GenericDao().save(favoris);
 //        System.out.println(new GenericDao().queryFind("select count(datelecharg) as nb from %s where iduser= '6'",favoris));
 //        System.out.println(Arrays.toString(new Fonction().countUpload(favoris, "6")));
-        int nb  = new GenericDao().GetCount(favoris, "iduser='6'");
-        int nbr = new Service().getCountFavoris("6");
-        System.out.println(nb);
-        System.out.println(nbr);
+//        int nb  = new GenericDao().GetCount(favoris, "iduser='6'");
+//        int nbr = new Service().getCountFavoris("6");
+//        System.out.println(nb);
+//        System.out.println(nbr);
 //        System.out.println(new GenericDao().queryCount(new Favoris(),""));
+//        Service service = new Service();
+//        service.synchronise("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\Nate Tex   Tsara tso drano  2017.mp3","idutilisateur002");
+//        service.deleteFileBdd("D:\\ITU\\S5\\Naina\\MP3\\out\\artifacts\\MP3\\resources\\media\\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3");
+            service.synchronisation();
+//        System.out.println(info.length);
+//            service.synchronisation();
+//            System.out.println(file);
+        }
     }
-
-}
-

@@ -98,6 +98,14 @@ public class GenericDao implements InterfaceDao {
         return findAll;
     }
 
+    public String queryFindByIdColonne(BaseModele bm, String where, String id) {
+        String findAll = "select * from %s where " + where + "= '%s'";
+        findAll = String.format(findAll, bm.getNomTable(), id);
+        System.out.println(findAll);
+        return findAll;
+    }
+
+
     public String queryInsert(BaseModele baseModele) {
         Field[]       fields  = getColumnTable(baseModele);
         String        insert  = "insert into %s (%s) values(%s)";
@@ -135,7 +143,15 @@ public class GenericDao implements InterfaceDao {
     }
 
     public String queryDelete(BaseModele bm, String where) {
-        return String.format("delete from %s where id= '%s' where '%s'", bm.getNomTable(), bm.getId(), where);
+        String query;
+        if (where.equals("")) {
+            query = String.format("delete from %s", bm.getNomTable());
+        } else {
+            String delete = "delete from %s where %s";
+            query = String.format(delete, bm.getNomTable(), where);
+        }
+        System.out.println(query);
+        return query;
     }
 
     public String queryFindAll(BaseModele bm) {
@@ -154,6 +170,7 @@ public class GenericDao implements InterfaceDao {
             for (int i = 0; i < fields.length; i++) {
                 fields[i].setAccessible(true);
                 ps.setObject(i + 2, fields[i].get(bm));
+                System.out.println(fields[i].get(bm) + fields[i].getName());
             }
             ps.execute();
         } catch (Exception e) {
@@ -424,6 +441,36 @@ public class GenericDao implements InterfaceDao {
         ArrayList<BaseModele> modeles = new ArrayList<>();
         try {
             ps = conn.prepareStatement(queryFindById(bm, id));
+            res = ps.executeQuery();
+            Field[] fields = getColumnTable(bm);
+            if (res.next()) {
+                bm.setId(res.getString("id"));
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    field.set(bm, res.getObject(getNameColumn(field)));
+                }
+            }
+        } finally {
+            Connexion.fermerRessource(conn, ps, res);
+        }
+    }
+
+    public void findByColonne(BaseModele bm, String where, String id) throws Exception {
+        Connection conn = null;
+        try {
+            conn = Connexion.getConnexion();
+            findByColonne(bm, where, id, conn);
+        } finally {
+            Connexion.fermerRessource(conn, null, null);
+        }
+    }
+
+    public void findByColonne(BaseModele bm, String where, String id, Connection conn) throws Exception {
+        PreparedStatement     ps      = null;
+        ResultSet             res     = null;
+        ArrayList<BaseModele> modeles = new ArrayList<>();
+        try {
+            ps = conn.prepareStatement(queryFindByIdColonne(bm, where, id));
             res = ps.executeQuery();
             Field[] fields = getColumnTable(bm);
             if (res.next()) {

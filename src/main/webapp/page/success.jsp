@@ -23,7 +23,7 @@ Titre : ${infoMp3.titre}
     <div class="music-browse">
         <!--albums-->
         <!-- pop-up-box -->
-        <link href="../resources/assets/css/popuo-box.css" rel="stylesheet" type="text/css"
+        <link href="/resources/assets/css/popuo-box.css" rel="stylesheet" type="text/css"
               media="all">
 
 
@@ -34,7 +34,7 @@ Titre : ${infoMp3.titre}
             </div>
             <ul id="flexiselDemo1">
                 <li>
-                    <a href="#"><img src="../resources/assets/images/v1.jpg" alt=""/></a>
+                    <a href="#"><img src="/resources/assets/images/v1.jpg" alt=""/></a>
                     <div class="slide-title"><h4>Adele21</h4></div>
                     <div class="date-city">
                         <h5>Jan-02-16</h5>
@@ -44,7 +44,7 @@ Titre : ${infoMp3.titre}
                     </div>
                 </li>
                 <li>
-                    <a href="#"><img src="../resources/assets/images/v6.jpg" alt=""/></a>
+                    <a href="#"><img src="/resources/assets/images/v6.jpg" alt=""/></a>
                     <div class="slide-title"><h4>Ellie Goluding </h4></div>
                     <div class="date-city">
                         <h5>Jan-02-16</h5>
@@ -54,7 +54,7 @@ Titre : ${infoMp3.titre}
                     </div>
                 </li>
             </ul>
-            <script type="text/javascript" src="../resources/assets/js/jquery.flexisel.js"></script>
+            <script type="text/javascript" src="/resources/assets/js/jquery.flexisel.js"></script>
         </div>
     </div>
     <div class="clearfix"></div>

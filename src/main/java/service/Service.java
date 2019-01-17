@@ -27,8 +27,12 @@ public class Service {
         return fonction.getMenu();
     }
 
-    public Albums[] getAlbum() throws Exception {
+    public Album[] getAlbum() throws Exception {
         return fonction.getAlbums();
+    }
+
+    public Genre[] getGenre() throws Exception {
+        return fonction.getGenre();
     }
 
     //nouveauté
@@ -100,13 +104,56 @@ public class Service {
         return fonction.getMp3ById(id);
     }
 
+    public Playlist getPlaylistId(String id) throws Exception {
+        return fonction.getPlaylistId(id);
+    }
+
     public Mp3Info[] getPagination(int nb, int index) throws Exception {
         return fonction.getPagination(nb, index);
     }
+
     public Chanson[] getChanson() throws Exception {
         return fonction.getChanson();
     }
 
+    public Mp3Info[] nouveaute() throws Exception {
+        return fonction.nouveaute();
+    }
+
+    public void synchrone() throws Exception {
+        fonction.synchronisation();
+    }
+
+    public void deletefile(Mp3Info path) throws Exception {
+        fonction.deleteRehetra(path);
+    }
+
+    public Telechargement getTelechargId(String id) throws Exception {
+        return fonction.getTelechargId(id);
+    }
+
+    public Favoris getFav(String id) throws Exception {
+        return fonction.getFav(id);
+    }
+    public Playlist getplaylist(String id) throws Exception {
+        return fonction.getPlaylistId(id);
+    }
+
+    public void deletePlaylist(Playlist playlist) throws Exception {
+        fonction.deletePlaylist(playlist);
+    }
+
+    public void deleteTelechargement(Telechargement tel) throws Exception {
+        fonction.deletetelecharg(tel);
+    }
+
+    public void deleteFavoris(Favoris fav) throws Exception {
+        fonction.deletetefavoris(fav);
+    }
+
+    public Mp3Info[] rechercheMulti(String titre,String artiste) throws Exception {
+        return fonction.FindMulti(titre, artiste);
+    }
 
 
 }

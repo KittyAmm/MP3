@@ -24,17 +24,17 @@
         window.scrollTo(0, 1);
     } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom CSS -->
-    <link href="../resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
     <!-- Graph CSS -->
-    <link href="../resources/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="/resources/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
     <!-- lined-icons -->
-    <link rel="stylesheet" href="../resources/assets/css/icon-font.css" type='text/css'/>
+    <link rel="stylesheet" href="/resources/assets/css/icon-font.css" type='text/css'/>
     <!-- //lined-icons -->
     <!-- Meters graphs -->
-    <script src="../resources/assets/js/jquery-2.1.4.js"></script>
+    <script src="/resources/assets/js/jquery-2.1.4.js"></script>
 
 </head>
 <!-- /w3layouts-agile -->
@@ -51,64 +51,28 @@
             <!--/inner-content-->
             <div class="inner-content">
 
-                <div class="music-left">
-                    <div class="albums second">
-                        <div class="tittle-head">
-                            <h3 class="tittle">NOS CHANSONS</h3>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 content-grid">
-                                <%--<select>
-                                    <option></option>
-                                </select>--%>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <table class="table table-bordered table-responsive">
-                                    <tr>
-                                        <th>Titre</th>
-                                        <th>Lecture</th>
-                                    </tr>
-                                    <c:forEach items="${paginations}" var="chanson">
-                                        <tr>
-                                            <td>${chanson.titre}</td>
-                                            <td>
-                                                <audio controls>
-                                                    <source src="${chanson.url()}" type="audio/mpeg">
-                                                </audio>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                                <nav>
-                                    <ul class="pagination">
-                                        <c:forEach var="i" begin="1" end="${nbpage}">
-                                            <li><a href="/pagination/${i}">${i}</a></li>
-                                        </c:forEach>
-                                    </ul>
-                                </nav>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="music-right">
-                    <div class="albums">
-                        <div class="tittle-head">
-                            <h3 class="tittle">NOUVEAUTE</h3>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="col-md-3 content-grid">
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img
-                                    src="../resources/assets/images/v1.jpg" title="allbum-name"></a>
-                            <a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Listen now</a>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-responsive">
+                            <tr>
+                                <th>chanson</th>
+                                <th>Play</th>
+                            </tr>
+                            <c:forEach items="${chanson}" var="chanson">
+                                <tr>
+                                    <td>${chanson.titre}</td>
+                                    <td>
+                                        <audio controls>
+                                            <source src="${chanson.url()}" type="audio/mpeg">
+                                        </audio>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
 
                         <div class="clearfix"></div>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -117,9 +81,9 @@
     </div>
 </section>
 
-<script src="resources/assets/js/jquery.nicescroll.js"></script>
-<script src="resources/assets/js/scripts.js"></script>
+<script src="/resources/assets/js/jquery.nicescroll.js"></script>
+<script src="/resources/assets/js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="resources/assets/js/bootstrap.js"></script>
+<script src="/resources/assets/js/bootstrap.js"></script>
 </body>
 </html>

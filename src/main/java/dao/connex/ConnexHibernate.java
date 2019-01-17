@@ -14,7 +14,14 @@ public class ConnexHibernate {
 
     public SessionFactory buildSessionFactory() {
         Configuration configObj = new Configuration();
-        configObj.addAnnotatedClass(modele.Albums.class);
+        configObj.addAnnotatedClass(modele.Album.class);
+        configObj.addAnnotatedClass(modele.Chanson.class);
+        configObj.addAnnotatedClass(modele.Mp3Info.class);
+        configObj.addAnnotatedClass(modele.Telechargement.class);
+        configObj.addAnnotatedClass(modele.Favoris.class);
+        configObj.addAnnotatedClass(modele.Playlist.class);
+        configObj.addAnnotatedClass(modele.Utilisateur.class);
+        configObj.addAnnotatedClass(modele.Menu.class);
         configObj.configure("hibernate.cfg.xml");
         ServiceRegistry service = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
         factory = configObj.buildSessionFactory(service);

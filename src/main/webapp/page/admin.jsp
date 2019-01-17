@@ -51,7 +51,7 @@
             <!--/inner-content-->
             <div class="inner-content">
                 <p>Synchroniser</p>
-                <i class="fa fa-refresh fa-spin" style="font-size:24px"></i>
+                <a href="/synchrone"><i class="fa fa-refresh fa-spin" style="font-size:24px"></i></a>
                 <section>
                     <div class="col-md-6">
                         <p>STATISTIQUE</p>
@@ -104,22 +104,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${chansons}" var="chanson">
-                                        <tr>
-                                            <form:form method="post" action="/supprimer/${chanson.id}">
-
-                                            <td><code>${chanson.titre}</code></td>
-                                            <td>
-                                                <audio controls>
-                                                    <source src="${chanson.url()}" type="audio/mpeg">
-                                                </audio>
-                                            </td>
-                                            <td>
-                                                <button>supprimer</button>
-                                            </td>
-                                            </form:form>
-                                        </tr>
-                                    </c:forEach>
+                                <c:forEach items="${chansons}" var="chanson">
+                                    <tr>
+                                        <td><code>${chanson.titre}</code></td>
+                                        <td>
+                                            <audio controls>
+                                                <source src="${chanson.url()}" type="audio/mpeg">
+                                            </audio>
+                                        </td>
+                                        <td>
+                                            <a href="supprimer/${chanson.id}">Supprimer</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -131,9 +128,9 @@
     </div>
 </section>
 
-<script src="resources/assets/js/jquery.nicescroll.js"></script>
-<script src="resources/assets/js/scripts.js"></script>
+<script src="/resources/assets/js/jquery.nicescroll.js"></script>
+<script src="/resources/assets/js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="resources/assets/js/bootstrap.js"></script>
+<script src="/resources/assets/js/bootstrap.js"></script>
 </body>
 </html>

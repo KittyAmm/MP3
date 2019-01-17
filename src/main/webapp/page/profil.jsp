@@ -24,17 +24,17 @@
         window.scrollTo(0, 1);
     } </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- Custom CSS -->
-    <link href="../resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/resources/assets/css/style.css" rel='stylesheet' type='text/css'/>
     <!-- Graph CSS -->
-    <link href="../resources/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="/resources/assets/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
     <!-- lined-icons -->
-    <link rel="stylesheet" href="../resources/assets/css/icon-font.css" type='text/css'/>
+    <link rel="stylesheet" href="/resources/assets/css/icon-font.css" type='text/css'/>
     <!-- //lined-icons -->
     <!-- Meters graphs -->
-    <script src="../resources/assets/js/jquery-2.1.4.js"></script>
+    <script src="/resources/assets/js/jquery-2.1.4.js"></script>
 
 </head>
 <!-- /w3layouts-agile -->
@@ -131,7 +131,7 @@
                     <div class="music-left">
                         <div class="albums second">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-lg-12">
                                     <div class="albums second">
                                         <div class="tittle-head">
                                             <h3 class="tittle">NOS CHANSONS</h3>
@@ -162,7 +162,7 @@
                                                                     <source src="${chanson.url()}" type="audio/mpeg">
                                                                 </audio>
                                                             </td>
-                                                            <td><i id="idson${chanson.id}" onclick="aimer(${chanson.id})"
+                                                            <td><i id="idson${chanson.id}" onclick="aimer('${chanson.id}')"
                                                                    class="lnr lnr-heart"></i></td>
                                                             <td><a href="/telecharger/${chanson.id}/${chanson.titre}">
                                                                 <i class="lnr lnr-download"></i></a></td>
@@ -206,9 +206,9 @@
         });
     }
 </script>
-<script src="resources/assets/js/jquery.nicescroll.js"></script>
-<script src="resources/assets/js/scripts.js"></script>
+<script src="/resources/assets/js/jquery.nicescroll.js"></script>
+<script src="/resources/assets/js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="resources/assets/js/bootstrap.js"></script>
+<script src="/resources/assets/js/bootstrap.js"></script>
 </body>
 </html>

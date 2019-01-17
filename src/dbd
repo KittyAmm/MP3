@@ -21,10 +21,18 @@ CREATE SEQUENCE idimage
 CREATE SEQUENCE idfavoris
   INCREMENT BY 1
   START WITH 1;
+CREATE SEQUENCE idartiste
+  INCREMENT BY 1
+  START WITH 1;
 
 CREATE SEQUENCE idplaylist
   INCREMENT BY 1
   START WITH 1;
+
+CREATE SEQUENCE idtelechargement
+  INCREMENT BY 1
+  START WITH 1;
+
 
 SELECT *
 FROM favoris;
@@ -47,8 +55,6 @@ CREATE TABLE utilisateur (
   datedajout    VARCHAR(50),
   PRIMARY KEY (id)
 );
-INSERT into utilisateur VALUES ('idutilisateur001','minou','minou','minou@gmail.com','f','20-07-1998','07-08-2003');
-INSERT into utilisateur VALUES ('idutilisateur002','admin','admin','admin','f','01-01-1975','01-12-2000');
 
 CREATE TABLE image (
   id  VARCHAR(20),
@@ -58,11 +64,10 @@ CREATE TABLE image (
 
 CREATE TABLE artiste (
   id         VARCHAR(20),
-
   nom        VARCHAR(50),
   datedajout VARCHAR(50),
   PRIMARY KEY (id)
-  
+
 );
 
 CREATE TABLE albums (
@@ -95,10 +100,12 @@ CREATE TABLE chanson (
   datepublier VARCHAR(50),
   PRIMARY KEY (id),
   FOREIGN KEY (idartiste) REFERENCES artiste (id),
-
-  FOREIGN KEY (idgenre) REFERENCES artiste (id)
+  FOREIGN KEY (idgenre) REFERENCES genre (id)
 );
+select * from Mp3Info offset 0 fetch next 3 rows only;
+select * from Mp3Info where titre LIKE ('Nolalovanao') or artiste LIKE ('ZAI');
 
+delete from Mp3Info where path = 'D:\ITU\S5\Naina\MP3\out\artifacts\MP3\resources\media\MELKY ft. PRINCIO - TE HANARAKA ANAO.mp3';
 
 CREATE TABLE playlist (
   id         VARCHAR(20),
@@ -112,7 +119,7 @@ CREATE TABLE playlist (
 );
 CREATE TABLE mp3Info (
   id          VARCHAR(20) PRIMARY KEY,
-  path        VARCHAR(100),
+  path        VARCHAR(200),
   track       VARCHAR(50),
   artiste     VARCHAR(50),
   titre       VARCHAR(50),
@@ -127,8 +134,10 @@ CREATE TABLE mp3Info (
   taille      INT,
   image       VARCHAR(50),
   duree VARCHAR(50),
-      iduser VARCHAR(20)
+  iduser VARCHAR(20),
+  datedajout VARCHAR(20)
 );
+select * from Mp3Info where datedajout <= '15-01-2019' limit 6;
 
 CREATE TABLE telechargement (
   id            VARCHAR(20) PRIMARY KEY,
@@ -157,4 +166,5 @@ INSERT INTO menu (id,nom,lien,class) VALUES (2,'Artistes','/artiste.jsp', 'lnr l
 INSERT INTO menu (id,nom,lien,class) VALUES (3,'Album','/album.jsp', 'lnr lnr-book');
 INSERT INTO menu (id,nom,lien,class) VALUES (4,'Genres','/genre.jsp', 'lnr lnr-chart-bars');
 INSERT INTO menu (id,nom,lien,class) VALUES (5,'Profil','/profil.jsp', 'lnr lnr-user');
+
 

@@ -2,6 +2,7 @@ package dao;
 
 import dao.annotation.Id;
 import dao.annotation.Table;
+import dao.connex.Connexion;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 
@@ -45,13 +46,20 @@ public abstract class BaseModele {
             ps = c.prepareStatement(dao.util.Query.getQuerySec(seq));
             rs = ps.executeQuery();
             if (rs.next()) {
-                setId(String.valueOf(rs.getInt(1)));
+                String predica;
+                String nomtable = getNomTable();
+                if (nomtable.length() <= 4) {
+                    predica = nomtable;
+                } else {
+                    predica = nomtable.substring(0, 4);
+                }
+                predica = predica + rs.getInt(1);
+                setId(predica.toUpperCase());
             }
             return id;
 
         } finally {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
+            Connexion.fermerRessource(null,ps,rs);
         }
     }
 

@@ -31,11 +31,16 @@ public class IndexController {
 
     @RequestMapping(value = "/")
     public String index(ModelMap map) {
+        return "page/bienvenue";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login(ModelMap map) {
         return "page/login";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/homei")
-    public String homei(ModelMap model) throws Exception {
+    public String homei(ModelMap model) {
 //        Menu[] menu = service.getMenu();
 //        model.addAttribute("menus", menu);
         return "page/profil";
@@ -170,7 +175,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "telecharger/{idmp3}/{titre}", method = RequestMethod.GET)
-    public void getFile(@PathVariable("idmp3") String idmp3,@PathVariable("titre") String titre, HttpServletResponse response, HttpSession session) throws IOException {
+    public String getFile(@PathVariable("idmp3") String idmp3, @PathVariable("titre") String titre, ModelMap model, HttpServletResponse response, HttpSession session) throws IOException {
         InputStream in = null;
         try {
             Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
@@ -183,7 +188,8 @@ public class IndexController {
                 response.setHeader("Content-Length", String.valueOf(file.length()));
                 org.apache.commons.io.IOUtils.copy(in, response.getOutputStream());
                 response.flushBuffer();
-                service.saveTelecharger(idmp3,utilisateur.getId(),titre);
+                service.saveTelecharger(idmp3, utilisateur.getId(), titre);
+                return profil(model, session);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -193,6 +199,7 @@ public class IndexController {
                 in.close();
             }
         }
+        return login(model);
     }
 
     @RequestMapping(value = "favoris/{id}", method = RequestMethod.GET)
@@ -208,32 +215,53 @@ public class IndexController {
     }
 
     @RequestMapping(value = "synchrone", method = RequestMethod.GET)
-    public @ResponseBody
-    String synchrone( HttpSession session) throws Exception {
+    public String synchrone(HttpSession session, ModelMap model) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur != null) {
-//            service.synchrone();
-            return "true";
+            service.synchrone();
+            return admin(model, session);
         }
-        return "false";
+        return login(model);
     }
 
     @RequestMapping(value = "playlist/{id}/{titre}", method = RequestMethod.GET)
-    public @ResponseBody
-    String ajoutplaylist(@PathVariable("id") String id, @PathVariable("titre") String titre, HttpSession session, ModelMap map) throws Exception {
+    public String ajoutplaylist(@PathVariable("id") String id, @PathVariable("titre") String titre, HttpSession session, ModelMap model) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur != null) {
             service.savePlaylist(id, utilisateur.getId(), titre);
+            model.addAttribute("title", "Profil");
+            double     upload    = service.getCountUpload(utilisateur.getId());
+            double     telecharg = service.getCountTelechargement(utilisateur.getId());
+            double     favori    = service.getCountFavoris(utilisateur.getId());
+            double     playlist  = service.getCountPlaylist(utilisateur.getId());
+            Mp3Info[]  songs     = service.getSongs();
+            Playlist[] playlists = service.getPlaylist();
+            if (playlists != null) {
+                model.addAttribute("playlists", playlists);
+            }
+            model.addAttribute("favori", favori);
+            model.addAttribute("upload", upload);
+            model.addAttribute("telecharg", telecharg);
+            model.addAttribute("playlist", playlist);
+            model.addAttribute("chansons", songs);
+            return profil(model, session);
         }
         return "page/login";
     }
 
     @RequestMapping(value = "supprimer/{id}", method = RequestMethod.GET)
-    public @ResponseBody
-    String supprimer(@PathVariable("id") String id, HttpSession session, ModelMap map) throws Exception {
+    public String supprimer(@PathVariable("id") String id, HttpSession session, ModelMap map) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur != null) {
-            service.supprimer(id, utilisateur.getId());
+            Mp3Info        info     = service.getMp3ById(id);
+            Telechargement tel      = service.getTelechargId(id);
+            Favoris        fav      = service.getFav(id);
+            Playlist       playlist = service.getPlaylistId(id);
+            service.deletePlaylist(playlist);
+            service.deleteTelechargement(tel);
+            service.deleteFavoris(fav);
+            service.deletefile(info);
+
             return admin(map, session);
         }
         return "page/login";
@@ -248,7 +276,9 @@ public class IndexController {
         if (nbmp3info % nbaffiche != 0) {
             nbpage = nbpage + 1;
         }
+        Mp3Info[] nv          = service.nouveaute();
         Mp3Info[] paginations = service.getPagination(nbaffiche, page);
+        model.addAttribute("nouveau", nv);
         model.addAttribute("nbpage", nbpage);
         model.addAttribute("paginations", paginations);
         model.addAttribute("title", "Bienvenue KBH's Music");
@@ -258,21 +288,39 @@ public class IndexController {
     @RequestMapping(value = "/album")
     public String album(ModelMap map) throws Exception {
         Album[] albums = service.getAlbum();
+        Genre[] genres = service.getGenre();
         map.addAttribute("albums", albums);
+        map.addAttribute("genres", genres);
         return "page/album";
     }
 
     @RequestMapping(value = "/chanson")
     public String chanson(ModelMap map) throws Exception {
-     Chanson[] ch = service.getChanson();
-     map.addAttribute("ch", ch);
-        return "page/Chanson";
+        Mp3Info[] ch = service.getSongs();
+        map.addAttribute("ch", ch);
+        return "page/chanson";
     }
 
     @RequestMapping(value = "/artiste")
-    public String artiste(ModelMap map) throws Exception {
+    public String artiste(ModelMap map) {
 //        Album[] albums = service.getAlbum();
 //        map.addAttribute("albums", albums);
-        return "page/Artiste";
+        return "page/artiste";
+    }
+
+    @RequestMapping(value = "/searchadvanced", method = RequestMethod.GET)
+    public String searchadvanced(ModelMap model, HttpServletRequest request) {
+        String titre   = request.getParameter("titre");
+        String artiste = request.getParameter("artiste");
+        if (titre != null && !titre.equals("") || artiste != null && !artiste.equals("")) {
+            try {
+                Mp3Info[] val = service.rechercheMulti(titre, artiste);
+                model.addAttribute("val", val);
+                return "page/searchadvanced";
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return "page/searchadvanced";
     }
 }
