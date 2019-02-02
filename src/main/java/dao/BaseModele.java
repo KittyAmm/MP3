@@ -56,6 +56,7 @@ public abstract class BaseModele {
                 predica = predica + rs.getInt(1);
                 setId(predica.toUpperCase());
             }
+
             return id;
 
         } finally {
